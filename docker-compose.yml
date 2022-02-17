@@ -69,8 +69,8 @@ services:
     container_name: root
     restart: always
     environment: 
-      VIRTUAL_HOST: ${ROOT_HOST}
-      LETSENCRYPT_HOST: ${ROOT_HOST}
+      VIRTUAL_HOST: ${ROOT_HOST},www.${ROOT_HOST}
+      LETSENCRYPT_HOST: ${ROOT_HOST},www.${ROOT_HOST}
     depends_on:
       - acme-companion
 
