@@ -84,6 +84,8 @@ services:
       - "${DATA_DIR}/mariadb:/var/lib/mariadb"
     links:
       - mariadb:mariadb
+    hostname:
+      ${NEXTCLOUD_SUBDOMAIN}.${ROOT_HOST}
     environment:
       MYSQL_HOST: mariadb
       MYSQL_DATABASE: ${NEXTCLOUD_DB_NAME}
