@@ -34,16 +34,16 @@ services:
     depends_on:
       - nginx-proxy
 
-  # MariaDB container
-  mariadb:
-    image: mariadb:${MARIADB_VERSION}
-    container_name: mariadb
+  # MySQL DB container
+  mysqldb:
+    image: mysql:${MYSQL_VERSION}
+    container_name: mysqldb
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW --innodb-file-per-table=1 --skip-innodb-read-only-compressed
     restart: always
     volumes:
-      - "${DATA_DIR}/mariadb:/var/lib/mariadb"
+      - "${DATA_DIR}/mysql:/var/lib/mysql"
     environment: 
-      MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${NEXTCLOUD_DB_NAME}
       MYSQL_USER: ${NEXTCLOUD_DB_USER}
       MYSQL_PASSWORD: ${NEXTCLOUD_DB_PASSWORD}
@@ -81,13 +81,13 @@ services:
     restart: always
     volumes:
       - "${DATA_DIR}/nextcloud:/var/www/html"
-      - "${DATA_DIR}/mariadb:/var/lib/mariadb"
+      - "${DATA_DIR}/mysqldb:/var/lib/mysqldb"
     links:
-      - mariadb:mariadb
+      - mysqldb:mysqldb
     hostname:
       ${NEXTCLOUD_SUBDOMAIN}.${ROOT_HOST}
     environment:
-      MYSQL_HOST: mariadb
+      MYSQL_HOST: mysqldb
       MYSQL_DATABASE: ${NEXTCLOUD_DB_NAME}
       MYSQL_USER: ${NEXTCLOUD_DB_USER}
       MYSQL_PASSWORD: ${NEXTCLOUD_DB_PASSWORD}
@@ -95,7 +95,7 @@ services:
       LETSENCRYPT_HOST: ${NEXTCLOUD_SUBDOMAIN}.${ROOT_HOST}
     depends_on:
       - acme-companion
-      - mariadb
+      - mysqldb
 
   # Grafana container
   grafana:
