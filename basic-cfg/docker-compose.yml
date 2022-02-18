@@ -1,0 +1,54 @@
+version: '3'
+services:
+  nginx-proxy:
+    image: nginxproxy/nginx-proxy:alpine
+    container_name: nginx-proxy
+    restart: always
+    labels:
+      com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - "${DATA_DIR}/nginx/certs:/etc/nginx/certs"
+      - "${DATA_DIR}/nginx/vhosts:/etc/nginx/vhost.d"
+      - "${DATA_DIR}/nginx/html:/usr/share/nginx/html"
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx.conf:/etc/nginx/proxy.conf
+
+  acme-companion:
+    image: nginxproxy/acme-companion:2.1
+    container_name: acme-companion
+    restart: always
+    volumes:
+      - "${DATA_DIR}/nginx/certs:/etc/nginx/certs"
+      - "${DATA_DIR}/nginx/vhosts:/etc/nginx/vhost.d"
+      - "${DATA_DIR}/nginx/html:/usr/share/nginx/html"
+      - "${DATA_DIR}/nginx/acme:/etc/acme.sh"
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./nginx.conf:/etc/nginx/proxy.conf
+    environment: 
+      DEFAULT_EMAIL: ${DOMAIN_ADMIN_EMAIL}
+    depends_on:
+      - nginx-proxy
+
+  grafana:
+    image: nginxdemos/hello
+    container_name: grafana
+    restart: always
+    environment: 
+      VIRTUAL_HOST: grafana.${ROOT_HOST}
+      LETSENCRYPT_HOST: grafana.${ROOT_HOST}
+    depends_on:
+      - acme-companion
+
+  nextcloud:
+    image: infrastructureascode/hello-world
+    container_name: nextcloud
+    restart: always
+    environment: 
+      VIRTUAL_HOST: nextcloud.${ROOT_HOST}
+      LETSENCRYPT_HOST: nextcloud.${ROOT_HOST}
+      VIRTUAL_PORT: 8080
+    depends_on:
+      - acme-companion
