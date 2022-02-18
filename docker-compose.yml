@@ -63,14 +63,15 @@ services:
 
   # Root container
   root:
-    image: nginxdemos/hello
+    image: drupal:9.2.13
     container_name: root
     restart: always
-    environment: 
+    environment:
       VIRTUAL_HOST: ${ROOT_HOST},www.${ROOT_HOST}
       LETSENCRYPT_HOST: ${ROOT_HOST},www.${ROOT_HOST}
     depends_on:
       - acme-companion
+      - postgresdb
 
   # Nextcloud container
   nextcloud:
