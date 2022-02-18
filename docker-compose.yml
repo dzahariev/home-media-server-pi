@@ -34,19 +34,17 @@ services:
     depends_on:
       - nginx-proxy
 
-  # MySQL DB container
-  mysqldb:
-    image: mysql:${MYSQL_VERSION}
-    container_name: mysqldb
-    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW --innodb-file-per-table=1 --skip-innodb-read-only-compressed
+  # Postgres DB container
+  postgresdb:
+    image: postgres:${POSTGRES_VERSION}
+    container_name: postgresdb
     restart: always
     volumes:
-      - "${DATA_DIR}/mysqldb:/var/lib/mysqldb"
+      - "${DATA_DIR}/postgresql:/var/lib/postgresql/data"
     environment: 
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${NEXTCLOUD_DB_NAME}
-      MYSQL_USER: ${NEXTCLOUD_DB_USER}
-      MYSQL_PASSWORD: ${NEXTCLOUD_DB_PASSWORD}
+      POSTGRES_DB: ${NEXTCLOUD_DB_NAME}
+      POSTGRES_USER: ${NEXTCLOUD_DB_USER}
+      POSTGRES_PASSWORD: ${NEXTCLOUD_DB_PASSWORD}
 
   # InfluxDB container
   influxdb:
@@ -81,21 +79,18 @@ services:
     restart: always
     volumes:
       - "${DATA_DIR}/nextcloud:/var/www/html"
-      - "${DATA_DIR}/mysqldb:/var/lib/mysqldb"
-    links:
-      - mysqldb:mysqldb
     hostname:
       ${NEXTCLOUD_SUBDOMAIN}.${ROOT_HOST}
     environment:
-      MYSQL_HOST: mysqldb
-      MYSQL_DATABASE: ${NEXTCLOUD_DB_NAME}
-      MYSQL_USER: ${NEXTCLOUD_DB_USER}
-      MYSQL_PASSWORD: ${NEXTCLOUD_DB_PASSWORD}
+      POSTGRES_DB: ${NEXTCLOUD_DB_NAME}
+      POSTGRES_USER:  ${NEXTCLOUD_DB_USER}
+      POSTGRES_PASSWORD: ${NEXTCLOUD_DB_PASSWORD}
+      POSTGRES_HOST: postgresdb
       VIRTUAL_HOST: ${NEXTCLOUD_SUBDOMAIN}.${ROOT_HOST}
       LETSENCRYPT_HOST: ${NEXTCLOUD_SUBDOMAIN}.${ROOT_HOST}
     depends_on:
       - acme-companion
-      - mysqldb
+      - postgresdb
 
   # Grafana container
   grafana:
