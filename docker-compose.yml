@@ -52,14 +52,14 @@ services:
     container_name: pgadmin
     restart: always
     ports:
-      - 80:5010
+      - 5010:5010
     volumes:
       - "${DATA_DIR}/postgresql:/var/lib/postgresql/data"
     environment: 
       PGADMIN_DEFAULT_EMAIL: ${POSTGRES_DB_NAME}
       PGADMIN_DEFAULT_PASSWORD: ${POSTGRES_DB_USER}
-      PGADMIN_DISABLE_POSTFIX: yes
-      PGADMIN_LISTEN_PORT: 5050
+      PGADMIN_DISABLE_POSTFIX: "yes"
+      PGADMIN_LISTEN_PORT: 5010
       PGADMIN_CONFIG_LOGIN_BANNER: "Authorised users only!"
     depends_on:
       - postgresdb
