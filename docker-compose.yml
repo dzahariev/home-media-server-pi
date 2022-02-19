@@ -52,7 +52,7 @@ services:
     container_name: pgadmin
     restart: always
     volumes:
-      - "${DATA_DIR}/postgresql:/var/lib/postgresql/data"
+      - "${DATA_DIR}/pgadmin:/root/.pgadmin"
     environment: 
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${POSTGRES_DB_USER}
