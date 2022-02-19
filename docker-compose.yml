@@ -52,7 +52,7 @@ services:
     container_name: pgadmin
     restart: always
     volumes:
-      - "${DATA_DIR}/pgadmin:/root/.pgadmin"
+      - "${DATA_DIR}/pgadmin:/var/lib/pgadmin"
     environment: 
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
