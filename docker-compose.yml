@@ -58,7 +58,7 @@ services:
     environment: 
       PGADMIN_DEFAULT_EMAIL: ${POSTGRES_DB_NAME}
       PGADMIN_DEFAULT_PASSWORD: ${POSTGRES_DB_USER}
-      PGADMIN_DISABLE_POSTFIX: true
+      PGADMIN_DISABLE_POSTFIX: yes
       PGADMIN_LISTEN_PORT: 5050
       PGADMIN_CONFIG_LOGIN_BANNER: "Authorised users only!"
     depends_on:
