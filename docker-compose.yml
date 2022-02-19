@@ -76,9 +76,9 @@ services:
       MARIADB_PASSWORD: ${MARIADB_PASSWORD}
 
   # PHPMyAdmin container
-  phpmyadmin:
+  myadmin:
     image: phpmyadmin:${PHPMYADMIN_VERSION}
-    container_name: phpmyadmin
+    container_name: myadmin
     restart: always
     volumes:
       - "${DATA_DIR}/postgresql:/var/lib/postgresql/data"
@@ -91,7 +91,6 @@ services:
       MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
       VIRTUAL_HOST: ${PHPMYADMIN_SUBDOMAIN}.${ROOT_HOST}
       LETSENCRYPT_HOST: ${PHPMYADMIN_SUBDOMAIN}.${ROOT_HOST}
-      VIRTUAL_PORT: 8080
     depends_on:
       - mariadb
 
