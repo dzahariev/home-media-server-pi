@@ -46,6 +46,56 @@ services:
       POSTGRES_USER: ${POSTGRES_DB_USER}
       POSTGRES_PASSWORD: ${POSTGRES_DB_PASSWORD}
 
+  # PGAdmin container
+  pgadmin:
+    image: dpage/pgadmin4:${PGADMIN_VERSION}
+    container_name: pgadmin
+    restart: always
+    ports:
+      - 80:5010
+    volumes:
+      - "${DATA_DIR}/postgresql:/var/lib/postgresql/data"
+    environment: 
+      PGADMIN_DEFAULT_EMAIL: ${POSTGRES_DB_NAME}
+      PGADMIN_DEFAULT_PASSWORD: ${POSTGRES_DB_USER}
+      PGADMIN_DISABLE_POSTFIX: true
+      PGADMIN_LISTEN_PORT: 5050
+      PGADMIN_CONFIG_LOGIN_BANNER: "Authorised users only!"
+    depends_on:
+      - postgresdb
+
+  # MariaDB container
+  mariadb:
+    image: mariadb:${MARIADB_VERSION}
+    container_name: mariadb
+    restart: always
+    volumes:
+      - "${DATA_DIR}/mariadb:/var/lib/mysql"
+    environment: 
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+
+  # PHPMyAdmin container
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:${PHPMYADMIN_VERSION}
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - 8080:5020
+    volumes:
+      - "${DATA_DIR}/postgresql:/var/lib/postgresql/data"
+    links:
+      - mariadb
+    environment: 
+      PMA_HOST: mariadb
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+      MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+    depends_on:
+      - mariadb
+
   # InfluxDB container
   influxdb:
     image: influxdb:${INFLUXDB_DB_VERSION}
@@ -62,21 +112,24 @@ services:
       - "${DATA_DIR}/influxdb:/var/lib/influxdb2"
 
   # Root container
-  drupal:
-    image: drupal:${DRUPAL_VERSION}
-    container_name: drupal
+  wordpress:
+    image: wordpress:${WORDPRESS_VERSION}
+    container_name: wordpress
     restart: always
     volumes:
-      - "${DATA_DIR}/drupal/modules:/var/www/html/modules"
-      - "${DATA_DIR}/drupal/profiles:/var/www/html/profiles"
-      - "${DATA_DIR}/drupal/themes:/var/www/html/themes"
-      - "${DATA_DIR}/drupal/sites:/var/www/html/sites"
+      - "${DATA_DIR}/wordpress:/var/www/html/"
     environment:
+      WORDPRESS_DB_HOST: mariadb
+      WORDPRESS_DB_USER: ${MARIADB_USER}
+      WORDPRESS_DB_PASSWORD: ${MARIADB_PASSWORD}
+      WORDPRESS_DB_NAME: ${MARIADB_DATABASE}
+      WORDPRESS_TABLE_PREFIX: "wp_"
+      VIRTUAL_PORT: 8080
       VIRTUAL_HOST: ${ROOT_HOST},www.${ROOT_HOST}
       LETSENCRYPT_HOST: ${ROOT_HOST},www.${ROOT_HOST}
     depends_on:
       - acme-companion
-      - postgresdb
+      - mariadb
 
   # Nextcloud container
   nextcloud:
