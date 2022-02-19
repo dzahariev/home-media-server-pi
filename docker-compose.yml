@@ -77,7 +77,7 @@ services:
 
   # PHPMyAdmin container
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin:${PHPMYADMIN_VERSION}
+    image: phpmyadmin:${PHPMYADMIN_VERSION}
     container_name: phpmyadmin
     restart: always
     volumes:
