@@ -5,7 +5,6 @@ services:
     image: nginxproxy/nginx-proxy:${NGINX_PROXY_VERSION}
     container_name: nginx-proxy
     restart: always
-    user: "1000"
     labels:
       com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
     ports:
@@ -23,7 +22,6 @@ services:
     image: nginxproxy/acme-companion:${ACME_COMPANION_VERSION}
     container_name: acme-companion
     restart: always
-    user: "1000"
     volumes:
       - "${DATA_DIR}/nginx/certs:/etc/nginx/certs"
       - "${DATA_DIR}/nginx/vhosts:/etc/nginx/vhost.d"
@@ -41,7 +39,6 @@ services:
     image: postgres:${POSTGRES_VERSION}
     container_name: postgresdb
     restart: always
-    user: "1000"
     volumes:
       - "${DATA_DIR}/postgresql:/var/lib/postgresql/data"
     environment: 
@@ -54,7 +51,6 @@ services:
     image: dpage/pgadmin4:${PGADMIN_VERSION}
     container_name: pgadmin
     restart: always
-    user: "1000"
     volumes:
       - "${DATA_DIR}/pgadmin:/var/lib/pgadmin:rw"
     environment: 
@@ -71,7 +67,6 @@ services:
     image: mariadb:${MARIADB_VERSION}
     container_name: mariadb
     restart: always
-    user: "1000"
     volumes:
       - "${DATA_DIR}/mariadb:/var/lib/mysql"
     environment: 
@@ -85,7 +80,6 @@ services:
     image: phpmyadmin:${PHPMYADMIN_VERSION}
     container_name: myadmin
     restart: always
-    user: "1000"
     volumes:
       - "${DATA_DIR}/postgresql:/var/lib/postgresql/data"
     links:
@@ -105,7 +99,6 @@ services:
     image: influxdb:${INFLUXDB_DB_VERSION}
     container_name: influxdb
     restart: always
-    user: "1000"
     environment:
       INFLUXDB_DB: ${INFLUXDB_DB_NAME}
       INFLUXDB_ADMIN_USER: ${INFLUXDB_ADMIN_USER}
@@ -121,7 +114,6 @@ services:
     image: wordpress:${WORDPRESS_VERSION}
     container_name: wordpress
     restart: always
-    user: "1000"
     volumes:
       - "${DATA_DIR}/wordpress:/var/www/html/"
     environment:
@@ -141,7 +133,6 @@ services:
     image: nextcloud:${NEXTCLOUD_VERSION}
     container_name: nextcloud
     restart: always
-    user: "1000"
     volumes:
       - "${DATA_DIR}/nextcloud:/var/www/html"
     hostname:
@@ -162,7 +153,6 @@ services:
     image: grafana/grafana:${GRAFANA_VERSION}
     container_name: grafana
     restart: always
-    user: "1000"
     volumes:
       - "${DATA_DIR}/grafana/storage:/var/lib/grafana"
       - "${DATA_DIR}/grafana/provisioning:/etc/grafana/provisioning"
