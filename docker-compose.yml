@@ -51,6 +51,7 @@ services:
     image: dpage/pgadmin4:${PGADMIN_VERSION}
     container_name: pgadmin
     restart: always
+    user: root
     volumes:
       - "${DATA_DIR}/pgadmin:/var/lib/pgadmin:rw"
     environment: 
@@ -153,6 +154,7 @@ services:
     image: grafana/grafana:${GRAFANA_VERSION}
     container_name: grafana
     restart: always
+    user: root
     volumes:
       - "${DATA_DIR}/grafana/storage:/var/lib/grafana"
       - "${DATA_DIR}/grafana/provisioning:/etc/grafana/provisioning"
