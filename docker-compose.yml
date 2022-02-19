@@ -2,7 +2,7 @@ version: '3'
 services:
   # Main proxy container
   nginx-proxy:
-    image: nginxproxy/nginx-proxy:alpine
+    image: nginxproxy/nginx-proxy:${NGINX_PROXY_VERSION}
     container_name: nginx-proxy
     restart: always
     labels:
@@ -19,7 +19,7 @@ services:
 
   # Letsencrypt companion container
   acme-companion:
-    image: nginxproxy/acme-companion:2.1
+    image: nginxproxy/acme-companion:${ACME_COMPANION_VERSION}
     container_name: acme-companion
     restart: always
     volumes:
@@ -48,7 +48,7 @@ services:
 
   # InfluxDB container
   influxdb:
-    image: influxdb:1.8
+    image: influxdb:${INFLUXDB_DB_VERSION}
     container_name: influxdb
     restart: always
     environment:
@@ -62,10 +62,15 @@ services:
       - "${DATA_DIR}/influxdb:/var/lib/influxdb2"
 
   # Root container
-  root:
-    image: drupal:9.2.13
-    container_name: root
+  drupal:
+    image: drupal:${DRUPAL_VERSION}
+    container_name: drupal
     restart: always
+    volumes:
+      - "${DATA_DIR}/drupal/modules:/var/www/html/modules"
+      - "${DATA_DIR}/drupal/profiles:/var/www/html/profiles"
+      - "${DATA_DIR}/drupal/themes:/var/www/html/themes"
+      - "${DATA_DIR}/drupal/sites:/var/www/html/sites"
     environment:
       VIRTUAL_HOST: ${ROOT_HOST},www.${ROOT_HOST}
       LETSENCRYPT_HOST: ${ROOT_HOST},www.${ROOT_HOST}
@@ -83,9 +88,9 @@ services:
     hostname:
       ${NEXTCLOUD_SUBDOMAIN}.${ROOT_HOST}
     environment:
-      POSTGRES_DB: ${NEXTCLOUD_DB_NAME}
-      POSTGRES_USER:  ${NEXTCLOUD_DB_USER}
-      POSTGRES_PASSWORD: ${NEXTCLOUD_DB_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB_NAME}
+      POSTGRES_USER:  ${POSTGRES_DB_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_DB_PASSWORD}
       POSTGRES_HOST: postgresdb
       VIRTUAL_HOST: ${NEXTCLOUD_SUBDOMAIN}.${ROOT_HOST}
       LETSENCRYPT_HOST: ${NEXTCLOUD_SUBDOMAIN}.${ROOT_HOST}
@@ -95,7 +100,7 @@ services:
 
   # Grafana container
   grafana:
-    image: grafana/grafana:8.4.0
+    image: grafana/grafana:${GRAFANA_VERSION}
     container_name: grafana
     user: "1000"
     volumes:
@@ -106,8 +111,6 @@ services:
     environment:
       GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER}
       GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD}
-      GF_DATABASE_HOST: influxdb:8086
-      GF_DATABASE_NAME: ${INFLUXDB_DB_NAME}
       VIRTUAL_HOST: ${GRAFANA_SUBDOMAIN}.${ROOT_HOST}
       LETSENCRYPT_HOST: ${GRAFANA_SUBDOMAIN}.${ROOT_HOST}
       VIRTUAL_PORT: 3000
