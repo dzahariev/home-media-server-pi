@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Tiled Page</title>
+
+  <style type="text/css">
+    body {
+      margin: 0;
+      padding: 0;
+      background: #EEE;
+      font: 10px/13px 'Lucida Sans', sans-serif;
+    }
+
+    .wrap {
+      overflow: hidden;
+      margin: 10px;
+    }
+
+    .box {
+      float: left;
+      position: relative;
+      width: 20%;
+      padding-bottom: 20%;
+    }
+
+    .boxInner {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      top: 10px;
+      bottom: 10px;
+      overflow: hidden;
+    }
+
+    .boxInner img {
+      width: 100%;
+    }
+
+    .boxInner .titleBox {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin-bottom: -50px;
+      background: #000;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+      text-align: center;
+      -webkit-transition: all 0.3s ease-out;
+      -moz-transition: all 0.3s ease-out;
+      -o-transition: all 0.3s ease-out;
+      transition: all 0.3s ease-out;
+    }
+
+    body.no-touch .boxInner:hover .titleBox,
+    body.touch .boxInner.touchFocus .titleBox {
+      margin-bottom: 0;
+    }
+
+    @media only screen and (max-width : 480px) {
+      .box {
+        width: 100%;
+        padding-bottom: 100%;
+      }
+    }
+
+    @media only screen and (max-width : 650px) and (min-width : 481px) {
+      .box {
+        width: 50%;
+        padding-bottom: 50%;
+      }
+    }
+
+    @media only screen and (max-width : 1050px) and (min-width : 651px) {
+      .box {
+        width: 33.3%;
+        padding-bottom: 33.3%;
+      }
+    }
+
+    @media only screen and (max-width : 1290px) and (min-width : 1051px) {
+      .box {
+        width: 25%;
+        padding-bottom: 25%;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <script>
+    function grafana() {
+      newaddress = "grafana." + window.location.hostname;
+      window.open(newaddress, "_self")
+    };
+    function plex() {
+      newaddress = "plex." + window.location.hostname;
+      window.open(newaddress, "_self")
+    };
+    function nextcloud() {
+      newaddress = "nextcloud." + window.location.hostname;
+      window.open(newaddress, "_self")
+    };
+    function postgresql() {
+      newaddress = "postgresql." + window.location.hostname;
+      window.open(newaddress, "_self")
+    };
+    function phpmyadmin() {
+      newaddress = "phpmyadmin." + window.location.hostname;
+      window.open(newaddress, "_self")
+    };
+  </script>
+
+  <div class="wrap">
+
+    <!-- Define all of the tiles: -->
+    <div class="box">
+      <a href="https://github.com/dzahariev/home-media-server-pi">
+        <div class="boxInner">
+          <img src="raspberrypi4.jpg" />
+          <div class="titleBox">About</div>
+        </div>
+      </a>
+    </div>
+    <div class="box">
+      <a href="javascript:grafana();">
+        <div class="boxInner">
+          <img src="grafana.png" />
+          <div class="titleBox">Grafana</div>
+        </div>
+      </a>
+    </div>
+    <div class="box">
+      <a href="javascript:plex();">
+        <div class="boxInner">
+          <img src="plex.jpg" />
+          <div class="titleBox">Plex</div>
+        </div>
+      </a>
+    </div>
+    <div class="box">
+      <a href="javascript:nextcloud();">
+        <div class="boxInner">
+          <img src="nextcloud.png" />
+          <div class="titleBox">Nextcloud</div>
+        </div>
+      </a>
+    </div>
+    <div class="box">
+      <a href="javascript:postgresql();">
+        <div class="boxInner">
+          <img src="postgresql.png" />
+          <div class="titleBox">PostgreSQL</div>
+        </div>
+      </a>
+    </div>
+    <div class="box">
+      <a href="javascript:phpmyadmin();">
+        <div class="boxInner">
+          <img src="phpmyadmin.png" />
+          <div class="titleBox">MyAdmin</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</body>
+
+</html>
