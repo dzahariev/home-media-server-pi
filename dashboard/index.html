@@ -106,6 +106,10 @@
       newaddress = "https://nextcloud." + window.location.hostname;
       window.open(newaddress, "_self")
     };
+    function blog() {
+      newaddress = "https://blog." + window.location.hostname;
+      window.open(newaddress, "_self")
+    };
     function pgadmin() {
       newaddress = "https://pgadmin." + window.location.hostname;
       window.open(newaddress, "_self")
@@ -148,6 +152,14 @@
         <div class="boxInner">
           <img src="nextcloud.png" />
           <div class="titleBox">Nextcloud</div>
+        </div>
+      </a>
+    </div>
+    <div class="box">
+      <a href="javascript:blog();">
+        <div class="boxInner">
+          <img src="nextcloud.png" />
+          <div class="titleBox">Blog</div>
         </div>
       </a>
     </div>

@@ -110,26 +110,7 @@ services:
     volumes:
       - "${DATA_DIR}/influxdb:/var/lib/influxdb2"
 
-  # Root container
-  # wordpress:
-  #   image: wordpress:${WORDPRESS_VERSION}
-  #   container_name: wordpress
-  #   restart: always
-  #   volumes:
-  #     - "${DATA_DIR}/wordpress:/var/www/html/"
-  #   environment:
-  #     WORDPRESS_DB_HOST: mariadb
-  #     WORDPRESS_DB_USER: ${MARIADB_USER}
-  #     WORDPRESS_DB_PASSWORD: ${MARIADB_PASSWORD}
-  #     WORDPRESS_DB_NAME: ${MARIADB_DATABASE}
-  #     WORDPRESS_TABLE_PREFIX: "wp_"
-  #     VIRTUAL_HOST: ${ROOT_HOST},www.${ROOT_HOST}
-  #     LETSENCRYPT_HOST: ${ROOT_HOST},www.${ROOT_HOST}
-  #   depends_on:
-  #     - acme-companion
-  #     - mariadb
-
-  # Alternavtive Root container
+# Root container
   nginx:
     image: nginx:${NGINX_VERSION}
     container_name: nginx
@@ -141,6 +122,25 @@ services:
       LETSENCRYPT_HOST: ${ROOT_HOST},www.${ROOT_HOST}
     depends_on:
       - acme-companion
+
+      # Bloog container
+  wordpress:
+    image: wordpress:${WORDPRESS_VERSION}
+    container_name: wordpress
+    restart: always
+    volumes:
+      - "${DATA_DIR}/wordpress:/var/www/html/"
+    environment:
+      WORDPRESS_DB_HOST: mariadb
+      WORDPRESS_DB_USER: ${MARIADB_USER}
+      WORDPRESS_DB_PASSWORD: ${MARIADB_PASSWORD}
+      WORDPRESS_DB_NAME: ${MARIADB_DATABASE}
+      WORDPRESS_TABLE_PREFIX: "wp_"
+      VIRTUAL_HOST: ${WORDPRESS_SUBDOMAIN}.${ROOT_HOST}
+      LETSENCRYPT_HOST: ${WORDPRESS_SUBDOMAIN}.${ROOT_HOST}
+    depends_on:
+      - acme-companion
+      - mariadb
 
   # Nextcloud container
   nextcloud:
