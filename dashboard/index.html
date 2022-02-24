@@ -95,23 +95,23 @@
 <body>
   <script>
     function grafana() {
-      newaddress = "grafana." + window.location.hostname;
+      newaddress = "https://grafana." + window.location.hostname;
       window.open(newaddress, "_self")
     };
     function plex() {
-      newaddress = "plex." + window.location.hostname;
+      newaddress = "https://plex." + window.location.hostname;
       window.open(newaddress, "_self")
     };
     function nextcloud() {
-      newaddress = "nextcloud." + window.location.hostname;
+      newaddress = "https://nextcloud." + window.location.hostname;
       window.open(newaddress, "_self")
     };
-    function postgresql() {
-      newaddress = "postgresql." + window.location.hostname;
+    function pgadmin() {
+      newaddress = "https://pgadmin." + window.location.hostname;
       window.open(newaddress, "_self")
     };
-    function phpmyadmin() {
-      newaddress = "phpmyadmin." + window.location.hostname;
+    function myadmin() {
+      newaddress = "https://myadmin." + window.location.hostname;
       window.open(newaddress, "_self")
     };
   </script>
@@ -152,7 +152,7 @@
       </a>
     </div>
     <div class="box">
-      <a href="javascript:postgresql();">
+      <a href="javascript:pgadmin();">
         <div class="boxInner">
           <img src="postgresql.png" />
           <div class="titleBox">PostgreSQL</div>
@@ -160,7 +160,7 @@
       </a>
     </div>
     <div class="box">
-      <a href="javascript:phpmyadmin();">
+      <a href="javascript:myadmin();">
         <div class="boxInner">
           <img src="phpmyadmin.png" />
           <div class="titleBox">MyAdmin</div>
