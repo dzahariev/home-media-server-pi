@@ -181,3 +181,25 @@ services:
     depends_on:
       - influxdb
       - acme-companion
+
+  # Plex container
+  plex:
+    image: linuxserver/plex:${PLEX_VERSION}
+    container_name: plex
+    restart: always
+    volumes:
+      - "${DATA_DIR}/plex:/config"
+      - "${PLEX_MEDIA_DIR}:/media"
+    hostname:
+      ${PLEX_SUBDOMAIN}.${ROOT_HOST}
+    environment:
+      PUID: 1000
+      PGID: 1000
+      VERSION: docker
+      PLEX_CLAIM: ${PLEX_CLAIM_TOKEN}
+      VIRTUAL_HOST: ${PLEX_SUBDOMAIN}.${ROOT_HOST}
+      LETSENCRYPT_HOST: ${PLEX_SUBDOMAIN}.${ROOT_HOST}
+      VIRTUAL_PORT: 32400
+    depends_on:
+      - acme-companion
+
