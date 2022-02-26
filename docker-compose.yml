@@ -193,7 +193,7 @@ services:
       - "32469:32469"
     volumes:
       - "${DATA_DIR}/plex:/config"
-      - "${PLEX_MOVIES_DIR}:/movies"
+      - "${PLEX_MEDIA_DIR}:/media"
     hostname:
       ${PLEX_SUBDOMAIN}.${ROOT_HOST}
     environment:
