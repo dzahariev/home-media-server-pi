@@ -39,7 +39,7 @@
       width: 100%;
     }
 
-    .boxInner {
+    .boxInner .titleBox {
       position: absolute;
       bottom: 0;
       left: 0;
@@ -56,8 +56,8 @@
       transition: all 0.3s ease-out;
     }
 
-    body.no-touch .boxInner:hover ,
-    body.touch .boxInner.touchFocus {
+    body.no-touch .boxInner:hover .titleBox,
+    body.touch .boxInner.touchFocus .titleBox {
       margin-bottom: 0;
     }
 
@@ -127,6 +127,7 @@
       <a href="https://github.com/dzahariev/home-media-server-pi">
         <div class="boxInner">
           <img src="images/raspberrypi4.jpg" alt="About"/>
+          <div class="titleBox">About</div>
         </div>
       </a>
     </div>
@@ -134,6 +135,7 @@
       <a href="javascript:grafana();">
         <div class="boxInner">
           <img src="images/grafana.png" alt="Grafana"/>
+          <div class="titleBox">Grafana</div>
         </div>
       </a>
     </div>
@@ -141,6 +143,7 @@
       <a href="javascript:plex();">
         <div class="boxInner">
           <img src="images/plex.jpg" alt="Plex"/>
+          <div class="titleBox">Plex</div>
         </div>
       </a>
     </div>
@@ -148,6 +151,7 @@
       <a href="javascript:nextcloud();">
         <div class="boxInner">
           <img src="images/nextcloud.png" alt="Nextcloud"/>
+          <div class="titleBox">Nextcloud</div>
         </div>
       </a>
     </div>
@@ -155,6 +159,7 @@
       <a href="javascript:blog();">
         <div class="boxInner">
           <img src="images/wordpress.png" alt="Blog"/>
+          <div class="titleBox">Blog</div>
         </div>
       </a>
     </div>
@@ -162,6 +167,7 @@
       <a href="javascript:pgadmin();">
         <div class="boxInner">
           <img src="images/postgresql.png" alt="PostgreSQL"/>
+          <div class="titleBox">PostgreSQL</div>
         </div>
       </a>
     </div>
@@ -169,6 +175,7 @@
       <a href="javascript:myadmin();">
         <div class="boxInner">
           <img src="images/phpmyadmin.png" alt="MyAdmin"/>
+          <div class="titleBox">MyAdmin</div>
         </div>
       </a>
     </div>
