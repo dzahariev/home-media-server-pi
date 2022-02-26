@@ -39,7 +39,7 @@
       width: 100%;
     }
 
-    .boxInner .titleBox {
+    .boxInner {
       position: absolute;
       bottom: 0;
       left: 0;
@@ -56,8 +56,8 @@
       transition: all 0.3s ease-out;
     }
 
-    body.no-touch .boxInner:hover .titleBox,
-    body.touch .boxInner.touchFocus .titleBox {
+    body.no-touch .boxInner:hover ,
+    body.touch .boxInner.touchFocus {
       margin-bottom: 0;
     }
 
@@ -126,56 +126,49 @@
     <div class="box">
       <a href="https://github.com/dzahariev/home-media-server-pi">
         <div class="boxInner">
-          <img src="images/raspberrypi4.jpg"/>
-          <div class="titleBox">About</div>
+          <img src="images/raspberrypi4.jpg" alt="About"/>
         </div>
       </a>
     </div>
     <div class="box">
       <a href="javascript:grafana();">
         <div class="boxInner">
-          <img src="images/grafana.png"/>
-          <div class="titleBox">Grafana</div>
+          <img src="images/grafana.png" alt="Grafana"/>
         </div>
       </a>
     </div>
     <div class="box">
       <a href="javascript:plex();">
         <div class="boxInner">
-          <img src="images/plex.jpg"/>
-          <div class="titleBox">Plex</div>
+          <img src="images/plex.jpg" alt="Plex"/>
         </div>
       </a>
     </div>
     <div class="box">
       <a href="javascript:nextcloud();">
         <div class="boxInner">
-          <img src="images/nextcloud.png"/>
-          <div class="titleBox">Nextcloud</div>
+          <img src="images/nextcloud.png" alt="Nextcloud"/>
         </div>
       </a>
     </div>
     <div class="box">
       <a href="javascript:blog();">
         <div class="boxInner">
-          <img src="images/wordpress.png"/>
-          <div class="titleBox">Blog</div>
+          <img src="images/wordpress.png" alt="Blog"/>
         </div>
       </a>
     </div>
     <div class="box">
       <a href="javascript:pgadmin();">
         <div class="boxInner">
-          <img src="images/postgresql.png"/>
-          <div class="titleBox">PostgreSQL</div>
+          <img src="images/postgresql.png" alt="PostgreSQL"/>
         </div>
       </a>
     </div>
     <div class="box">
       <a href="javascript:myadmin();">
         <div class="boxInner">
-          <img src="images/phpmyadmin.png"/>
-          <div class="titleBox">MyAdmin</div>
+          <img src="images/phpmyadmin.png" alt="MyAdmin"/>
         </div>
       </a>
     </div>
