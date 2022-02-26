@@ -187,6 +187,16 @@ services:
     image: linuxserver/plex:${PLEX_VERSION}
     container_name: plex
     restart: always
+    ports:
+      - "1900:1900/udp"
+      - "3005:3005" 
+      - "5353:5353/udp" 
+      - "8324:8324" 
+      - "32410:32410/udp" 
+      - "32412:32412/udp" 
+      - "32413:32413/udp" 
+      - "32414:32414/udp" 
+      - "32469:32469"
     volumes:
       - "${DATA_DIR}/plex:/config"
       - "${PLEX_TV_SERIES_DIR}:/tv"
