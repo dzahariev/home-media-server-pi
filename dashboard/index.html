@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Responsive Tiled Page</title>
+  <title>Home media server runs on Raspberry Pi</title>
 
   <style type="text/css">
     body {
@@ -19,14 +19,14 @@
       margin: 10px;
     }
 
-    .box {
+    .frame {
       float: left;
       position: relative;
       width: 20%;
       padding-bottom: 20%;
     }
 
-    .boxInner {
+    .picture {
       position: absolute;
       left: 10px;
       right: 10px;
@@ -35,11 +35,11 @@
       overflow: hidden;
     }
 
-    .boxInner img {
+    .picture img {
       width: 100%;
     }
 
-    .boxInner .titleBox {
+    .picture {
       position: absolute;
       bottom: 0;
       left: 0;
@@ -56,34 +56,34 @@
       transition: all 0.3s ease-out;
     }
 
-    body.no-touch .boxInner:hover .titleBox,
-    body.touch .boxInner.touchFocus .titleBox {
+    body.no-touch .picture:hover,
+    body.touch .picture.touchFocus {
       margin-bottom: 0;
     }
 
     @media only screen and (max-width : 480px) {
-      .box {
+      .frame {
         width: 100%;
         padding-bottom: 100%;
       }
     }
 
     @media only screen and (max-width : 650px) and (min-width : 481px) {
-      .box {
+      .frame {
         width: 50%;
         padding-bottom: 50%;
       }
     }
 
     @media only screen and (max-width : 1050px) and (min-width : 651px) {
-      .box {
+      .frame {
         width: 33.3%;
         padding-bottom: 33.3%;
       }
     }
 
     @media only screen and (max-width : 1290px) and (min-width : 1051px) {
-      .box {
+      .frame {
         width: 25%;
         padding-bottom: 25%;
       }
@@ -123,59 +123,52 @@
   <div class="wrap">
 
     <!-- Define all of the tiles: -->
-    <div class="box">
+    <div class="frame">
       <a href="https://github.com/dzahariev/home-media-server-pi">
-        <div class="boxInner">
-          <img src="raspberrypi4.jpg" />
-          <div class="titleBox">About</div>
+        <div class="picture">
+          <img src="images/raspberrypi4.jpg" alt="About"/>
         </div>
       </a>
     </div>
-    <div class="box">
+    <div class="frame">
       <a href="javascript:grafana();">
-        <div class="boxInner">
-          <img src="grafana.png" />
-          <div class="titleBox">Grafana</div>
+        <div class="picture">
+          <img src="images/grafana.png" alt="Grafana"/>
         </div>
       </a>
     </div>
-    <div class="box">
+    <div class="frame">
       <a href="javascript:plex();">
-        <div class="boxInner">
-          <img src="plex.jpg" />
-          <div class="titleBox">Plex</div>
+        <div class="picture">
+          <img src="images/plex.jpg" alt="Plex"/>
         </div>
       </a>
     </div>
-    <div class="box">
+    <div class="frame">
       <a href="javascript:nextcloud();">
-        <div class="boxInner">
-          <img src="nextcloud.png" />
-          <div class="titleBox">Nextcloud</div>
+        <div class="picture">
+          <img src="images/nextcloud.png" alt="Nextcloud"/>
         </div>
       </a>
     </div>
-    <div class="box">
+    <div class="frame">
       <a href="javascript:blog();">
-        <div class="boxInner">
-          <img src="wordpress.png" />
-          <div class="titleBox">Blog</div>
+        <div class="picture">
+          <img src="images/wordpress.png" alt="Blog"/>
         </div>
       </a>
     </div>
-    <div class="box">
+    <div class="frame">
       <a href="javascript:pgadmin();">
-        <div class="boxInner">
-          <img src="postgresql.png" />
-          <div class="titleBox">PostgreSQL</div>
+        <div class="picture">
+          <img src="postgresql.png" alt="PostgreSQL"/>
         </div>
       </a>
     </div>
-    <div class="box">
+    <div class="frame">
       <a href="javascript:myadmin();">
-        <div class="boxInner">
-          <img src="phpmyadmin.png" />
-          <div class="titleBox">MyAdmin</div>
+        <div class="picture">
+          <img src="images/phpmyadmin.png" alt="MyAdmin"/>
         </div>
       </a>
     </div>
