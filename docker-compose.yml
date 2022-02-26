@@ -193,7 +193,6 @@ services:
       - "32469:32469"
     volumes:
       - "${DATA_DIR}/plex:/config"
-      - "${PLEX_TV_SERIES_DIR}:/tv"
       - "${PLEX_MOVIES_DIR}:/movies"
     hostname:
       ${PLEX_SUBDOMAIN}.${ROOT_HOST}
