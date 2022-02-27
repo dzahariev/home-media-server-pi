@@ -40,8 +40,6 @@ services:
     restart: unless-stopped
     devices:
       - /dev/kmsg
-    expose:
-      - 8080
     hostname: cadvisor
     ipc: shareable
     privileged: true
@@ -58,8 +56,6 @@ services:
     image: prom/node-exporter:${NODE_EXPORTER_VERSION}
     container_name: node-exporter
     restart: unless-stopped
-    expose:
-      - 9100
     hostname: node-exporter
 
   prometheus:
@@ -69,8 +65,6 @@ services:
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
-    expose:
-      - 9090
     hostname: prometheus
     volumes:
       - "./prometheus:/etc/prometheus"
