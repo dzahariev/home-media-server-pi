@@ -34,6 +34,54 @@ services:
     depends_on:
       - nginx-proxy
 
+  cadvisor:
+    image: zcube/cadvisor:${CADVISOR_VERSION}
+    container_name: cadvisor
+    restart: unless-stopped
+    devices:
+      - /dev/kmsg
+    expose:
+      - 8080
+    hostname: cadvisor
+    ipc: shareable
+    privileged: true
+    security_opt:
+      - label=disable
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+
+  node-exporter:
+    image: prom/node-exporter:${NODE_EXPORTER_VERSION}
+    container_name: node-exporter
+    restart: unless-stopped
+    expose:
+      - 9100
+    hostname: node-exporter
+
+  prometheus:
+    image: prom/prometheus:${PROMETHEUS_VERSION}
+    container_name: prometheus
+    restart: unless-stopped
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    expose:
+      - 9090
+    hostname: prometheus
+    volumes:
+      - "./prometheus:/etc/prometheus"
+      - "${DATA_DIR}/prometheus/data:/prometheus"
+    links:
+      - cadvisor:cadvisor
+      - node-exporter:node-exporter
+    depends_on:
+      - cadvisor
+      - node-exporter
+
   # Postgres DB container
   postgresdb:
     image: postgres:${POSTGRES_VERSION}
@@ -172,6 +220,7 @@ services:
       - "${DATA_DIR}/grafana/provisioning:/etc/grafana/provisioning"
     links:
       - influxdb:influxdb
+      - prometheus:prometheus
     environment:
       GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER}
       GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD}
@@ -179,6 +228,7 @@ services:
       LETSENCRYPT_HOST: ${GRAFANA_SUBDOMAIN}.${ROOT_HOST}
       VIRTUAL_PORT: 3000
     depends_on:
+      - prometheus 
       - influxdb
       - acme-companion
 
