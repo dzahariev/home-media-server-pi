@@ -7,7 +7,7 @@ Make use of [RaspberyPi](https://www.raspberrypi.com) for home server.
 Ensure you have Docker and Docker Compose installed.
 
 Adjust the .env file contect by setting the base folder, domain, and secrets.
-I persomaly create a new file named .env.pi and use it instead.
+I personaly create a new file named .env.pi and use it instead.
 
 ## Start the bundle
 ```
