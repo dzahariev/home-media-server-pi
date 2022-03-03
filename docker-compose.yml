@@ -2,7 +2,7 @@ version: '3'
 services:
   # Main proxy container
   nginx-proxy:
-    image: nginxproxy/nginx-proxy:${NGINX_PROXY_VERSION}
+    image: nginxproxy/nginx-proxy:0.10-alpine
     container_name: nginx-proxy
     restart: always
     labels:
@@ -19,7 +19,7 @@ services:
 
   # Letsencrypt companion container
   acme-companion:
-    image: nginxproxy/acme-companion:${ACME_COMPANION_VERSION}
+    image: nginxproxy/acme-companion:2.1.3
     container_name: acme-companion
     restart: always
     volumes:
@@ -35,7 +35,7 @@ services:
       - nginx-proxy
 
   cadvisor:
-    image: zcube/cadvisor:${CADVISOR_VERSION}
+    image: zcube/cadvisor:v0.39.3
     container_name: cadvisor
     restart: unless-stopped
     devices:
@@ -53,13 +53,13 @@ services:
       - /dev/disk/:/dev/disk:ro
 
   node-exporter:
-    image: prom/node-exporter:${NODE_EXPORTER_VERSION}
+    image: prom/node-exporter:v1.3.1
     container_name: node-exporter
     restart: unless-stopped
     hostname: node-exporter
 
   prometheus:
-    image: prom/prometheus:${PROMETHEUS_VERSION}
+    image: prom/prometheus:v2.33.4
     container_name: prometheus
     restart: unless-stopped
     command:
@@ -78,7 +78,7 @@ services:
 
   # Postgres DB container
   postgresdb:
-    image: postgres:${POSTGRES_VERSION}
+    image: postgres:14.2-alpine
     container_name: postgresdb
     restart: always
     volumes:
@@ -90,7 +90,7 @@ services:
 
   # PGAdmin container
   pgadmin:
-    image: dpage/pgadmin4:${PGADMIN_VERSION}
+    image: dpage/pgadmin4:6.5
     container_name: pgadmin
     restart: always
     user: root
@@ -100,14 +100,14 @@ services:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
       PGADMIN_DISABLE_POSTFIX: "yes"
-      VIRTUAL_HOST: ${PGADMIN_SUBDOMAIN}.${ROOT_HOST}
-      LETSENCRYPT_HOST: ${PGADMIN_SUBDOMAIN}.${ROOT_HOST}
+      VIRTUAL_HOST: pgadmin.${ROOT_HOST}
+      LETSENCRYPT_HOST: pgadmin.${ROOT_HOST}
     depends_on:
       - postgresdb
 
   # MariaDB container
   mariadb:
-    image: mariadb:${MARIADB_VERSION}
+    image: mariadb:10.8.2
     container_name: mariadb
     restart: always
     volumes:
@@ -120,7 +120,7 @@ services:
 
   # PHPMyAdmin container
   myadmin:
-    image: phpmyadmin:${PHPMYADMIN_VERSION}
+    image: phpmyadmin:5.1.3
     container_name: myadmin
     restart: always
     volumes:
@@ -132,14 +132,14 @@ services:
       PMA_PORT: 3306
       PMA_ARBITRARY: 1
       MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
-      VIRTUAL_HOST: ${PHPMYADMIN_SUBDOMAIN}.${ROOT_HOST}
-      LETSENCRYPT_HOST: ${PHPMYADMIN_SUBDOMAIN}.${ROOT_HOST}
+      VIRTUAL_HOST: myadmin.${ROOT_HOST}
+      LETSENCRYPT_HOST: myadmin.${ROOT_HOST}
     depends_on:
       - mariadb
 
   # InfluxDB container
   influxdb:
-    image: influxdb:${INFLUXDB_DB_VERSION}
+    image: influxdb:1.8.10
     container_name: influxdb
     restart: always
     environment:
@@ -154,7 +154,7 @@ services:
 
 # Root container
   nginx:
-    image: nginx:${NGINX_VERSION}
+    image: nginx:1.21.6
     container_name: nginx
     restart: always
     volumes:
@@ -167,7 +167,7 @@ services:
 
       # Bloog container
   wordpress:
-    image: wordpress:${WORDPRESS_VERSION}
+    image: wordpress:5.9.1
     container_name: wordpress
     restart: always
     volumes:
@@ -178,35 +178,35 @@ services:
       WORDPRESS_DB_PASSWORD: ${MARIADB_PASSWORD}
       WORDPRESS_DB_NAME: ${MARIADB_DATABASE}
       WORDPRESS_TABLE_PREFIX: "wp_"
-      VIRTUAL_HOST: ${WORDPRESS_SUBDOMAIN}.${ROOT_HOST}
-      LETSENCRYPT_HOST: ${WORDPRESS_SUBDOMAIN}.${ROOT_HOST}
+      VIRTUAL_HOST: blog.${ROOT_HOST}
+      LETSENCRYPT_HOST: blog.${ROOT_HOST}
     depends_on:
       - acme-companion
       - mariadb
 
   # Nextcloud container
   nextcloud:
-    image: nextcloud:${NEXTCLOUD_VERSION}
+    image: nextcloud:23.0.2
     container_name: nextcloud
     restart: always
     volumes:
       - "${DATA_DIR}/nextcloud:/var/www/html"
     hostname:
-      ${NEXTCLOUD_SUBDOMAIN}.${ROOT_HOST}
+      nextcloud.${ROOT_HOST}
     environment:
       POSTGRES_DB: ${POSTGRES_DB_NAME}
       POSTGRES_USER:  ${POSTGRES_DB_USER}
       POSTGRES_PASSWORD: ${POSTGRES_DB_PASSWORD}
       POSTGRES_HOST: postgresdb
-      VIRTUAL_HOST: ${NEXTCLOUD_SUBDOMAIN}.${ROOT_HOST}
-      LETSENCRYPT_HOST: ${NEXTCLOUD_SUBDOMAIN}.${ROOT_HOST}
+      VIRTUAL_HOST: nextcloud.${ROOT_HOST}
+      LETSENCRYPT_HOST: nextcloud.${ROOT_HOST}
     depends_on:
       - acme-companion
       - postgresdb
 
   # Grafana container
   grafana:
-    image: grafana/grafana:${GRAFANA_VERSION}
+    image: grafana/grafana:8.4.3
     container_name: grafana
     restart: always
     volumes:
@@ -218,8 +218,8 @@ services:
     environment:
       GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER}
       GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD}
-      VIRTUAL_HOST: ${GRAFANA_SUBDOMAIN}.${ROOT_HOST}
-      LETSENCRYPT_HOST: ${GRAFANA_SUBDOMAIN}.${ROOT_HOST}
+      VIRTUAL_HOST: grafana.${ROOT_HOST}
+      LETSENCRYPT_HOST: grafana.${ROOT_HOST}
       VIRTUAL_PORT: 3000
     depends_on:
       - prometheus 
@@ -228,21 +228,21 @@ services:
 
   # Plex container
   plex:
-    image: linuxserver/plex:${PLEX_VERSION}
+    image: linuxserver/plex:1.25.6
     container_name: plex
     restart: always
     volumes:
       - "${DATA_DIR}/plex:/config"
       - "${PLEX_MEDIA_DIR}:/media"
     hostname:
-      ${PLEX_SUBDOMAIN}.${ROOT_HOST}
+      plex.${ROOT_HOST}
     environment:
       PUID: 1000
       PGID: 1000
       VERSION: docker
       PLEX_CLAIM: ${PLEX_CLAIM_TOKEN}
-      VIRTUAL_HOST: ${PLEX_SUBDOMAIN}.${ROOT_HOST}
-      LETSENCRYPT_HOST: ${PLEX_SUBDOMAIN}.${ROOT_HOST}
+      VIRTUAL_HOST: plex.${ROOT_HOST}
+      LETSENCRYPT_HOST: plex.${ROOT_HOST}
       VIRTUAL_PORT: 32400
     depends_on:
       - acme-companion
