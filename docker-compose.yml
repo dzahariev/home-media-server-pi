@@ -34,6 +34,7 @@ services:
     depends_on:
       - nginx-proxy
 
+  # CAdvisor container
   cadvisor:
     image: zcube/cadvisor:v0.39.3
     container_name: cadvisor
@@ -52,12 +53,14 @@ services:
       - /var/lib/docker/:/var/lib/docker:ro
       - /dev/disk/:/dev/disk:ro
 
+  # Node-Exporter container
   node-exporter:
     image: prom/node-exporter:v1.3.1
     container_name: node-exporter
     restart: unless-stopped
     hostname: node-exporter
 
+  # Prometheus container
   prometheus:
     image: prom/prometheus:v2.33.4
     container_name: prometheus
@@ -76,36 +79,7 @@ services:
       - cadvisor
       - node-exporter
 
-  # Postgres DB container
-  postgresdb:
-    image: postgres:14.2-alpine
-    container_name: postgresdb
-    restart: always
-    volumes:
-      - "${DATA_DIR}/postgresql:/var/lib/postgresql/data"
-    environment: 
-      POSTGRES_DB: ${POSTGRES_DB_NAME}
-      POSTGRES_USER: ${POSTGRES_DB_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_DB_PASSWORD}
-
-  # PGAdmin container
-  pgadmin:
-    image: dpage/pgadmin4:6.5
-    container_name: pgadmin
-    restart: always
-    user: root
-    volumes:
-      - "${DATA_DIR}/pgadmin:/var/lib/pgadmin:rw"
-    environment: 
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
-      PGADMIN_DISABLE_POSTFIX: "yes"
-      VIRTUAL_HOST: pgadmin.${ROOT_HOST}
-      LETSENCRYPT_HOST: pgadmin.${ROOT_HOST}
-    depends_on:
-      - postgresdb
-
-  # MariaDB container
+  # Maria DB container
   mariadb:
     image: mariadb:10.8.2
     container_name: mariadb
@@ -150,7 +124,7 @@ services:
     depends_on:
       - acme-companion
 
-      # Bloog container
+  # Bloog container
   wordpress:
     image: wordpress:5.9.1
     container_name: wordpress
