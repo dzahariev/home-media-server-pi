@@ -137,21 +137,6 @@ services:
     depends_on:
       - mariadb
 
-  # InfluxDB container
-  influxdb:
-    image: influxdb:1.8.10
-    container_name: influxdb
-    restart: always
-    environment:
-      INFLUXDB_DB: ${INFLUXDB_DB_NAME}
-      INFLUXDB_ADMIN_USER: ${INFLUXDB_ADMIN_USER}
-      INFLUXDB_ADMIN_PASSWORD: ${INFLUXDB_ADMIN_PASSWORD}
-      INFLUXDB_USER: ${INFLUXDB_USER}
-      INFLUXDB_USER_PASSWORD: ${INFLUXDB_PASSWORD}
-      INFLUXDB_HTTP_AUTH_ENABLED: "true"
-    volumes:
-      - "${DATA_DIR}/influxdb:/var/lib/influxdb2"
-
 # Root container
   nginx:
     image: nginx:1.21.6
@@ -183,28 +168,6 @@ services:
     depends_on:
       - acme-companion
       - mariadb
-
-  # Nextcloud container
-  nextcloud:
-    image: nextcloud:23.0.2
-    container_name: nextcloud
-    restart: always
-    volumes:
-      - "${DATA_DIR}/nextcloud:/var/www/html"
-    links:
-      - postgresdb:postgresdb
-    hostname:
-      nextcloud.${ROOT_HOST}
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB_NAME}
-      POSTGRES_USER:  ${POSTGRES_DB_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_DB_PASSWORD}
-      POSTGRES_HOST: postgresdb
-      VIRTUAL_HOST: nextcloud.${ROOT_HOST}
-      LETSENCRYPT_HOST: nextcloud.${ROOT_HOST}
-    depends_on:
-      - acme-companion
-      - postgresdb
 
   # Grafana container
   grafana:
