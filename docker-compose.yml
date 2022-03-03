@@ -126,7 +126,7 @@ services:
     volumes:
       - "${DATA_DIR}/postgresql:/var/lib/postgresql/data"
     links:
-      - mariadb
+      - mariadb:mariadb
     environment: 
       PMA_HOST: mariadb
       PMA_PORT: 3306
@@ -191,6 +191,8 @@ services:
     restart: always
     volumes:
       - "${DATA_DIR}/nextcloud:/var/www/html"
+    links:
+      - postgresdb:postgresdb
     hostname:
       nextcloud.${ROOT_HOST}
     environment:
