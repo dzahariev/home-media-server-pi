@@ -11,9 +11,7 @@ Include setup of:
 - Prometheus (not exposed, used from Grafana through internal network)
 - CAdvisor (not exposed, used from Prometheus through internal network)
 - Node-exported (not exposed, used from Prometheus through internal network)
-- Wordpress (on blog subdomain)
-- MariaDB (not exposed, used from Wordpress through internal network)
-- PhpMyAdmin (on myadmin subdomain can connect to MariaDB through internal network)
+- Plex (on plex subdomain)
 
 ## Prepare
 Ensure you have Docker and Docker Compose installed.

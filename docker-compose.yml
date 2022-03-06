@@ -2,7 +2,7 @@ version: '3'
 services:
   # Main proxy container
   nginx-proxy:
-    image: nginxproxy/nginx-proxy:0.10-alpine
+    image: nginxproxy/nginx-proxy:0.10.1-alpine
     container_name: nginx-proxy
     restart: always
     labels:
@@ -19,7 +19,7 @@ services:
 
   # Letsencrypt companion container
   acme-companion:
-    image: nginxproxy/acme-companion:2.1.3
+    image: nginxproxy/acme-companion:2.2.0
     container_name: acme-companion
     restart: always
     volumes:
@@ -79,38 +79,6 @@ services:
       - cadvisor
       - node-exporter
 
-  # Maria DB container
-  mariadb:
-    image: mariadb:10.8.2
-    container_name: mariadb
-    restart: always
-    volumes:
-      - "${DATA_DIR}/mariadb:/var/lib/mysql"
-    environment: 
-      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
-      MARIADB_DATABASE: ${MARIADB_DATABASE}
-      MARIADB_USER: ${MARIADB_USER}
-      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
-
-  # PHPMyAdmin container
-  myadmin:
-    image: phpmyadmin:5.1.3
-    container_name: myadmin
-    restart: always
-    volumes:
-      - "${DATA_DIR}/postgresql:/var/lib/postgresql/data"
-    links:
-      - mariadb:mariadb
-    environment: 
-      PMA_HOST: mariadb
-      PMA_PORT: 3306
-      PMA_ARBITRARY: 1
-      MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
-      VIRTUAL_HOST: myadmin.${ROOT_HOST}
-      LETSENCRYPT_HOST: myadmin.${ROOT_HOST}
-    depends_on:
-      - mariadb
-
 # Root container
   nginx:
     image: nginx:1.21.6
@@ -123,25 +91,6 @@ services:
       LETSENCRYPT_HOST: ${ROOT_HOST},www.${ROOT_HOST}
     depends_on:
       - acme-companion
-
-  # Bloog container
-  wordpress:
-    image: wordpress:5.9.1
-    container_name: wordpress
-    restart: always
-    volumes:
-      - "${DATA_DIR}/wordpress:/var/www/html/"
-    environment:
-      WORDPRESS_DB_HOST: mariadb
-      WORDPRESS_DB_USER: ${MARIADB_USER}
-      WORDPRESS_DB_PASSWORD: ${MARIADB_PASSWORD}
-      WORDPRESS_DB_NAME: ${MARIADB_DATABASE}
-      WORDPRESS_TABLE_PREFIX: "wp_"
-      VIRTUAL_HOST: blog.${ROOT_HOST}
-      LETSENCRYPT_HOST: blog.${ROOT_HOST}
-    depends_on:
-      - acme-companion
-      - mariadb
 
   # Grafana container
   grafana:
