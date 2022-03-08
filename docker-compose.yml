@@ -44,6 +44,8 @@ services:
     hostname: cadvisor
     ipc: shareable
     privileged: true
+    command:
+      - "-housekeeping_interval=20s"
     security_opt:
       - label=disable
     volumes:
