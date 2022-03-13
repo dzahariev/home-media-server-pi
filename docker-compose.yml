@@ -2,7 +2,7 @@ version: '3'
 services:
   # Main proxy container
   nginx-proxy:
-    image: nginxproxy/nginx-proxy:0.10.1-alpine
+    image: nginxproxy/nginx-proxy:1.0.0-alpine
     container_name: nginx-proxy
     restart: always
     labels:
@@ -64,7 +64,7 @@ services:
 
   # Prometheus container
   prometheus:
-    image: prom/prometheus:v2.33.4
+    image: prom/prometheus:v2.33.5
     container_name: prometheus
     restart: unless-stopped
     command:
