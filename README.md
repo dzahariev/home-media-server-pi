@@ -27,3 +27,25 @@ docker-compose --env-file .env.pi up -d
 ```
 docker-compose --env-file .env.pi down
 ```
+
+## Links
+
+nginxproxy/nginx-proxy: [![GitHub release](https://img.shields.io/github/tag/nginx-proxy/nginx-proxy.svg)](https://hub.docker.com/r/nginxproxy/nginx-proxy) 
+
+nginxproxy/acme-companion: [![GitHub release](https://img.shields.io/github/tag/nginx-proxy/acme-companion.svg)](https://hub.docker.com/r/nginxproxy/acme-companion)
+
+zcube/cadvisor: [![GitHub release](https://img.shields.io/github/release/google/cadvisor.svg)](https://hub.docker.com/r/zcube/cadvisor)
+
+prom/node-exporter: [![GitHub release](https://img.shields.io/github/tag/prometheus/node_exporter.svg)](https://hub.docker.com/r/prom/node-exporter)
+
+prom/prometheus: [![GitHub release](https://img.shields.io/github/tag/prometheus/prometheus.svg)](https://hub.docker.com/r/prom/prometheus)
+
+nginx: [![GitHub release](https://img.shields.io/github/tag/nginxinc/docker-nginx.svg)](https://hub.docker.com/_/nginx)
+
+grafana/grafana: [![GitHub release](https://img.shields.io/github/tag/grafana/grafana.svg)](https://hub.docker.com/r/grafana/grafana)
+
+linuxserver/plex: [![GitHub release](https://img.shields.io/github/tag/linuxserver/docker-plex.svg)](https://hub.docker.com/r/linuxserver/plex)
+
+Monitoring stack: https://github.com/oijkn/Docker-Raspberry-PI-Monitoring
+
+Grafana dashboard: https://grafana.com/grafana/dashboards/15120
