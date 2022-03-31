@@ -96,7 +96,7 @@ services:
 
   # Grafana container
   grafana:
-    image: grafana/grafana:8.4.4
+    image: grafana/grafana:8.4.5
     container_name: grafana
     restart: always
     volumes:
