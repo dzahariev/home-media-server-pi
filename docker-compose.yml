@@ -19,7 +19,7 @@ services:
 
   # Letsencrypt companion container
   acme-companion:
-    image: nginxproxy/acme-companion:2.2.0
+    image: nginxproxy/acme-companion:2.2.1
     container_name: acme-companion
     restart: always
     volumes:
@@ -96,7 +96,7 @@ services:
 
   # Grafana container
   grafana:
-    image: grafana/grafana:8.4.5
+    image: grafana/grafana:8.4.6
     container_name: grafana
     restart: always
     volumes:
