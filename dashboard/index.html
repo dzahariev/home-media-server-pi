@@ -10,7 +10,7 @@
     body {
       margin: 0;
       padding: 0;
-      background: #EEE;
+      background: black;
       font: 18px/11px 'Verdana', sans-serif;
     }
 
@@ -101,20 +101,8 @@
       newaddress = "https://plex." + window.location.hostname;
       window.open(newaddress, "_self")
     };
-    function nextcloud() {
-      newaddress = "https://nextcloud." + window.location.hostname;
-      window.open(newaddress, "_self")
-    };
-    function blog() {
-      newaddress = "https://blog." + window.location.hostname;
-      window.open(newaddress, "_self")
-    };
-    function pgadmin() {
-      newaddress = "https://pgadmin." + window.location.hostname;
-      window.open(newaddress, "_self")
-    };
-    function myadmin() {
-      newaddress = "https://myadmin." + window.location.hostname;
+    function calibre() {
+      newaddress = "https://calibre." + window.location.hostname;
       window.open(newaddress, "_self")
     };
   </script>
@@ -143,6 +131,14 @@
         <div class="boxInner">
           <img src="images/plex.png" alt="Plex"/>
           <div class="titleBox">Plex</div>
+        </div>
+      </a>
+    </div>
+    <div class="box">
+      <a href="javascript:calibre();">
+        <div class="boxInner">
+          <img src="images/calibre.png" alt="Calibre"/>
+          <div class="titleBox">Calibre</div>
         </div>
       </a>
     </div>
