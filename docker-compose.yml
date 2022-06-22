@@ -64,7 +64,7 @@ services:
 
   # Prometheus container
   prometheus:
-    image: prom/prometheus:v2.36.1
+    image: prom/prometheus:v2.36.2
     container_name: prometheus
     restart: unless-stopped
     command:
@@ -83,7 +83,7 @@ services:
 
 # Root container
   nginx:
-    image: nginx:1.22.0
+    image: nginx:1.23.0
     container_name: nginx
     restart: always
     volumes:
@@ -96,7 +96,7 @@ services:
 
   # Grafana container
   grafana:
-    image: grafana/grafana:9.0.0
+    image: grafana/grafana:9.0.1
     container_name: grafana
     restart: always
     volumes:
