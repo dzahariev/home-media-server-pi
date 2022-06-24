@@ -83,7 +83,7 @@ services:
 
 # Root container
   nginx:
-    image: nginx:1.22.0
+    image: nginx:1.23.0
     container_name: nginx
     restart: always
     volumes:
@@ -96,7 +96,7 @@ services:
 
   # Grafana container
   grafana:
-    image: grafana/grafana:9.0.0
+    image: grafana/grafana:9.0.1
     container_name: grafana
     restart: always
     volumes:
@@ -116,7 +116,7 @@ services:
 
   # Plex container
   plex:
-    image: linuxserver/plex:1.27.0
+    image: linuxserver/plex:1.27.1
     container_name: plex
     restart: always
     volumes:
