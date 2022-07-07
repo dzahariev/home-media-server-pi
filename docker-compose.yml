@@ -64,7 +64,7 @@ services:
 
   # Prometheus container
   prometheus:
-    image: prom/prometheus:v2.36.1
+    image: prom/prometheus:v2.36.2
     container_name: prometheus
     restart: unless-stopped
     command:
@@ -96,7 +96,7 @@ services:
 
   # Grafana container
   grafana:
-    image: grafana/grafana:9.0.1
+    image: grafana/grafana:9.0.2
     container_name: grafana
     restart: always
     volumes:
@@ -116,7 +116,7 @@ services:
 
   # Plex container
   plex:
-    image: linuxserver/plex:1.27.1
+    image: linuxserver/plex:1.27.2
     container_name: plex
     restart: always
     volumes:
