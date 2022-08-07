@@ -36,7 +36,7 @@ services:
 
   # CAdvisor container
   cadvisor:
-    image: zcube/cadvisor:v0.39.3
+    image: zcube/cadvisor:v0.45.0
     container_name: cadvisor
     restart: unless-stopped
     devices:
@@ -83,7 +83,7 @@ services:
 
 # Root container
   nginx:
-    image: nginx:1.23.0
+    image: nginx:1.23.1
     container_name: nginx
     restart: always
     volumes:
@@ -96,7 +96,7 @@ services:
 
   # Grafana container
   grafana:
-    image: grafana/grafana:9.0.3
+    image: grafana/grafana:9.0.6
     container_name: grafana
     restart: always
     volumes:
@@ -116,7 +116,7 @@ services:
 
   # Plex container
   plex:
-    image: linuxserver/plex:1.27.2
+    image: linuxserver/plex:1.28.0
     container_name: plex
     restart: always
     volumes:
