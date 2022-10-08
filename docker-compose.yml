@@ -64,7 +64,7 @@ services:
 
   # Prometheus container
   prometheus:
-    image: prom/prometheus:v2.39.0
+    image: prom/prometheus:v2.39.1
     container_name: prometheus
     restart: unless-stopped
     command:
