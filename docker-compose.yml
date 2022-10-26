@@ -97,7 +97,7 @@ services:
 
   # Grafana container
   grafana:
-    image: grafana/grafana:9.2.0
+    image: grafana/grafana:9.2.2
     container_name: grafana
     restart: always
     volumes:
@@ -117,7 +117,7 @@ services:
 
   # Plex container
   plex:
-    image: linuxserver/plex:1.29.0
+    image: linuxserver/plex:1.29.1
     container_name: plex
     restart: always
     volumes:
