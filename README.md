@@ -15,6 +15,7 @@ Include setup of:
 - File Browser (on files subdomain)
 - Plex (on plex subdomain)
 - Calibre (on calibre subdomain)
+- Folding@Home (on fold subdomain)
 
 ## Prepare
 Ensure you have Docker and Docker Compose installed.
@@ -39,11 +40,11 @@ docker-compose --env-file .env.pi down
 - prom/prometheus: [![GitHub release](https://img.shields.io/github/tag/prometheus/prometheus.svg)](https://hub.docker.com/r/prom/prometheus)
 - nginx: [![GitHub release](https://img.shields.io/github/tag/nginxinc/docker-nginx.svg)](https://hub.docker.com/_/nginx)
 - grafana/grafana: [![GitHub release](https://img.shields.io/github/tag/grafana/grafana.svg)](https://hub.docker.com/r/grafana/grafana)
-- linuxserver/transmission: [![GitHub release](https://img.shields.io/github/v/tag/linuxserver/docker-transmission.svg?sort=semver)](https://hub.docker.com/r/linuxserver/transmission)
-- filebrowser/filebrowser: [![GitHub release](https://img.shields.io/github/v/tag/filebrowser/filebrowser.svg?sort=semver)](https://hub.docker.com/r/filebrowser/filebrowser)
+- linuxserver/transmission: [![GitHub release](https://img.shields.io/github/v/tag/linuxserver/docker-transmission.svg)](https://hub.docker.com/r/linuxserver/transmission)
+- filebrowser/filebrowser: [![GitHub release](https://img.shields.io/github/v/tag/filebrowser/filebrowser.svg)](https://hub.docker.com/r/filebrowser/filebrowser)
 - linuxserver/plex: [![GitHub release](https://img.shields.io/github/tag/linuxserver/docker-plex.svg)](https://hub.docker.com/r/linuxserver/plex)
 - linuxserver/calibre: [![GitHub release](https://img.shields.io/github/tag/linuxserver/docker-calibre.svg)](https://hub.docker.com/r/linuxserver/calibre)
-
+- linuxserver/foldingathome:  [![GitHub release](https://img.shields.io/github/v/tag/linuxserver/docker-foldingathome.svg)](https://hub.docker.com/r/linuxserver/foldingathome)
 
 ## Acknowledgements
 

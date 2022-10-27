@@ -200,3 +200,22 @@ services:
       VIRTUAL_HOST: calibre.${ROOT_HOST}
       LETSENCRYPT_HOST: calibre.${ROOT_HOST}
       VIRTUAL_PORT: 8081
+
+  # Folding@Home container
+  fold:
+    image: linuxserver/foldingathome:7.6.21
+    container_name: fold
+    restart: always
+    volumes:
+      - "${DATA_DIR}/fold:/config"
+    hostname:
+      fold.${ROOT_HOST}
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: Europe/Sofia
+      VIRTUAL_HOST: fold.${ROOT_HOST}
+      LETSENCRYPT_HOST: fold.${ROOT_HOST}
+      VIRTUAL_PORT: 7396
+    depends_on:
+      - acme-companion
