@@ -105,6 +105,10 @@
       newaddress = "https://calibre." + window.location.hostname;
       window.open(newaddress, "_self")
     };
+    function transmission() {
+      newaddress = "https://transmission." + window.location.hostname;
+      window.open(newaddress, "_self")
+    };
   </script>
 
   <div class="wrap">
@@ -123,6 +127,14 @@
         <div class="boxInner">
           <img src="images/grafana.png" alt="Grafana"/>
           <div class="titleBox">Grafana</div>
+        </div>
+      </a>
+    </div>
+    <div class="box">
+      <a href="javascript:transmission();">
+        <div class="boxInner">
+          <img src="images/transmission.png" alt="Transmission"/>
+          <div class="titleBox">Transmission</div>
         </div>
       </a>
     </div>
