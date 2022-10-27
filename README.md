@@ -11,7 +11,7 @@ Include setup of:
 - Prometheus (not exposed, used from Grafana through internal network)
 - CAdvisor (not exposed, used from Prometheus through internal network)
 - Node-exporter (not exposed, used from Prometheus through internal network)
-- Transmissions (on transmission subdomain)
+- Transmission (on transmission subdomain)
 - Plex (on plex subdomain)
 - Calibre (on calibre subdomain)
 
