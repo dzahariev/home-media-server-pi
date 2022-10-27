@@ -139,6 +139,27 @@ services:
     depends_on:
       - acme-companion
 
+  # Files Browser container
+  filebrowser:
+    image: filebrowser/filebrowser:v2.22.4-s6
+    container_name: filebrowser
+    restart: always
+    volumes:
+      - "${DATA_DIR}/filebrowser/data/filebrowser.db:/database.db"
+      - "${DATA_DIR}/filebrowser/data/.filebrowser.json:/.filebrowser.json"      
+      - "${PLEX_MEDIA_DIR}:/srv"
+      - "${PLEX_MEDIA_DIR}/watch:/watch"
+    hostname:
+      files.${ROOT_HOST}
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: Europe/Sofia
+      VIRTUAL_HOST: files.${ROOT_HOST}
+      LETSENCRYPT_HOST: files.${ROOT_HOST}
+      VIRTUAL_PORT: 8080
+    depends_on:
+      - acme-companion
 
   # Plex container
   plex:
