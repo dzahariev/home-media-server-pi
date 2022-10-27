@@ -145,8 +145,8 @@ services:
     container_name: files
     restart: always
     volumes:
-      - "${DATA_DIR}/filebrowser/data/filebrowser.db:/database.db"
-      - "${DATA_DIR}/filebrowser/data/.filebrowser.json:/.filebrowser.json"      
+      - "${DATA_DIR}/filebrowser/data/filebrowser.db:/database/filebrowser.db"
+      - "${DATA_DIR}/filebrowser/data/settings.json:/config/settings.json"      
       - "${PLEX_MEDIA_DIR}:/srv"
       - "${PLEX_MEDIA_DIR}/watch:/watch"
     hostname:
