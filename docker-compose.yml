@@ -117,7 +117,7 @@ services:
 
   # Transmission container
   transmission:
-    image: linuxserver/transmission:3.00-r5-ls137
+    image: linuxserver/transmission:3.00-r5-ls138
     container_name: transmission
     restart: always
     volumes:
