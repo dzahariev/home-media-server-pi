@@ -115,6 +115,31 @@ services:
       - prometheus 
       - acme-companion
 
+  # Transmission container
+  transmission:
+    image: linuxserver/transmission:3.00-r5-ls137
+    container_name: transmission
+    restart: always
+    volumes:
+      - "${DATA_DIR}/transmission/data:/config"
+      - "${PLEX_MEDIA_DIR}/downloads:/downloads"
+      - "${PLEX_MEDIA_DIR}/watch:/watch"
+    hostname:
+      transmission.${ROOT_HOST}
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: Europe/Sofia
+      TRANSMISSION_WEB_HOME: /combustion-release/
+      USER: ${TRANSMISSION_USER}
+      PASS: ${TRANSMISSION_PASSWORD}
+      VIRTUAL_HOST: transmission.${ROOT_HOST}
+      LETSENCRYPT_HOST: transmission.${ROOT_HOST}
+      VIRTUAL_PORT: 9091
+    depends_on:
+      - acme-companion
+
+
   # Plex container
   plex:
     image: linuxserver/plex:1.29.1
