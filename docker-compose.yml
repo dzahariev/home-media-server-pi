@@ -140,9 +140,9 @@ services:
       - acme-companion
 
   # Files Browser container
-  filebrowser:
+  files:
     image: filebrowser/filebrowser:v2.22.4-s6
-    container_name: filebrowser
+    container_name: files
     restart: always
     volumes:
       - "${DATA_DIR}/filebrowser/data/filebrowser.db:/database.db"
