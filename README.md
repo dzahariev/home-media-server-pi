@@ -12,6 +12,7 @@ Include setup of:
 - CAdvisor (not exposed, used from Prometheus through internal network)
 - Node-exporter (not exposed, used from Prometheus through internal network)
 - Transmission (on transmission subdomain)
+- File Browser (on files subdomain)
 - Plex (on plex subdomain)
 - Calibre (on calibre subdomain)
 
@@ -39,6 +40,7 @@ docker-compose --env-file .env.pi down
 - nginx: [![GitHub release](https://img.shields.io/github/tag/nginxinc/docker-nginx.svg)](https://hub.docker.com/_/nginx)
 - grafana/grafana: [![GitHub release](https://img.shields.io/github/tag/grafana/grafana.svg)](https://hub.docker.com/r/grafana/grafana)
 - linuxserver/transmission: [![GitHub release](https://img.shields.io/github/v/tag/linuxserver/docker-transmission.svg?sort=semver)](https://hub.docker.com/r/linuxserver/transmission)
+- filebrowser/filebrowser: [![GitHub release](https://img.shields.io/github/v/tag/filebrowser/filebrowser.svg?sort=semver)](https://hub.docker.com/r/filebrowser/filebrowser)
 - linuxserver/plex: [![GitHub release](https://img.shields.io/github/tag/linuxserver/docker-plex.svg)](https://hub.docker.com/r/linuxserver/plex)
 - linuxserver/calibre: [![GitHub release](https://img.shields.io/github/tag/linuxserver/docker-calibre.svg)](https://hub.docker.com/r/linuxserver/calibre)
 
