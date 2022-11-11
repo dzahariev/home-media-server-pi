@@ -36,7 +36,7 @@ services:
 
   # CAdvisor container
   cadvisor:
-    image: zcube/cadvisor:v0.45.0
+    image: zcube/cadvisor:v0.46.0
     container_name: cadvisor
     restart: unless-stopped
     devices:
@@ -64,7 +64,7 @@ services:
 
   # Prometheus container
   prometheus:
-    image: prom/prometheus:v2.39.1
+    image: prom/prometheus:v2.40.1
     container_name: prometheus
     restart: unless-stopped
     command:
@@ -97,7 +97,7 @@ services:
 
   # Grafana container
   grafana:
-    image: grafana/grafana:9.2.3
+    image: grafana/grafana:9.2.4
     container_name: grafana
     restart: always
     volumes:
@@ -117,7 +117,7 @@ services:
 
   # Transmission container
   transmission:
-    image: linuxserver/transmission:3.00-r6-ls140
+    image: linuxserver/transmission:3.00-r6-ls141
     container_name: transmission
     restart: always
     volumes:
@@ -162,7 +162,7 @@ services:
 
   # Plex container
   plex:
-    image: linuxserver/plex:1.29.1
+    image: linuxserver/plex:1.29.2
     container_name: plex
     restart: always
     volumes:
