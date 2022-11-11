@@ -36,7 +36,7 @@ services:
 
   # CAdvisor container
   cadvisor:
-    image: zcube/cadvisor:v0.46.0
+    image: zcube/cadvisor:v0.45.0
     container_name: cadvisor
     restart: unless-stopped
     devices:
