@@ -2,7 +2,7 @@ version: '3'
 services:
   # Main proxy container
   nginx-proxy:
-    image: nginxproxy/nginx-proxy:1.0.1-alpine
+    image: nginxproxy/nginx-proxy:1.0.2-alpine
     container_name: nginx-proxy
     restart: always
     labels:
@@ -57,14 +57,14 @@ services:
 
   # Node-Exporter container
   node-exporter:
-    image: prom/node-exporter:v1.4.0
+    image: prom/node-exporter:v1.5.0
     container_name: node-exporter
     restart: unless-stopped
     hostname: node-exporter
 
   # Prometheus container
   prometheus:
-    image: prom/prometheus:v2.40.1
+    image: prom/prometheus:v2.40.5
     container_name: prometheus
     restart: unless-stopped
     command:
@@ -84,7 +84,7 @@ services:
 
 # Root container
   nginx:
-    image: nginx:1.23.1
+    image: nginx:1.23.2
     container_name: nginx
     restart: always
     volumes:
@@ -97,7 +97,7 @@ services:
 
   # Grafana container
   grafana:
-    image: grafana/grafana:9.2.4
+    image: grafana/grafana:9.3.0
     container_name: grafana
     restart: always
     volumes:
@@ -117,7 +117,7 @@ services:
 
   # Transmission container
   transmission:
-    image: linuxserver/transmission:3.00-r6-ls141
+    image: linuxserver/transmission:3.00-r6-ls144
     container_name: transmission
     restart: always
     volumes:
@@ -217,5 +217,22 @@ services:
       VIRTUAL_HOST: fold.${ROOT_HOST}
       LETSENCRYPT_HOST: fold.${ROOT_HOST}
       VIRTUAL_PORT: 7396
+    depends_on:
+      - acme-companion
+
+  # InvVal container
+  invval:
+    image: dzahariev/invval
+    container_name: invval
+    restart: always
+    hostname:
+      invval.${ROOT_HOST}
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: Europe/Sofia
+      VIRTUAL_HOST: invval.${ROOT_HOST}
+      LETSENCRYPT_HOST: invval.${ROOT_HOST}
+      VIRTUAL_PORT: 5000
     depends_on:
       - acme-companion
