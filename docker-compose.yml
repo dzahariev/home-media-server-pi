@@ -147,7 +147,9 @@ services:
     volumes:
       - "${DATA_DIR}/filebrowser/data/filebrowser.db:/database/filebrowser.db"
       - "${PLEX_MEDIA_DIR}:/srv"
-      - "${PLEX_MEDIA_DIR}/watch:/watch"
+    command:
+      - "--database" 
+      - "/database/filebrowser.db"
     hostname:
       files.${ROOT_HOST}
     environment:
