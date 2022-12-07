@@ -2,7 +2,7 @@ version: '3'
 services:
   # Main proxy container
   nginx-proxy:
-    image: nginxproxy/nginx-proxy:1.0.2-alpine
+    image: nginxproxy/nginx-proxy:1.0.3-alpine
     container_name: nginx-proxy
     restart: always
     labels:
@@ -19,7 +19,7 @@ services:
 
   # Letsencrypt companion container
   acme-companion:
-    image: nginxproxy/acme-companion:2.2.1
+    image: nginxproxy/acme-companion:2.2.2
     container_name: acme-companion
     restart: always
     volumes:
@@ -97,7 +97,7 @@ services:
 
   # Grafana container
   grafana:
-    image: grafana/grafana:9.3.0
+    image: grafana/grafana:9.3.1
     container_name: grafana
     restart: always
     volumes:
@@ -117,7 +117,7 @@ services:
 
   # Transmission container
   transmission:
-    image: linuxserver/transmission:3.00-r6-ls144
+    image: linuxserver/transmission:3.00-r6-ls145
     container_name: transmission
     restart: always
     volumes:
