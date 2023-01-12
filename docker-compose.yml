@@ -2,7 +2,7 @@ version: '3'
 services:
   # Main proxy container
   nginx-proxy:
-    image: nginxproxy/nginx-proxy:1.0.3-alpine
+    image: nginxproxy/nginx-proxy:1.0.4-alpine
     container_name: nginx-proxy
     restart: always
     labels:
@@ -19,7 +19,7 @@ services:
 
   # Letsencrypt companion container
   acme-companion:
-    image: nginxproxy/acme-companion:2.2.2
+    image: nginxproxy/acme-companion:2.2.3
     container_name: acme-companion
     restart: always
     volumes:
@@ -64,7 +64,7 @@ services:
 
   # Prometheus container
   prometheus:
-    image: prom/prometheus:v2.40.7
+    image: prom/prometheus:v2.41.0
     container_name: prometheus
     restart: unless-stopped
     command:
@@ -117,7 +117,7 @@ services:
 
   # Transmission container
   transmission:
-    image: linuxserver/transmission:3.00-r6-ls146
+    image: linuxserver/transmission:3.00-r8-ls148
     container_name: transmission
     restart: always
     volumes:
@@ -164,7 +164,7 @@ services:
 
   # Plex container
   plex:
-    image: linuxserver/plex:1.30.0
+    image: linuxserver/plex:1.30.1
     container_name: plex
     restart: always
     volumes:
