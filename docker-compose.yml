@@ -185,7 +185,7 @@ services:
 
   # Plex container
   calibre:
-    image: linuxserver/calibre:arch
+    image: linuxserver/calibre:6.11.0
     container_name: calibre
     restart: always
     volumes:
