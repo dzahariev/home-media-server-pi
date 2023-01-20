@@ -2,7 +2,7 @@ version: '3'
 services:
   # Main proxy container
   nginx-proxy:
-    image: nginxproxy/nginx-proxy:1.0.4-alpine
+    image: nginxproxy/nginx-proxy:1.1.0-alpine
     container_name: nginx-proxy
     restart: always
     labels:
@@ -19,7 +19,7 @@ services:
 
   # Letsencrypt companion container
   acme-companion:
-    image: nginxproxy/acme-companion:2.2.3
+    image: nginxproxy/acme-companion:2.2.4
     container_name: acme-companion
     restart: always
     volumes:
@@ -117,7 +117,7 @@ services:
 
   # Transmission container
   transmission:
-    image: linuxserver/transmission:3.00-r8-ls148
+    image: linuxserver/transmission:3.00-r8-ls149
     container_name: transmission
     restart: always
     volumes:
@@ -202,25 +202,6 @@ services:
       VIRTUAL_HOST: calibre.${ROOT_HOST}
       LETSENCRYPT_HOST: calibre.${ROOT_HOST}
       VIRTUAL_PORT: 8081
-
-  # Folding@Home container
-  fold:
-    image: linuxserver/foldingathome:7.6.21
-    container_name: fold
-    restart: always
-    volumes:
-      - "${DATA_DIR}/fold:/config"
-    hostname:
-      fold.${ROOT_HOST}
-    environment:
-      PUID: 1000
-      PGID: 1000
-      TZ: Europe/Sofia
-      VIRTUAL_HOST: fold.${ROOT_HOST}
-      LETSENCRYPT_HOST: fold.${ROOT_HOST}
-      VIRTUAL_PORT: 7396
-    depends_on:
-      - acme-companion
 
   # InvVal container
   invval:
