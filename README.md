@@ -15,7 +15,6 @@ Include setup of:
 - File Browser (on files subdomain)
 - Plex (on plex subdomain)
 - Calibre (on calibre subdomain)
-- Folding@Home (on fold subdomain)
 
 ## Prepare
 Ensure you have Docker and Docker Compose installed.
@@ -44,7 +43,6 @@ docker-compose --env-file .env.pi down
 - filebrowser/filebrowser: [![GitHub release](https://img.shields.io/github/tag/filebrowser/filebrowser.svg)](https://hub.docker.com/r/filebrowser/filebrowser)
 - linuxserver/plex: [![GitHub release](https://img.shields.io/github/tag/linuxserver/docker-plex.svg)](https://hub.docker.com/r/linuxserver/plex)
 - linuxserver/calibre: [![GitHub release](https://img.shields.io/github/tag/linuxserver/docker-calibre.svg)](https://hub.docker.com/r/linuxserver/calibre)
-- linuxserver/foldingathome:  [![GitHub release](https://img.shields.io/github/tag/linuxserver/docker-foldingathome.svg)](https://hub.docker.com/r/linuxserver/foldingathome)
 
 ## Acknowledgements
 
