@@ -97,7 +97,7 @@ services:
 
   # Grafana container
   grafana:
-    image: grafana/grafana:9.3.2
+    image: grafana/grafana:9.3.6
     container_name: grafana
     restart: always
     volumes:
@@ -117,7 +117,7 @@ services:
 
   # Transmission container
   transmission:
-    image: linuxserver/transmission:3.00-r8-ls149
+    image: linuxserver/transmission:3.00-r8-ls150
     container_name: transmission
     restart: always
     volumes:
@@ -164,7 +164,7 @@ services:
 
   # Plex container
   plex:
-    image: linuxserver/plex:1.30.1
+    image: linuxserver/plex:1.30.2
     container_name: plex
     restart: always
     volumes:
