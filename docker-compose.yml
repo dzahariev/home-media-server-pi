@@ -2,7 +2,7 @@ version: '3'
 services:
   # Main proxy container
   nginx-proxy:
-    image: nginxproxy/nginx-proxy:1.1.0-alpine
+    image: nginxproxy/nginx-proxy:1.2.0-alpine
     container_name: nginx-proxy
     restart: always
     labels:
@@ -36,7 +36,7 @@ services:
 
   # CAdvisor container
   cadvisor:
-    image: zcube/cadvisor:v0.45.0
+    image: gcr.io/cadvisor/cadvisor:v0.47.1
     container_name: cadvisor
     restart: unless-stopped
     devices:
@@ -64,7 +64,7 @@ services:
 
   # Prometheus container
   prometheus:
-    image: prom/prometheus:v2.41.0
+    image: prom/prometheus:v2.42.0
     container_name: prometheus
     restart: unless-stopped
     command:
@@ -185,7 +185,7 @@ services:
 
   # Plex container
   calibre:
-    image: linuxserver/calibre:6.11.0
+    image: linuxserver/calibre:6.12.0
     container_name: calibre
     restart: always
     volumes:
