@@ -117,7 +117,7 @@ services:
 
   # Transmission container
   transmission:
-    image: linuxserver/transmission:4.00-r5-ls154
+    image: linuxserver/transmission:4.0.0-r5-ls154
     container_name: transmission
     restart: always
     volumes:
