@@ -34,7 +34,7 @@ docker-compose --env-file .env.pi down
 
 - nginxproxy/nginx-proxy: [![GitHub release](https://img.shields.io/github/tag/nginx-proxy/nginx-proxy.svg)](https://hub.docker.com/r/nginxproxy/nginx-proxy) 
 - nginxproxy/acme-companion: [![GitHub release](https://img.shields.io/github/tag/nginx-proxy/acme-companion.svg)](https://hub.docker.com/r/nginxproxy/acme-companion)
-- gcr.io/cadvisor/cadvisor: [![GitHub release](https://img.shields.io/github/release/google/cadvisor.svg)](https://hub.docker.com/r/zcube/cadvisor)
+- gcr.io/cadvisor/cadvisor: [![GitHub release](https://img.shields.io/github/release/google/cadvisor.svg)](https://console.cloud.google.com/gcr/images/cadvisor/GLOBAL/cadvisor)
 - prom/node-exporter: [![GitHub release](https://img.shields.io/github/tag/prometheus/node_exporter.svg)](https://hub.docker.com/r/prom/node-exporter)
 - prom/prometheus: [![GitHub release](https://img.shields.io/github/tag/prometheus/prometheus.svg)](https://hub.docker.com/r/prom/prometheus)
 - nginx: [![GitHub release](https://img.shields.io/github/tag/nginxinc/docker-nginx.svg)](https://hub.docker.com/_/nginx)
