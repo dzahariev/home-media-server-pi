@@ -14,6 +14,7 @@ services:
       - "${DATA_DIR}/nginx/certs:/etc/nginx/certs"
       - "${DATA_DIR}/nginx/vhosts:/etc/nginx/vhost.d"
       - "${DATA_DIR}/nginx/html:/usr/share/nginx/html"
+      - "${DATA_DIR}/nginx/htpasswd:/etc/nginx/htpasswd"
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./nginx.conf:/etc/nginx/proxy.conf
 
