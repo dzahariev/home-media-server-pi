@@ -17,8 +17,6 @@ Include setup of:
 - Calibre (on calibre subdomain)
 
 ## Prepare
-Ensure you have Docker and Docker Compose installed.
-
 Adjust the .env file content by setting the base folder, domain, and secrets, or create a new file named .env.pi and use it instead.
 
 ## Start the bundle
@@ -43,6 +41,11 @@ docker-compose --env-file .env.pi down
 - filebrowser/filebrowser: [![GitHub release](https://img.shields.io/github/tag/filebrowser/filebrowser.svg)](https://hub.docker.com/r/filebrowser/filebrowser)
 - linuxserver/plex: [![GitHub release](https://img.shields.io/github/tag/linuxserver/docker-plex.svg)](https://hub.docker.com/r/linuxserver/plex)
 - linuxserver/calibre: [![GitHub release](https://img.shields.io/github/tag/linuxserver/docker-calibre.svg)](https://hub.docker.com/r/linuxserver/calibre)
+
+
+## RPi preparation
+
+Details on preparation of RPi are [here](doc/installation.md).
 
 ## Acknowledgements
 
