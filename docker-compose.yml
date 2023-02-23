@@ -184,7 +184,7 @@ services:
     depends_on:
       - acme-companion
 
-  # Plex container
+  # Calibre container
   calibre:
     image: linuxserver/calibre:6.13.0
     container_name: calibre
@@ -203,6 +203,46 @@ services:
       VIRTUAL_HOST: calibre.${ROOT_HOST}
       LETSENCRYPT_HOST: calibre.${ROOT_HOST}
       VIRTUAL_PORT: 8081
+
+  # Metube container
+  metube:
+    image: alexta69/metube:2023-02-18
+    container_name: metube
+    restart: always
+    hostname:
+      metube.${ROOT_HOST}
+    volumes:
+      - "${PLEX_MEDIA_DIR}/downloads:/downloads"
+      - "${DATA_DIR}/metube/cookies:/cookies"
+    environment:
+      UID: 1000
+      GID: 1000
+      TZ: Europe/Sofia
+      VIRTUAL_HOST: metube.${ROOT_HOST}
+      LETSENCRYPT_HOST: metube.${ROOT_HOST}
+      VIRTUAL_PORT: 8081
+      YTDL_OPTIONS: '{"cookiefile":"/cookies/cookies.txt"}'
+    depends_on:
+      - acme-companion
+
+  # Metube container
+  uptime:
+    image: louislam/uptime-kuma:1.20.1-alpine
+    container_name: uptime
+    restart: always
+    hostname:
+      uptime.${ROOT_HOST}
+    volumes:
+      - "${DATA_DIR}/uptime:/app/data"
+    environment:
+      UID: 1000
+      GID: 1000
+      TZ: Europe/Sofia
+      VIRTUAL_HOST: uptime.${ROOT_HOST}
+      LETSENCRYPT_HOST: uptime.${ROOT_HOST}
+      VIRTUAL_PORT: 3001
+    depends_on:
+      - acme-companion
 
   # InvVal container
   invval:
