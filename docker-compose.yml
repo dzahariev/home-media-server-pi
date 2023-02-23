@@ -118,7 +118,7 @@ services:
 
   # Transmission container
   transmission:
-    image: linuxserver/transmission:3.00-r8-ls151
+    image: linuxserver/transmission:4.0.1
     container_name: transmission
     restart: always
     volumes:
@@ -131,7 +131,7 @@ services:
       PUID: 1000
       PGID: 1000
       TZ: Europe/Sofia
-      TRANSMISSION_WEB_HOME: /combustion-release/
+      TRANSMISSION_WEB_HOME: /config/combustion-release/
       USER: ${TRANSMISSION_USER}
       PASS: ${TRANSMISSION_PASSWORD}
       VIRTUAL_HOST: transmission.${ROOT_HOST}
