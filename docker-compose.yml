@@ -165,7 +165,7 @@ services:
 
   # Plex container
   plex:
-    image: linuxserver/plex:1.31.0
+    image: linuxserver/plex:1.31.1
     container_name: plex
     restart: always
     volumes:
@@ -206,7 +206,7 @@ services:
 
   # Metube container
   metube:
-    image: alexta69/metube:2023-02-18
+    image: alexta69/metube
     container_name: metube
     restart: always
     hostname:
