@@ -16,6 +16,7 @@ Include setup of:
 - Plex (on plex subdomain)
 - Calibre (on calibre subdomain)
 - MeTube (on metube subdomain)
+- Jenkins (on jenkins subdomain)
 
 ## Prepare
 Adjust the .env file content by setting the base folder, domain, and secrets, or create a new file named .env.pi and use it instead.
@@ -43,6 +44,7 @@ docker-compose --env-file .env.pi down
 - linuxserver/plex: [![GitHub release](https://img.shields.io/github/tag/linuxserver/docker-plex.svg)](https://hub.docker.com/r/linuxserver/plex)
 - linuxserver/calibre: [![GitHub release](https://img.shields.io/github/tag/linuxserver/docker-calibre.svg)](https://hub.docker.com/r/linuxserver/calibre)
 - alexta69/metube: [![GitHub release](https://img.shields.io/github/tag/alexta69/metube.svg)](https://hub.docker.com/r/alexta69/metube)
+- jenkins/jenkins: [![GitHub release](https://img.shields.io/github/tag/jenkinsci/docker.svg)](https://hub.docker.com/r/jenkins/jenkins)
 
 ## RPi preparation
 
