@@ -44,7 +44,7 @@ docker-compose --env-file .env.pi down
 - linuxserver/plex: [![GitHub release](https://img.shields.io/github/tag/linuxserver/docker-plex.svg)](https://hub.docker.com/r/linuxserver/plex)
 - linuxserver/calibre: [![GitHub release](https://img.shields.io/github/tag/linuxserver/docker-calibre.svg)](https://hub.docker.com/r/linuxserver/calibre)
 - alexta69/metube: [![GitHub release](https://img.shields.io/github/tag/alexta69/metube.svg)](https://hub.docker.com/r/alexta69/metube)
-- jenkins/jenkins: [![GitHub release](https://img.shields.io/github/tag/jenkinsci/docker.svg)](https://hub.docker.com/r/jenkins/jenkins)
+- jenkins/jenkins: [![GitHub release](https://img.shields.io/github/tag/jenkinsci/jenkins.svg)](https://hub.docker.com/r/jenkins/jenkins)
 
 ## RPi preparation
 
