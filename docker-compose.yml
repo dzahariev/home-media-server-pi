@@ -98,7 +98,7 @@ services:
 
   # Grafana container
   grafana:
-    image: grafana/grafana:9.4.1
+    image: grafana/grafana:9.4.3
     container_name: grafana
     restart: always
     volumes:
@@ -186,7 +186,7 @@ services:
 
   # Calibre container
   calibre:
-    image: linuxserver/calibre:6.13.0
+    image: linuxserver/calibre:6.14.0
     container_name: calibre
     restart: always
     volumes:
@@ -227,7 +227,7 @@ services:
 
   # Jenkins container
   jenkins:
-    image: jenkins/jenkins:2.375.3-lts-jdk11
+    image: jenkins/jenkins:2.387.1-lts-jdk11
     container_name: jenkins
     restart: always
     hostname:
