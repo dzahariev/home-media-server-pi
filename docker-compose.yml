@@ -237,25 +237,6 @@ services:
     depends_on:
       - acme-companion
 
-  # Jenkins container
-  jenkins:
-    image: jenkins/jenkins:2.387.2-lts-jdk11
-    container_name: jenkins
-    restart: always
-    hostname:
-      jenkins.${ROOT_HOST}
-    volumes:
-      - "${DATA_DIR}/jenkins:/var/jenkins_home"
-    environment:
-      UID: 1000
-      GID: 1000
-      TZ: Europe/Sofia
-      VIRTUAL_HOST: jenkins.${ROOT_HOST}
-      LETSENCRYPT_HOST: jenkins.${ROOT_HOST}
-      VIRTUAL_PORT: 8080
-    depends_on:
-      - acme-companion
-
   # InvVal container
   invval:
     image: dzahariev/invval
