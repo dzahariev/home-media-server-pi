@@ -198,7 +198,7 @@ services:
 
   # Calibre container
   calibre:
-    image: linuxserver/calibre:6.14.1
+    image: linuxserver/calibre:6.15.1
     container_name: calibre
     restart: always
     volumes:
