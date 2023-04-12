@@ -97,7 +97,7 @@ services:
 
 # Root container
   nginx:
-    image: nginx:1.23.2
+    image: nginx:1.24.0
     container_name: nginx
     restart: always
     volumes:
@@ -177,7 +177,7 @@ services:
 
   # Plex container
   plex:
-    image: linuxserver/plex:1.31.3
+    image: linuxserver/plex:1.32.0
     container_name: plex
     restart: always
     volumes:
