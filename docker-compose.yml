@@ -110,7 +110,7 @@ services:
 
   # Grafana container
   grafana:
-    image: grafana/grafana:9.4.7
+    image: grafana/grafana:9.5.1
     container_name: grafana
     restart: always
     volumes:
@@ -198,7 +198,7 @@ services:
 
   # Calibre container
   calibre:
-    image: linuxserver/calibre:6.16.0
+    image: linuxserver/calibre:6.17.0
     container_name: calibre
     restart: always
     volumes:
