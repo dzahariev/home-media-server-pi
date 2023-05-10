@@ -76,7 +76,7 @@ services:
 
   # Prometheus container
   prometheus:
-    image: prom/prometheus:v2.43.0
+    image: prom/prometheus:v2.43.1
     container_name: prometheus
     restart: unless-stopped
     command:
@@ -177,7 +177,7 @@ services:
 
   # Plex container
   plex:
-    image: linuxserver/plex:1.32.0
+    image: linuxserver/plex:1.32.1
     container_name: plex
     restart: always
     volumes:
