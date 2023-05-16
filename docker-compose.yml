@@ -2,7 +2,7 @@ version: '3'
 services:
   # Main proxy container
   nginx-proxy:
-    image: nginxproxy/nginx-proxy:1.3.0-alpine
+    image: nginxproxy/nginx-proxy:1.3.1-alpine
     container_name: nginx-proxy
     restart: always
     labels:
@@ -65,7 +65,7 @@ services:
 
   # BlackBox exporter container
   blackbox-exporter:
-    image: prom/blackbox-exporter:v0.23.0
+    image: prom/blackbox-exporter:v0.24.0
     container_name: blackbox-exporter
     restart: unless-stopped
     hostname: blackbox-exporter
@@ -76,7 +76,7 @@ services:
 
   # Prometheus container
   prometheus:
-    image: prom/prometheus:v2.43.1
+    image: prom/prometheus:v2.44.0
     container_name: prometheus
     restart: unless-stopped
     command:
@@ -110,7 +110,7 @@ services:
 
   # Grafana container
   grafana:
-    image: grafana/grafana:9.5.1
+    image: grafana/grafana:9.5.2
     container_name: grafana
     restart: always
     volumes:
