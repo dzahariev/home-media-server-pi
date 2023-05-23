@@ -177,7 +177,7 @@ services:
 
   # Plex container
   plex:
-    image: linuxserver/plex:1.32.1.6999-91e1e2e2c-ls167
+    image: linuxserver/plex:1.32.2.7100-248a2daf0-ls168
     container_name: plex
     restart: always
     volumes:
