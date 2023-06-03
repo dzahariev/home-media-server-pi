@@ -121,6 +121,14 @@
       newaddress = "https://invval." + window.location.hostname;
       window.open(newaddress, "_self")
     };
+    function pgadmin() {
+      newaddress = "https://pgadmin." + window.location.hostname;
+      window.open(newaddress, "_self")
+    };
+    function keycloak() {
+      newaddress = "https://keycloak." + window.location.hostname;
+      window.open(newaddress, "_self")
+    };
   </script>
 
   <div class="wrap">
@@ -187,6 +195,22 @@
         <div class="boxInner">
           <img src="images/invval.png" alt="InvVal"/>
           <div class="titleBox">InvVal</div>
+        </div>
+      </a>
+    </div>
+    <div class="box">
+      <a href="javascript:pgadmin();">
+        <div class="boxInner">
+          <img src="images/pgadmin.png" alt="pgAdmin"/>
+          <div class="titleBox">pgAdmin</div>
+        </div>
+      </a>
+    </div>
+    <div class="box">
+      <a href="javascript:keycloak();">
+        <div class="boxInner">
+          <img src="images/keycloak.png" alt="Keycloak"/>
+          <div class="titleBox">Keycloak</div>
         </div>
       </a>
     </div>

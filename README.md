@@ -17,7 +17,9 @@ Include setup of:
 - Plex (on plex subdomain)
 - Calibre (on calibre subdomain)
 - MeTube (on metube subdomain)
-
+- PostgeSQL (not exposed, used through internal network)
+- pgAdmin 4 (on pgadmin subdomain)
+- Keycloak (on keycloak subdomain)
 ## Prepare
 Adjust the .env file content by setting the base folder, domain, and secrets, or create a new file named .env.pi and use it instead.
 
@@ -45,6 +47,9 @@ docker-compose --env-file .env.pi down
 - linuxserver/plex: [![GitHub release](https://img.shields.io/github/tag/linuxserver/docker-plex.svg)](https://hub.docker.com/r/linuxserver/plex)
 - linuxserver/calibre: [![GitHub release](https://img.shields.io/github/tag/linuxserver/docker-calibre.svg)](https://hub.docker.com/r/linuxserver/calibre)
 - alexta69/metube: [![GitHub release](https://img.shields.io/github/tag/alexta69/metube.svg)](https://hub.docker.com/r/alexta69/metube)
+- postgres: [![GitHub release](https://img.shields.io/github/tag/postgres/postgres.svg)](https://hub.docker.com/_/postgres)
+- dpage/pgadmin4: [![GitHub release](https://img.shields.io/github/tag/pgadmin-org/pgadmin4.svg)](https://hub.docker.com/r/dpage/pgadmin4)
+- keycloak/keycloak: [![GitHub release](https://img.shields.io/github/tag/keycloak/keycloak.svg)](https://hub.docker.com/r/keycloak/keycloak)
 
 ## RPi preparation
 

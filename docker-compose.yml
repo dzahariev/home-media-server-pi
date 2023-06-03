@@ -215,6 +215,8 @@ services:
       VIRTUAL_HOST: calibre.${ROOT_HOST}
       LETSENCRYPT_HOST: calibre.${ROOT_HOST}
       VIRTUAL_PORT: 8081
+    depends_on:
+      - acme-companion
 
   # Metube container
   metube:
@@ -253,3 +255,57 @@ services:
       VIRTUAL_PORT: 5000
     depends_on:
       - acme-companion
+
+  # Postgres DB container
+  postgresdb:
+    image: postgres:15.3-alpine3.18
+    container_name: postgresdb
+    restart: always
+    volumes:
+      - "${DATA_DIR}/postgresql:/var/lib/postgresql/data"
+    environment: 
+      POSTGRES_DB: ${POSTGRES_DB_NAME}
+      POSTGRES_USER: ${POSTGRES_DB_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_DB_PASSWORD}
+    depends_on:
+      - acme-companion
+
+  # PGAdmin container
+  pgadmin:
+    image: dpage/pgadmin4:7.2
+    container_name: pgadmin
+    restart: always
+    user: root
+    volumes:
+      - "${DATA_DIR}/pgadmin:/var/lib/pgadmin:rw"
+    environment: 
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_DISABLE_POSTFIX: "yes"
+      VIRTUAL_HOST: pgadmin.${ROOT_HOST}
+      LETSENCRYPT_HOST: pgadmin.${ROOT_HOST}
+    depends_on:
+      - postgresdb
+
+  # Keycloak container
+  keycloak:
+    image: keycloak/keycloak:21.1.1
+    container_name: keycloak
+    restart: always
+    hostname: keycloak
+    ports:
+      - "8080:8080"
+    environment:
+      KC_DB: ${POSTGRES_DB_NAME}
+      KC_DB_URL: jdbc:postgresql://postgresdb:5432/${POSTGRES_DB_NAME}
+      KC_DB_USERNAME: ${POSTGRES_DB_USER}
+      KC_DB_PASSWORD: ${POSTGRES_DB_PASSWORD}
+      KC_DB_SCHEMA: public
+      KC_HOSTNAME: "keycloak.zahariev.com"
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+      LETSENCRYPT_HOST: keycloak.${ROOT_HOST}
+      VIRTUAL_HOST: keycloak.${ROOT_HOST}
+      VIRTUAL_PORT: 8080
+    depends_on:
+      - postgresdb
