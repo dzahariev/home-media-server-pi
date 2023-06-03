@@ -293,8 +293,6 @@ services:
     container_name: keycloak
     restart: always
     hostname: keycloak
-    ports:
-      - "8080:9080"
     environment:
       KC_DB: ${POSTGRES_DB_NAME}
       KC_DB_URL: jdbc:postgresql://postgresdb:5432/${POSTGRES_DB_NAME}
