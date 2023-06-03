@@ -130,7 +130,7 @@ services:
 
   # Transmission container
   transmission:
-    image: linuxserver/transmission:4.0.3-r2-ls177
+    image: linuxserver/transmission:4.0.3-r2-ls179
     container_name: transmission
     restart: always
     volumes:
