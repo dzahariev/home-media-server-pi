@@ -46,7 +46,7 @@ services:
     ipc: shareable
     privileged: true
     command:
-      - "-housekeeping_interval=20s"
+      - '-housekeeping_interval=20s'
     security_opt:
       - label=disable
     volumes:
@@ -161,8 +161,8 @@ services:
       - "${DATA_DIR}/filebrowser/data/filebrowser.db:/database/filebrowser.db"
       - "${PLEX_MEDIA_DIR}:/srv"
     command:
-      - "--database" 
-      - "/database/filebrowser.db"
+      - '--database'
+      - '/database/filebrowser.db'
     hostname:
       files.${ROOT_HOST}
     environment:
@@ -280,10 +280,12 @@ services:
     hostname: keycloak
     links:
       - postgresdb:postgresdb
-    command: start
+    command:
+    - 'start' 
+    - '--optimized'
     environment:
       KC_DB: ${POSTGRES_DB_NAME}
-      KC_DB_URL: jdbc:postgresql://postgresdb:5432/${POSTGRES_DB_NAME}?ssl=allow
+      KC_DB_URL: jdbc:postgresql://postgresdb/${POSTGRES_DB_NAME}
       KC_DB_USERNAME: ${POSTGRES_DB_USER}
       KC_DB_PASSWORD: ${POSTGRES_DB_PASSWORD}
       KC_DB_SCHEMA: public
