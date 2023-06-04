@@ -290,11 +290,9 @@ services:
       KC_DB_PASSWORD: ${POSTGRES_DB_PASSWORD}
       KC_DB_SCHEMA: public
       KC_HOSTNAME: keycloak.${ROOT_HOST}
-      KC_HOSTNAME_URL: http://keycloak.${ROOT_HOST}
       KC_HOSTNAME_ADMIN_URL:  http://keycloak.${ROOT_HOST}
       KC_HOSTNAME_STRICT_HTTPS: 'false'
       KC_HTTP_ENABLED: true
-
       KC_EDGE: proxy
       KC_PROXY: edge
       KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
