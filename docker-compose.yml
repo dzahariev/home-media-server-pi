@@ -288,8 +288,8 @@ services:
       KC_DB_USERNAME: ${POSTGRES_DB_USER}
       KC_DB_PASSWORD: ${POSTGRES_DB_PASSWORD}
       KC_DB_SCHEMA: public
-      KC_HOSTNAME_URL: http://keycloak.${ROOT_HOST}
-      KC_HOSTNAME_ADMIN_URL: http://keycloak.${ROOT_HOST}
+      KC_HOSTNAME: keycloak.${ROOT_HOST}
+      KC_HOSTNAME_STRICT: false
       KC_HOSTNAME_STRICT_HTTPS: false
       KC_HTTP_ENABLED: true
       KC_PROXY: edge
