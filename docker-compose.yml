@@ -285,7 +285,7 @@ services:
     - 'start'
     - '--optimized' 
     environment:
-      KC_DB: ${POSTGRES_DB_NAME}
+      KC_DB: postgres
       KC_DB_URL: jdbc:postgresql://postgresdb/${POSTGRES_DB_NAME}
       KC_DB_USERNAME: ${POSTGRES_DB_USER}
       KC_DB_PASSWORD: ${POSTGRES_DB_PASSWORD}
