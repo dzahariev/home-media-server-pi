@@ -281,9 +281,7 @@ services:
     links:
       - postgresdb:postgresdb
     command:
-    - '-v'
     - 'start'
-    - '--optimized' 
     environment:
       KC_DB: postgres
       KC_DB_URL: jdbc:postgresql://postgresdb/${POSTGRES_DB_NAME}
