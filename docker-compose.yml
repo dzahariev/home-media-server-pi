@@ -283,7 +283,6 @@ services:
     command:
     - 'start' 
     - '--optimized'
-    - '--verbose'
     environment:
       KC_DB: ${POSTGRES_DB_NAME}
       KC_DB_URL: jdbc:postgresql://postgresdb/${POSTGRES_DB_NAME}
@@ -291,7 +290,7 @@ services:
       KC_DB_PASSWORD: ${POSTGRES_DB_PASSWORD}
       KC_DB_SCHEMA: public
       KC_HOSTNAME: "keycloak.zahariev.com"
-      KC_HOSTNAME_STRICT_HTTPS: 'true'
+      KC_HOSTNAME_STRICT_HTTPS: 'false'
       KC_EDGE: proxy
       KC_PROXY: edge
       KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
