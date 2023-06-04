@@ -289,8 +289,8 @@ services:
       KC_DB_USERNAME: ${POSTGRES_DB_USER}
       KC_DB_PASSWORD: ${POSTGRES_DB_PASSWORD}
       KC_DB_SCHEMA: public
-      KC_HOSTNAME: "keycloak.zahariev.com"
-      KC_HOSTNAME_STRICT_HTTPS: 'false'
+      KC_HOSTNAME: keycloak.${ROOT_HOST}
+      KC_HTTP_ENABLED: 'true'
       KC_EDGE: proxy
       KC_PROXY: edge
       KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
