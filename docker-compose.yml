@@ -261,6 +261,8 @@ services:
     image: postgres:15.3-alpine3.18
     container_name: postgresdb
     restart: always
+    ports:
+      - 5432:5432
     volumes:
       - "${DATA_DIR}/postgresql:/var/lib/postgresql/data"
     environment: 
@@ -270,29 +272,14 @@ services:
     depends_on:
       - acme-companion
 
-  # PGAdmin container
-  pgadmin:
-    image: dpage/pgadmin4:7.2
-    container_name: pgadmin
-    restart: always
-    user: root
-    volumes:
-      - "${DATA_DIR}/pgadmin:/var/lib/pgadmin:rw"
-    environment: 
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
-      PGADMIN_DISABLE_POSTFIX: "yes"
-      VIRTUAL_HOST: pgadmin.${ROOT_HOST}
-      LETSENCRYPT_HOST: pgadmin.${ROOT_HOST}
-    depends_on:
-      - postgresdb
-
   # Keycloak container
   keycloak:
     image: keycloak/keycloak:21.1.1
     container_name: keycloak
     restart: always
     hostname: keycloak
+    links:
+      - postgresdb:postgresdb
     environment:
       KC_DB: ${POSTGRES_DB_NAME}
       KC_DB_URL: jdbc:postgresql://postgresdb:5432/${POSTGRES_DB_NAME}
