@@ -280,15 +280,17 @@ services:
     hostname: keycloak
     links:
       - postgresdb:postgresdb
+    command: start
     environment:
       KC_DB: ${POSTGRES_DB_NAME}
-      KC_DB_URL: jdbc:postgresql://postgresdb:5432/${POSTGRES_DB_NAME}
+      KC_DB_URL: jdbc:postgresql://postgresdb:5432/${POSTGRES_DB_NAME}?ssl=allow
       KC_DB_USERNAME: ${POSTGRES_DB_USER}
       KC_DB_PASSWORD: ${POSTGRES_DB_PASSWORD}
       KC_DB_SCHEMA: public
+      KC_HOSTNAME: "keycloak.zahariev.com"
+      KC_HOSTNAME_STRICT_HTTPS: 'true'
       KC_EDGE: proxy
       KC_PROXY: edge
-      KC_HOSTNAME: "keycloak.zahariev.com"
       KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
       KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
       LETSENCRYPT_HOST: keycloak.${ROOT_HOST}
@@ -296,3 +298,4 @@ services:
       VIRTUAL_PORT: 8080
     depends_on:
       - postgresdb
+      - acme-companion
