@@ -46,7 +46,7 @@ services:
     ipc: shareable
     privileged: true
     command:
-      - "-housekeeping_interval=20s"
+      - '-housekeeping_interval=20s'
     security_opt:
       - label=disable
     volumes:
@@ -161,8 +161,8 @@ services:
       - "${DATA_DIR}/filebrowser/data/filebrowser.db:/database/filebrowser.db"
       - "${PLEX_MEDIA_DIR}:/srv"
     command:
-      - "--database" 
-      - "/database/filebrowser.db"
+      - '--database'
+      - '/database/filebrowser.db'
     hostname:
       files.${ROOT_HOST}
     environment:
@@ -215,6 +215,8 @@ services:
       VIRTUAL_HOST: calibre.${ROOT_HOST}
       LETSENCRYPT_HOST: calibre.${ROOT_HOST}
       VIRTUAL_PORT: 8081
+    depends_on:
+      - acme-companion
 
   # Metube container
   metube:
@@ -252,4 +254,51 @@ services:
       LETSENCRYPT_HOST: invval.${ROOT_HOST}
       VIRTUAL_PORT: 5000
     depends_on:
+      - acme-companion
+
+  # Postgres DB container
+  postgresdb:
+    image: postgres:15.3-alpine3.18
+    container_name: postgresdb
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - "${DATA_DIR}/postgresql:/var/lib/postgresql/data"
+    environment: 
+      POSTGRES_DB: ${POSTGRES_DB_NAME}
+      POSTGRES_USER: ${POSTGRES_DB_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_DB_PASSWORD}
+    depends_on:
+      - acme-companion
+
+  # Keycloak container
+  keycloak:
+    image: keycloak/keycloak:21.1.1
+    container_name: keycloak
+    restart: always
+    hostname: keycloak
+    links:
+      - postgresdb:postgresdb
+    command:
+    - 'start'
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgresdb/${POSTGRES_DB_NAME}
+      KC_DB_USERNAME: ${POSTGRES_DB_USER}
+      KC_DB_PASSWORD: ${POSTGRES_DB_PASSWORD}
+      KC_DB_SCHEMA: public
+      KC_HOSTNAME: keycloak.${ROOT_HOST}
+      KC_HOSTNAME_STRICT: false
+      KC_HOSTNAME_STRICT_HTTPS: false
+      KC_HTTP_ENABLED: true
+      KC_PROXY: edge
+      PROXY_ADDRESS_FORWARDING: true
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+      LETSENCRYPT_HOST: keycloak.${ROOT_HOST}
+      VIRTUAL_HOST: keycloak.${ROOT_HOST}
+      VIRTUAL_PORT: 8080
+    depends_on:
+      - postgresdb
       - acme-companion
