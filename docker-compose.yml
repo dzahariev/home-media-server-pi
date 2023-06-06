@@ -110,7 +110,7 @@ services:
 
   # Grafana container
   grafana:
-    image: grafana/grafana:9.5.2
+    image: grafana/grafana:9.5.3
     container_name: grafana
     restart: always
     volumes:
@@ -177,7 +177,7 @@ services:
 
   # Plex container
   plex:
-    image: linuxserver/plex:1.32.2.7100-248a2daf0-ls169
+    image: linuxserver/plex:1.32.3.7162-b0a36929b-ls171
     container_name: plex
     restart: always
     volumes:
@@ -288,7 +288,7 @@ services:
       KC_DB_USERNAME: ${POSTGRES_DB_USER}
       KC_DB_PASSWORD: ${POSTGRES_DB_PASSWORD}
       KC_DB_SCHEMA: public
-      KC_HOSTNAME: keycloak.${ROOT_HOST}
+      KC_HOSTNAME: auth.${ROOT_HOST}
       KC_HOSTNAME_STRICT: false
       KC_HOSTNAME_STRICT_HTTPS: false
       KC_HTTP_ENABLED: true
@@ -296,8 +296,8 @@ services:
       PROXY_ADDRESS_FORWARDING: true
       KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
       KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
-      LETSENCRYPT_HOST: keycloak.${ROOT_HOST}
-      VIRTUAL_HOST: keycloak.${ROOT_HOST}
+      LETSENCRYPT_HOST: auth.${ROOT_HOST}
+      VIRTUAL_HOST: auth.${ROOT_HOST}
       VIRTUAL_PORT: 8080
     depends_on:
       - postgresdb
