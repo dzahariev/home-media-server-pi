@@ -18,7 +18,7 @@ Include setup of:
 - Calibre (on calibre subdomain)
 - MeTube (on metube subdomain)
 - PostgeSQL (not exposed, used through internal network)
-- Keycloak (on keycloak subdomain)
+- Keycloak (on auth subdomain)
 ## Prepare
 Adjust the .env file content by setting the base folder, domain, and secrets, or create a new file named .env.pi and use it instead.
 
