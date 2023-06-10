@@ -198,7 +198,7 @@ services:
 
   # Calibre container
   calibre:
-    image: linuxserver/calibre:v6.19.1-ls222
+    image: linuxserver/calibre:v6.20.0-ls223
     container_name: calibre
     restart: always
     volumes:
@@ -220,7 +220,7 @@ services:
 
   # Metube container
   metube:
-    image: alexta69/metube:2023-05-28
+    image: alexta69/metube:2023-06-09
     container_name: metube
     restart: always
     hostname:
