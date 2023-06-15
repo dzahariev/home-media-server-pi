@@ -97,7 +97,7 @@ services:
 
 # Root container
   nginx:
-    image: nginx:1.25.0
+    image: nginx:1.25.1
     container_name: nginx
     restart: always
     volumes:
@@ -177,7 +177,7 @@ services:
 
   # Plex container
   plex:
-    image: linuxserver/plex:1.32.3.7162-b0a36929b-ls171
+    image: linuxserver/plex:1.32.3.7192-7aa441827-Is173
     container_name: plex
     restart: always
     volumes:
@@ -198,7 +198,7 @@ services:
 
   # Calibre container
   calibre:
-    image: linuxserver/calibre:v6.20.0-ls223
+    image: linuxserver/calibre:v6.21.0-ls224
     container_name: calibre
     restart: always
     volumes:
