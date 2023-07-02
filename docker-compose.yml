@@ -37,7 +37,7 @@ services:
 
   # CAdvisor container
   cadvisor:
-    image: gcr.io/cadvisor/cadvisor:v0.47.1
+    image: gcr.io/cadvisor/cadvisor:v0.47.2
     container_name: cadvisor
     restart: unless-stopped
     devices:
@@ -130,7 +130,7 @@ services:
 
   # Transmission container
   transmission:
-    image: linuxserver/transmission:4.0.3-r3-ls182
+    image: linuxserver/transmission:4.0.3-r3-ls183
     container_name: transmission
     restart: always
     volumes:
@@ -198,7 +198,7 @@ services:
 
   # Calibre container
   calibre:
-    image: linuxserver/calibre:v6.21.0-ls225
+    image: linuxserver/calibre:v6.22.0-ls226
     container_name: calibre
     restart: always
     volumes:
@@ -220,7 +220,7 @@ services:
 
   # Metube container
   metube:
-    image: alexta69/metube:2023-06-23
+    image: alexta69/metube:2023-06-27
     container_name: metube
     restart: always
     hostname:
@@ -241,7 +241,7 @@ services:
 
   # InvVal container
   invval:
-    image: dzahariev/invval
+    image: dzahariev/invval:1.5
     container_name: invval
     restart: always
     hostname:
@@ -252,7 +252,7 @@ services:
       TZ: Europe/Sofia
       VIRTUAL_HOST: invval.${ROOT_HOST}
       LETSENCRYPT_HOST: invval.${ROOT_HOST}
-      VIRTUAL_PORT: 5000
+      VIRTUAL_PORT: 8080
     depends_on:
       - acme-companion
 
@@ -274,7 +274,7 @@ services:
 
   # Keycloak container
   keycloak:
-    image: keycloak/keycloak:21.1.1
+    image: keycloak/keycloak:21.1.2
     container_name: keycloak
     restart: always
     hostname: keycloak
