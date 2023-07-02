@@ -241,7 +241,7 @@ services:
 
   # InvVal container
   invval:
-    image: dzahariev/invval:1.6
+    image: dzahariev/invval:1.7
     container_name: invval
     restart: always
     hostname:
@@ -249,6 +249,11 @@ services:
     environment:
       PUID: 1000
       PGID: 1000
+      CLIENT_ID: ${INVVAL_CLIENT_ID}
+      CLIENT_SECRET: ${INVVAL_CLIENT_SECRET} 
+      REALM: ${INVVAL_REALM}
+      KEYCLOAK_URL: https://auth.${ROOT_HOST} 
+      BASE_URL: https://invval.${ROOT_HOST}
       TZ: Europe/Sofia
       VIRTUAL_HOST: invval.${ROOT_HOST}
       LETSENCRYPT_HOST: invval.${ROOT_HOST}
