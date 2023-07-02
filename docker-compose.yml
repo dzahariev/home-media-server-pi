@@ -260,6 +260,7 @@ services:
       VIRTUAL_PORT: 8080
     depends_on:
       - acme-companion
+      - keycloak
 
   # Postgres DB container
   postgresdb:
