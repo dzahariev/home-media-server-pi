@@ -242,6 +242,12 @@ services:
   # InvVal container
   invval:
     image: dzahariev/invval:2.0
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+        reservations:
+          memory: 200M
     container_name: invval
     restart: always
     hostname:
@@ -249,6 +255,7 @@ services:
     environment:
       PUID: 1000
       PGID: 1000
+      JAVA_OPTS: -Xms128M -Xmx200M
       CLIENT_ID: ${INVVAL_CLIENT_ID}
       CLIENT_SECRET: ${INVVAL_CLIENT_SECRET} 
       REALM: ${INVVAL_REALM}
