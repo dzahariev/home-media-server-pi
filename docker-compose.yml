@@ -130,7 +130,7 @@ services:
 
   # Transmission container
   transmission:
-    image: linuxserver/transmission:4.0.3-r3-ls183
+    image: linuxserver/transmission:4.0.3-r3-ls184
     container_name: transmission
     restart: always
     volumes:
@@ -198,7 +198,7 @@ services:
 
   # Calibre container
   calibre:
-    image: linuxserver/calibre:v6.22.0-ls226
+    image: linuxserver/calibre:v6.22.0-ls227
     container_name: calibre
     restart: always
     volumes:
@@ -220,7 +220,7 @@ services:
 
   # Metube container
   metube:
-    image: alexta69/metube:2023-06-27
+    image: alexta69/metube:2023-07-07
     container_name: metube
     restart: always
     hostname:
