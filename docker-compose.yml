@@ -58,7 +58,7 @@ services:
 
   # Node-Exporter container
   node-exporter:
-    image: prom/node-exporter:v1.6.0
+    image: prom/node-exporter:v1.6.1
     container_name: node-exporter
     restart: unless-stopped
     hostname: node-exporter
@@ -110,7 +110,7 @@ services:
 
   # Grafana container
   grafana:
-    image: grafana/grafana:10.0.1
+    image: grafana/grafana:10.0.2
     container_name: grafana
     restart: always
     volumes:
@@ -130,7 +130,7 @@ services:
 
   # Transmission container
   transmission:
-    image: linuxserver/transmission:4.0.3-r3-ls184
+    image: linuxserver/transmission:4.0.3-r3-ls186
     container_name: transmission
     restart: always
     volumes:
@@ -177,7 +177,7 @@ services:
 
   # Plex container
   plex:
-    image: linuxserver/plex:1.32.4.7195-7c8f9d3b6-ls175
+    image: linuxserver/plex:1.32.5.7328-2632c9d3a-ls176
     container_name: plex
     restart: always
     volumes:
@@ -198,7 +198,7 @@ services:
 
   # Calibre container
   calibre:
-    image: linuxserver/calibre:v6.22.0-ls227
+    image: linuxserver/calibre:v6.23.0-ls229
     container_name: calibre
     restart: always
     volumes:
@@ -220,7 +220,7 @@ services:
 
   # Metube container
   metube:
-    image: alexta69/metube:2023-07-07
+    image: alexta69/metube:2023-07-12
     container_name: metube
     restart: always
     hostname:
@@ -280,7 +280,7 @@ services:
 
   # Keycloak container
   keycloak:
-    image: keycloak/keycloak:21.1.2
+    image: keycloak/keycloak:22.0.1
     container_name: keycloak
     restart: always
     hostname: keycloak
