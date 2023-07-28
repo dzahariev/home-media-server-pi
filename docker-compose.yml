@@ -154,7 +154,7 @@ services:
 
   # Files Browser container
   files:
-    image: filebrowser/filebrowser:v2.24.0
+    image: filebrowser/filebrowser:v2.23.0
     container_name: files
     restart: always
     volumes:
