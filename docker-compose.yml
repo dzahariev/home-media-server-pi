@@ -76,7 +76,7 @@ services:
 
   # Prometheus container
   prometheus:
-    image: prom/prometheus:v2.45.0
+    image: prom/prometheus:v2.46.0
     container_name: prometheus
     restart: unless-stopped
     command:
@@ -110,7 +110,7 @@ services:
 
   # Grafana container
   grafana:
-    image: grafana/grafana:10.0.2
+    image: grafana/grafana:10.0.3
     container_name: grafana
     restart: always
     volumes:
@@ -130,7 +130,7 @@ services:
 
   # Transmission container
   transmission:
-    image: linuxserver/transmission:4.0.3-r3-ls186
+    image: linuxserver/transmission:4.0.3-r3-ls187
     container_name: transmission
     restart: always
     volumes:
@@ -154,7 +154,7 @@ services:
 
   # Files Browser container
   files:
-    image: filebrowser/filebrowser:v2.23.0
+    image: filebrowser/filebrowser:v2.24.0
     container_name: files
     restart: always
     volumes:
@@ -177,7 +177,7 @@ services:
 
   # Plex container
   plex:
-    image: linuxserver/plex:1.32.5.7328-2632c9d3a-ls176
+    image: linuxserver/plex:1.32.5.7349-8f4248874-ls177
     container_name: plex
     restart: always
     volumes:
@@ -198,7 +198,7 @@ services:
 
   # Calibre container
   calibre:
-    image: linuxserver/calibre:v6.23.0-ls229
+    image: linuxserver/calibre:v6.23.0-ls230
     container_name: calibre
     restart: always
     volumes:
@@ -220,7 +220,7 @@ services:
 
   # Metube container
   metube:
-    image: alexta69/metube:2023-07-12
+    image: alexta69/metube:2023-07-27
     container_name: metube
     restart: always
     hostname:
