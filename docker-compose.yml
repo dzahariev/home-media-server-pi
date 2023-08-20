@@ -97,7 +97,7 @@ services:
 
 # Root container
   nginx:
-    image: nginx:1.25.1
+    image: nginx:1.25.2
     container_name: nginx
     restart: always
     volumes:
@@ -130,7 +130,7 @@ services:
 
   # Transmission container
   transmission:
-    image: linuxserver/transmission:4.0.3-r6-ls191
+    image: linuxserver/transmission:4.0.3-r6-ls193
     container_name: transmission
     restart: always
     volumes:
@@ -177,7 +177,7 @@ services:
 
   # Plex container
   plex:
-    image: linuxserver/plex:1.32.5.7349-8f4248874-ls179
+    image: linuxserver/plex:1.32.5.7349-8f4248874-ls180
     container_name: plex
     restart: always
     volumes:
@@ -198,7 +198,7 @@ services:
 
   # Calibre container
   calibre:
-    image: linuxserver/calibre:v6.24.0-ls233
+    image: linuxserver/calibre:v6.25.0-ls234
     container_name: calibre
     restart: always
     volumes:
@@ -220,7 +220,7 @@ services:
 
   # Metube container
   metube:
-    image: alexta69/metube:2023-07-27
+    image: alexta69/metube:2023-08-19
     container_name: metube
     restart: always
     hostname:
@@ -264,7 +264,7 @@ services:
 
   # Postgres DB container
   postgresdb:
-    image: postgres:15.3-alpine3.18
+    image: postgres:15.4-alpine3.18
     container_name: postgresdb
     restart: always
     ports:
