@@ -31,6 +31,6 @@ echo "Checking if reboot is required ..."
 if [ -f /var/run/reboot-required ]; then
 	echo "Rebooting the host!"
 	sudo /sbin/reboot
-elif
+else
 	echo "Reboot is not required."
 fi
