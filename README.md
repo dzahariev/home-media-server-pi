@@ -49,9 +49,10 @@ docker-compose --env-file .env.pi down
 - postgres: [![GitHub release](https://img.shields.io/github/tag/postgres/postgres.svg)](https://hub.docker.com/_/postgres)
 - keycloak/keycloak: [![GitHub release](https://img.shields.io/github/tag/keycloak/keycloak.svg)](https://hub.docker.com/r/keycloak/keycloak)
 
-## RPi preparation
+## RPi preparation and maintenance
 
-Details on preparation of RPi are [here](doc/installation.md).
+Details on [preparation](doc/installation.md) and [maintenance](doc/maintenance.md).
+
 
 ## Acknowledgements
 
