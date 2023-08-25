@@ -239,29 +239,6 @@ services:
     depends_on:
       - acme-companion
 
-  # InvVal container
-  invval:
-    image: dzahariev/invval:2.0
-    container_name: invval
-    restart: always
-    hostname:
-      invval.${ROOT_HOST}
-    environment:
-      PUID: 1000
-      PGID: 1000
-      CLIENT_ID: ${INVVAL_CLIENT_ID}
-      CLIENT_SECRET: ${INVVAL_CLIENT_SECRET} 
-      REALM: ${INVVAL_REALM}
-      KEYCLOAK_URL: https://auth.${ROOT_HOST} 
-      BASE_URL: https://invval.${ROOT_HOST}
-      TZ: Europe/Sofia
-      VIRTUAL_HOST: invval.${ROOT_HOST}
-      LETSENCRYPT_HOST: invval.${ROOT_HOST}
-      VIRTUAL_PORT: 8080
-    depends_on:
-      - acme-companion
-      - keycloak
-
   # Postgres DB container
   postgresdb:
     image: postgres:15.4-alpine3.18
@@ -275,8 +252,6 @@ services:
       POSTGRES_DB: ${POSTGRES_DB_NAME}
       POSTGRES_USER: ${POSTGRES_DB_USER}
       POSTGRES_PASSWORD: ${POSTGRES_DB_PASSWORD}
-    depends_on:
-      - acme-companion
 
   # Keycloak container
   keycloak:
@@ -308,3 +283,25 @@ services:
     depends_on:
       - postgresdb
       - acme-companion
+
+  # InvVal container
+  invval:
+    image: dzahariev/invval:2.0
+    container_name: invval
+    restart: always
+    hostname:
+      invval.${ROOT_HOST}
+    environment:
+      PUID: 1000
+      PGID: 1000
+      CLIENT_ID: ${INVVAL_CLIENT_ID}
+      CLIENT_SECRET: ${INVVAL_CLIENT_SECRET} 
+      REALM: ${INVVAL_REALM}
+      KEYCLOAK_URL: https://auth.${ROOT_HOST} 
+      BASE_URL: https://invval.${ROOT_HOST}
+      TZ: Europe/Sofia
+      VIRTUAL_HOST: invval.${ROOT_HOST}
+      LETSENCRYPT_HOST: invval.${ROOT_HOST}
+      VIRTUAL_PORT: 8080
+    depends_on:
+      - keycloak
