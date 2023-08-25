@@ -280,6 +280,12 @@ services:
       LETSENCRYPT_HOST: auth.${ROOT_HOST}
       VIRTUAL_HOST: auth.${ROOT_HOST}
       VIRTUAL_PORT: 8080
+    healthcheck:
+      test: cat /proc/net/tcp | grep '00000000:1F90 00000000:0000' || exit 1
+      interval: 5s
+      timeout: 2s
+      retries: 20
+      start_period: 120s
     depends_on:
       - postgresdb
       - acme-companion
@@ -304,4 +310,5 @@ services:
       LETSENCRYPT_HOST: invval.${ROOT_HOST}
       VIRTUAL_PORT: 8080
     depends_on:
-      - keycloak
+      keycloak:
+        condition: service_healthy
