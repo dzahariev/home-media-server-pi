@@ -17,15 +17,15 @@ cd /home/ubuntu/home-media-server-pi
 git pull
 echo "Updates arefetched from GitHub!"
 
-echo "Cleanup images ..."
-cd /home/ubuntu/home-media-server-pi
-docker system prune -af
-echo "Images are cleared!"
-
 echo "Starts the containers ..."
 cd /home/ubuntu/home-media-server-pi
 docker-compose --env-file .env.pi up -d
 echo "Containers are started!"
+
+echo "Cleanup images ..."
+cd /home/ubuntu/home-media-server-pi
+docker system prune -af
+echo "Images are cleared!"
 
 echo "Checking if reboot is required ..."
 if [ -f /var/run/reboot-required ]; then
