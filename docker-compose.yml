@@ -130,7 +130,7 @@ services:
 
   # Transmission container
   transmission:
-    image: linuxserver/transmission:4.0.3-r6-ls193
+    image: linuxserver/transmission:4.0.4
     container_name: transmission
     restart: always
     volumes:
@@ -177,7 +177,7 @@ services:
 
   # Plex container
   plex:
-    image: linuxserver/plex:1.32.5.7349-8f4248874-ls180
+    image: linuxserver/plex:1.32.5
     container_name: plex
     restart: always
     volumes:
@@ -198,7 +198,7 @@ services:
 
   # Calibre container
   calibre:
-    image: linuxserver/calibre:v6.25.0-ls235
+    image: linuxserver/calibre:6.25.0
     container_name: calibre
     restart: always
     volumes:
