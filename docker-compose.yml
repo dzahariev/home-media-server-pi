@@ -2,7 +2,7 @@ version: '3'
 services:
   # Main proxy container
   nginx-proxy:
-    image: nginxproxy/nginx-proxy:1.3.1-alpine
+    image: nginxproxy/nginx-proxy:1.3.1-alpine@sha256:8e694857bec619de92f21163a4d15f41fa181cda48af48b4aca0bfd9542b3065
     container_name: nginx-proxy
     restart: always
     labels:
@@ -20,7 +20,7 @@ services:
 
   # Letsencrypt companion container
   acme-companion:
-    image: nginxproxy/acme-companion:2.2.8
+    image: nginxproxy/acme-companion:2.2.8@sha256:9438ede8e4b8a1b8798c4af4683a04df5fdc0ea0d619fcd38598e4b85f362d02
     container_name: acme-companion
     restart: always
     volumes:
@@ -37,7 +37,7 @@ services:
 
   # CAdvisor container
   cadvisor:
-    image: gcr.io/cadvisor/cadvisor:v0.47.2
+    image: gcr.io/cadvisor/cadvisor:v0.47.2@sha256:78cf73632de30193dc249923fdfdb1d43ee7cfccbf64662991de89ff7c4b1fda
     container_name: cadvisor
     restart: unless-stopped
     devices:
@@ -58,14 +58,14 @@ services:
 
   # Node-Exporter container
   node-exporter:
-    image: prom/node-exporter:v1.6.1
+    image: prom/node-exporter:v1.6.1@sha256:81f94e50ea37a88dfee849d0f4acad25b96b397061f59e5095905f6bc5829637
     container_name: node-exporter
     restart: unless-stopped
     hostname: node-exporter
 
   # BlackBox exporter container
   blackbox-exporter:
-    image: prom/blackbox-exporter:v0.24.0
+    image: prom/blackbox-exporter:v0.24.0@sha256:3af31f8bd1ad2907b4b0f7c485fde3de0a8ee0b498d42fc971f0698885c03acb
     container_name: blackbox-exporter
     restart: unless-stopped
     hostname: blackbox-exporter
@@ -76,7 +76,7 @@ services:
 
   # Prometheus container
   prometheus:
-    image: prom/prometheus:v2.46.0
+    image: prom/prometheus:v2.46.0@sha256:d6ead9daf2355b9923479e24d7e93f246253ee6a5eb18a61b0f607219f341a80
     container_name: prometheus
     restart: unless-stopped
     command:
@@ -97,7 +97,7 @@ services:
 
 # Root container
   nginx:
-    image: nginx:1.25.2
+    image: nginx:1.25.2@sha256:104c7c5c54f2685f0f46f3be607ce60da7085da3eaa5ad22d3d9f01594295e9c
     container_name: nginx
     restart: always
     volumes:
@@ -110,7 +110,7 @@ services:
 
   # Grafana container
   grafana:
-    image: grafana/grafana:10.1.1
+    image: grafana/grafana:10.1.1@sha256:d1dbafe040557e06ca76b374b089fc910bd620aef34b25e48f954a0266e291a0
     container_name: grafana
     restart: always
     volumes:
@@ -130,7 +130,7 @@ services:
 
   # Transmission container
   transmission:
-    image: linuxserver/transmission:4.0.4
+    image: linuxserver/transmission:4.0.4@sha256:417c3587d0bc9cd49651f9ba4afb893fb682af3d2774a5daf5c57b06d77cb362
     container_name: transmission
     restart: always
     volumes:
@@ -154,7 +154,7 @@ services:
 
   # Files Browser container
   files:
-    image: filebrowser/filebrowser:v2.24.2
+    image: filebrowser/filebrowser:v2.24.2@sha256:75c38ef43072e587f4da998c9b1454091805394472fb2a5f0f77b1d0965d40fc
     container_name: files
     restart: always
     volumes:
@@ -177,7 +177,7 @@ services:
 
   # Plex container
   plex:
-    image: linuxserver/plex:1.32.5
+    image: linuxserver/plex:1.32.5@sha256:8b09723cb6a9a29dd6cb9ece344ed4b2a31f225602061f5f868678eba03f047f
     container_name: plex
     restart: always
     volumes:
@@ -198,7 +198,7 @@ services:
 
   # Calibre container
   calibre:
-    image: linuxserver/calibre:6.25.0
+    image: linuxserver/calibre:6.25.0@sha256:97cc5e117ff4ddafacc052e07456a126031b5599ef2ae4bb260714d42fbb63a8
     container_name: calibre
     restart: always
     volumes:
@@ -220,7 +220,7 @@ services:
 
   # Metube container
   metube:
-    image: alexta69/metube:2023-08-19
+    image: alexta69/metube:2023-08-19@sha256:2d2fd00ab4641984da3bf9aa4340aa1bfaf349fe4e030f2e7beb9703272cc2a2
     container_name: metube
     restart: always
     hostname:
@@ -241,7 +241,7 @@ services:
 
   # Postgres DB container
   postgresdb:
-    image: postgres:15.4-alpine3.18
+    image: postgres:15.4-alpine3.18@sha256:8bc3c893342c766481df5fde58fab6f1a1115b94eb56778126163305243e9709
     container_name: postgresdb
     restart: always
     ports:
@@ -255,7 +255,7 @@ services:
 
   # Keycloak container
   keycloak:
-    image: keycloak/keycloak:22.0.1
+    image: keycloak/keycloak:22.0.1@sha256:89b37fa67c6d48b08637f5b6fb891785bd679e0bc15ee6c68eaab479c1cef7b1
     container_name: keycloak
     restart: always
     hostname: keycloak
@@ -292,7 +292,7 @@ services:
 
   # InvVal container
   invval:
-    image: dzahariev/invval:2.0
+    image: dzahariev/invval:2.0@sha256:984756d48e1d32e939a5b415b13cac012a6d1aa80c70fa8593d285c036892a89
     container_name: invval
     restart: always
     hostname:
