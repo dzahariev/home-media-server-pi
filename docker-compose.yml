@@ -97,7 +97,7 @@ services:
 
 # Root container
   nginx:
-    image: nginx:1.25.2@sha256:c00cdda84feae48249851c8c425b05fef9dcac7975bde40e3b72748554e98a65
+    image: nginx:1.25.2@sha256:6926dd802f40e5e7257fded83e0d8030039642e4e10c4a98a6478e9c6fe06153
     container_name: nginx
     restart: always
     volumes:
