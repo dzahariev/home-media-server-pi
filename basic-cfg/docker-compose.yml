@@ -1,7 +1,7 @@
 version: '3'
 services:
   nginx-proxy:
-    image: nginxproxy/nginx-proxy:alpine@sha256:d3c74bf9c4ac1d1ead7c2af3851447c26ccba12b9882e5208cd1962c26e61d55
+    image: nginxproxy/nginx-proxy:alpine@sha256:5f733f0430e0420f2d5962f98b939937906f70c45b5b1f85cc897aec7fd6d940
     container_name: nginx-proxy
     restart: always
     labels:
