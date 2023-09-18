@@ -2,7 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base",
-    "schedule:hourly",
+    "schedule:daily",
     "docker:enableMajor",
     "docker:pinDigests",
     ":dependencyDashboard"
