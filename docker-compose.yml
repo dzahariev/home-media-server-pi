@@ -257,7 +257,7 @@ services:
 
   # Keycloak container
   keycloak:
-    image: keycloak/keycloak:22.0.3@sha256:f00b8cd17decff83595da863daea9d0f853b3ab7fbf04e8820be3932eb81d2b2
+    image: keycloak/keycloak:22.0.4@sha256:20c2bd474f20a3f89b7c652b9c4e5a54701301beddcee7deb00ec88d73cbbab5
     container_name: keycloak
     restart: always
     hostname: keycloak
