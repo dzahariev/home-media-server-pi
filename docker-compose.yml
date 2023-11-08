@@ -130,7 +130,7 @@ services:
 
   # Transmission container
   transmission:
-    image: linuxserver/transmission:4.0.4@sha256:d468a04d9748c087c94533bc8e5545c068e4715b3e3b85b376ef48606bd17c20
+    image: linuxserver/transmission:4.0.4@sha256:44de76f50c31ef96130d2a78c407d58dd22fd475056e901714d4976fef82114a
     container_name: transmission
     restart: always
     volumes:
