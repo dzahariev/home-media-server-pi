@@ -200,7 +200,7 @@ services:
 
   # Calibre container
   calibre:
-    image: linuxserver/calibre:7.0.0@sha256:efe797e85d8e94f7b5f33e065ca1ac31f48041b8fdbf9e51406e4ae0952e8392
+    image: linuxserver/calibre:7.1.0@sha256:9e033d86144064ab0e32ebc149a665c5e8dfaf35c6246236e466365ee508719c
     container_name: calibre
     restart: always
     volumes:
