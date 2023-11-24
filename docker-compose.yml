@@ -294,7 +294,7 @@ services:
 
   # InvVal container
   invval:
-    image: dzahariev/invval:2.1@sha256:4b500957aa080617f06d9a9b8fd58991a8596155f8a95be9dc281a461b398f90
+    image: dzahariev/invval:2.1@sha256:cfca302c334590f8d729ffe843c8fa95d393b5d248f4d4df810b0179b0121eb0
     container_name: invval
     restart: always
     hostname:
