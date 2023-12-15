@@ -97,7 +97,7 @@ services:
 
 # Root container
   nginx:
-    image: nginx:1.25.3@sha256:10d1f5b58f74683ad34eb29287e07dab1e90f10af243f151bb50aa5dbb4d62ee
+    image: nginx:1.25.3-alpine
     container_name: nginx
     restart: always
     volumes:
@@ -222,7 +222,7 @@ services:
 
   # Metube container
   metube:
-    image: alexta69/metube:2023-08-19@sha256:2d2fd00ab4641984da3bf9aa4340aa1bfaf349fe4e030f2e7beb9703272cc2a2
+    image: alexta69/metube:2023-12-13
     container_name: metube
     restart: always
     hostname:
@@ -243,7 +243,7 @@ services:
 
   # Postgres DB container
   postgresdb:
-    image: postgres:15.5-alpine3.18@sha256:15e701af8b6e9fd649111c9c3c1c16b465b46566e2678da95d2cfaf4c4e99de1
+    image: postgres:15.5-alpine
     container_name: postgresdb
     restart: always
     ports:
