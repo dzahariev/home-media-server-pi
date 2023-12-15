@@ -241,19 +241,19 @@ services:
     depends_on:
       - acme-companion
 
-  # Postgres DB container
-  postgresdb:
+  # Postgres DB container for Keycloak
+  keycloakdb:
     image: postgres:15.5-alpine@sha256:986d149cfbbb0c818d18e351d3dba2d77ff6f54e045eff5e8dfdc7f82e143c77
-    container_name: postgresdb
+    container_name: keycloakdb
     restart: always
     ports:
       - 5432:5432
     volumes:
       - "${DATA_DIR}/postgresql:/var/lib/postgresql/data"
     environment: 
-      POSTGRES_DB: ${POSTGRES_DB_NAME}
-      POSTGRES_USER: ${POSTGRES_DB_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_DB_PASSWORD}
+      POSTGRES_DB: ${KEYCLOAK_DB_NAME}
+      POSTGRES_USER: ${KEYCLOAK_DB_USER}
+      POSTGRES_PASSWORD: ${KEYCLOAK_DB_PASSWORD}
 
   # Keycloak container
   keycloak:
@@ -262,14 +262,14 @@ services:
     restart: always
     hostname: keycloak
     links:
-      - postgresdb:postgresdb
+      - keycloakdb:keycloakdb
     command:
     - 'start'
     environment:
       KC_DB: postgres
-      KC_DB_URL: jdbc:postgresql://postgresdb/${POSTGRES_DB_NAME}
-      KC_DB_USERNAME: ${POSTGRES_DB_USER}
-      KC_DB_PASSWORD: ${POSTGRES_DB_PASSWORD}
+      KC_DB_URL: jdbc:postgresql://keycloakdb/${KEYCLOAK_DB_NAME}
+      KC_DB_USERNAME: ${KEYCLOAK_DB_USER}
+      KC_DB_PASSWORD: ${KEYCLOAK_DB_PASSWORD}
       KC_DB_SCHEMA: public
       KC_HOSTNAME: auth.${ROOT_HOST}
       KC_HOSTNAME_STRICT: false
@@ -289,7 +289,7 @@ services:
       retries: 20
       start_period: 120s
     depends_on:
-      - postgresdb
+      - keycloakdb
       - acme-companion
 
   # InvVal container
