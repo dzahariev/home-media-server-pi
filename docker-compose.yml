@@ -243,7 +243,7 @@ services:
 
   # Postgres DB container
   postgresdb:
-    image: postgres:15.5-alpine3.18@sha256:ae51b4f482d5eeea26afccd67c19d05dd091160cbdfc0f60409d069aeca3488d
+    image: postgres:15.5-alpine3.18@sha256:15e701af8b6e9fd649111c9c3c1c16b465b46566e2678da95d2cfaf4c4e99de1
     container_name: postgresdb
     restart: always
     ports:
