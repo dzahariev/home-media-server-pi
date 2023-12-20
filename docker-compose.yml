@@ -337,7 +337,7 @@ services:
       POSTGRES_PASSWORD: ${DOMO_DB_PASSWORD}
     command: ["-p", "${DOMO_DB_PORT}"]
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DOMO_DB_USER}"]
+      test: ["CMD-SHELL", "pg_isready -U ${DOMO_DB_USER} -p ${DOMO_DB_PORT}"]
       interval: 3s
       timeout: 1s
       retries: 10
