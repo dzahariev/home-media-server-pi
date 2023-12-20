@@ -97,7 +97,7 @@ services:
 
 # Root container
   nginx:
-    image: nginx:1.25.3-alpine@sha256:3923f8de8d2214b9490e68fd6ae63ea604deddd166df2755b788bef04848b9bc
+    image: nginx:alpine-slim
     container_name: nginx
     restart: always
     volumes:
@@ -243,17 +243,24 @@ services:
 
   # Postgres DB container for Keycloak
   keycloakdb:
-    image: postgres:15.5-alpine@sha256:e2a22801fcab638f9491039f8257e9f719ab02e8c78c6a6f2c0349505f92dc35
+    image: postgres:15-alpine
     container_name: keycloakdb
     restart: always
     ports:
       - 5432:5432
     volumes:
-      - "${DATA_DIR}/postgresql:/var/lib/postgresql/data"
+      - "${DATA_DIR}/keycloakdb:/var/lib/postgresql/data"
     environment: 
       POSTGRES_DB: ${KEYCLOAK_DB_NAME}
       POSTGRES_USER: ${KEYCLOAK_DB_USER}
       POSTGRES_PASSWORD: ${KEYCLOAK_DB_PASSWORD}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${KEYCLOAK_DB_USER}"]
+      interval: 3s
+      timeout: 1s
+      retries: 10
+    depends_on:
+      - acme-companion
 
   # Keycloak container
   keycloak:
@@ -289,8 +296,8 @@ services:
       retries: 20
       start_period: 120s
     depends_on:
-      - keycloakdb
-      - acme-companion
+      keycloakdb:
+          condition: service_healthy
 
   # InvVal container
   invval:
@@ -302,10 +309,10 @@ services:
     environment:
       PUID: 1000
       PGID: 1000
+      KEYCLOAK_URL: https://auth.${ROOT_HOST} 
+      REALM: ${INVVAL_REALM}
       CLIENT_ID: ${INVVAL_CLIENT_ID}
       CLIENT_SECRET: ${INVVAL_CLIENT_SECRET} 
-      REALM: ${INVVAL_REALM}
-      KEYCLOAK_URL: https://auth.${ROOT_HOST} 
       BASE_URL: https://invval.${ROOT_HOST}
       TZ: Europe/Sofia
       VIRTUAL_HOST: invval.${ROOT_HOST}
@@ -314,3 +321,87 @@ services:
     depends_on:
       keycloak:
         condition: service_healthy
+
+  # Postgres DB container for Domo
+  domodb:
+    image: postgres:15-alpine
+    container_name: domodb
+    restart: always
+    ports:
+      - ${DOMO_DB_PORT}:5432
+    volumes:
+      - "${DATA_DIR}/domodb:/var/lib/postgresql/data"
+    environment: 
+      POSTGRES_DB: ${DOMO_DB_NAME}
+      POSTGRES_USER: ${DOMO_DB_USER}
+      POSTGRES_PASSWORD: ${DOMO_DB_PASSWORD}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DOMO_DB_USER}"]
+      interval: 3s
+      timeout: 1s
+      retries: 10
+    depends_on:
+      - acme-companion
+
+  # DB migrations for Domo
+  domo-migrations:
+    image: dzahariev/domo-migrations:1.0
+    container_name: domo-migrations
+    restart: on-failure
+    environment:
+      - POSTGRES_HOST=domodb
+      - POSTGRES_PORT=${DOMO_DB_PORT}
+      - POSTGRES_DB=${DOMO_DB_NAME}
+      - POSTGRES_USER=${DOMO_DB_USER}
+      - POSTGRES_PASSWORD=${DOMO_DB_PASSWORD}
+      - POSTGRES_SSL=${DOMO_DB_SSL}
+    depends_on:
+      domodb:
+        condition: service_healthy
+    command: ["-database", "postgres://${DOMO_DB_USER}:${DOMO_DB_PASSWORD}@db:${DOMO_DB_PORT}/${DOMO_DB_NAME}?sslmode=${DOMO_DB_SSL}", "-path", "/db/migrations", "up"]
+
+  # Backend for Domo
+  domo-backend:
+    image: dzahariev/domo-backend:1.0
+    container_name: domo-backend
+    restart: always
+    hostname: domo-backend
+    environment:
+      - AUTH_URL=https://auth.${ROOT_HOST}
+      - AUTH_REALM=${DOMO_REALM}
+      - AUTH_CLIENT_ID=${DOMO_CLIENT_ID}
+      - AUTH_CLIENT_SECRET=${DOMO_CLIENT_SECRET}
+      - POSTGRES_HOST=domodb
+      - POSTGRES_PORT=${DOMO_DB_PORT}
+      - POSTGRES_DB=${DOMO_DB_NAME}
+      - POSTGRES_USER=${DOMO_DB_USER}
+      - POSTGRES_PASSWORD=${DOMO_DB_PASSWORD}
+      - POSTGRES_SSL=${DOMO_DB_SSL}
+    depends_on:
+      - keycloak
+      - domodb
+      - domo-migrations
+    command: ["/app/main"]
+
+  # Frontend for Domo
+  domo-frontend:
+    image: dzahariev/domo-frontend:1.0
+    hostname: domo-frontend
+    depends_on:
+      - domo-backend
+
+  # Gateway for Domo
+  domo-gateway:
+    image: nginx:alpine-slim
+    container_name: domo-gateway
+    hostname: domo-gateway
+    restart: always
+    volumes:
+      - ./domo-gateway/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    environment:
+      VIRTUAL_HOST: domo.${ROOT_HOST}
+      LETSENCRYPT_HOST: domo.${ROOT_HOST}
+      VIRTUAL_PORT: 8800
+    depends_on: 
+      - domo-backend
+      - domo-frontend
