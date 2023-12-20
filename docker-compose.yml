@@ -374,6 +374,8 @@ services:
     restart: always
     hostname: 
       domo-backend
+    dns:
+      - 8.8.8.8
     expose:
       - "8801" 
     environment:
