@@ -342,7 +342,8 @@ services:
       timeout: 1s
       retries: 10
     depends_on:
-      - acme-companion
+      keycloak:
+        condition: service_healthy
 
   # DB migrations for Domo
   domo-migrations:
@@ -379,7 +380,6 @@ services:
       - POSTGRES_PASSWORD=${DOMO_DB_PASSWORD}
       - POSTGRES_SSL=${DOMO_DB_SSL}
     depends_on:
-      - keycloak
       - domodb
       - domo-migrations
     command: ["/app/main"]
