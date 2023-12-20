@@ -40,9 +40,10 @@ services:
     image: gcr.io/cadvisor/cadvisor:v0.47.2@sha256:78cf73632de30193dc249923fdfdb1d43ee7cfccbf64662991de89ff7c4b1fda
     container_name: cadvisor
     restart: unless-stopped
+    hostname: 
+      cadvisor
     devices:
       - /dev/kmsg
-    hostname: cadvisor
     ipc: shareable
     privileged: true
     command:
@@ -61,14 +62,16 @@ services:
     image: prom/node-exporter:v1.7.0@sha256:4cb2b9019f1757be8482419002cb7afe028fdba35d47958829e4cfeaf6246d80
     container_name: node-exporter
     restart: unless-stopped
-    hostname: node-exporter
+    hostname: 
+      node-exporter
 
   # BlackBox exporter container
   blackbox-exporter:
     image: prom/blackbox-exporter:v0.24.0@sha256:3af31f8bd1ad2907b4b0f7c485fde3de0a8ee0b498d42fc971f0698885c03acb
     container_name: blackbox-exporter
     restart: unless-stopped
-    hostname: blackbox-exporter
+    hostname: 
+      blackbox-exporter
     command:
       - '--config.file=/config/blackbox.yml'
     volumes:
@@ -79,11 +82,12 @@ services:
     image: prom/prometheus:v2.48.1@sha256:a67e5e402ff5410b86ec48b39eab1a3c4df2a7e78a71bf025ec5e32e09090ad4
     container_name: prometheus
     restart: unless-stopped
+    hostname: 
+      prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
       - '--storage.tsdb.retention.time=30d'
-    hostname: prometheus
     volumes:
       - "./prometheus:/etc/prometheus"
       - "${DATA_DIR}/prometheus/data:/prometheus"
@@ -133,12 +137,12 @@ services:
     image: linuxserver/transmission:4.0.5@sha256:be4d06cca199ffc5ed0b615af0f0f6c203482b4a6b658e8b690cb648457184a1
     container_name: transmission
     restart: always
+    hostname:
+      transmission.${ROOT_HOST}
     volumes:
       - "${DATA_DIR}/transmission/data:/config"
       - "${PLEX_MEDIA_DIR}/downloads:/downloads"
       - "${PLEX_MEDIA_DIR}/watch:/watch"
-    hostname:
-      transmission.${ROOT_HOST}
     environment:
       PUID: 1000
       PGID: 1000
@@ -157,14 +161,14 @@ services:
     image: filebrowser/filebrowser:v2.26.0@sha256:7428a67e0265f1550e2421bdc554d35889921f5ba2285b829693053fb98aab8a
     container_name: files
     restart: always
+    hostname:
+      files.${ROOT_HOST}
     volumes:
       - "${DATA_DIR}/filebrowser/data/filebrowser.db:/database/filebrowser.db"
       - "${PLEX_MEDIA_DIR}:/srv"
     command:
       - '--database'
       - '/database/filebrowser.db'
-    hostname:
-      files.${ROOT_HOST}
     environment:
       PUID: 1000
       PGID: 1000
@@ -180,11 +184,11 @@ services:
     image: linuxserver/plex:1.32.8@sha256:5ab43028abef2cefe0159d520f5b2afdf475d75be782d3c6f4c5128a6405560e
     container_name: plex
     restart: always
+    hostname:
+      plex.${ROOT_HOST}
     volumes:
       - "${DATA_DIR}/plex:/config"
       - "${PLEX_MEDIA_DIR}:/media"
-    hostname:
-      plex.${ROOT_HOST}
     ports:
       - 32400:32400
     environment:
@@ -203,10 +207,10 @@ services:
     image: linuxserver/calibre:7.2.0@sha256:c5af242b4c6549a3c151f73c9b824f10779f65e7a09cab237873e901804a54b4
     container_name: calibre
     restart: always
-    volumes:
-      - "${DATA_DIR}/calibre:/config"
     hostname:
       calibre.${ROOT_HOST}
+    volumes:
+      - "${DATA_DIR}/calibre:/config"
     ports:
       - 8080:8080
     environment:
@@ -267,11 +271,12 @@ services:
     image: keycloak/keycloak:23.0.3@sha256:4f72a5b0c076755e806457d96404dd28dc1394013933d7170c154c26db9b6a16
     container_name: keycloak
     restart: always
-    hostname: keycloak
+    hostname: 
+      auth.${ROOT_HOST}
     links:
       - keycloakdb:keycloakdb
     command:
-    - 'start'
+      - 'start'
     environment:
       KC_DB: postgres
       KC_DB_URL: jdbc:postgresql://keycloakdb/${KEYCLOAK_DB_NAME}
@@ -367,7 +372,10 @@ services:
     image: dzahariev/domo-backend:1.0
     container_name: domo-backend
     restart: always
-    hostname: domo-backend
+    hostname: 
+      domo-backend
+    expose:
+      - "8801" 
     environment:
       - AUTH_URL=https://auth.${ROOT_HOST}
       - AUTH_REALM=${DOMO_REALM}
@@ -387,9 +395,12 @@ services:
   # Frontend for Domo
   domo-frontend:
     image: dzahariev/domo-frontend:1.0
-    hostname: domo-frontend
     container_name: domo-frontend
     restart: always
+    hostname: 
+      domo-frontend
+    expose:
+      - "8801" 
     depends_on:
       - domo-backend
 
@@ -397,7 +408,8 @@ services:
   domo-gateway:
     image: nginx:alpine-slim
     container_name: domo-gateway
-    hostname: domo-gateway
+    hostname: 
+      domo.${ROOT_HOST}
     restart: always
     volumes:
       - ./domo-gateway/nginx.conf:/etc/nginx/conf.d/default.conf:ro
