@@ -246,8 +246,8 @@ services:
     image: postgres:15-alpine
     container_name: keycloakdb
     restart: always
-    ports:
-      - 5432:5432
+    expose:
+      - "5432" 
     volumes:
       - "${DATA_DIR}/keycloakdb:/var/lib/postgresql/data"
     environment: 
@@ -327,14 +327,15 @@ services:
     image: postgres:15-alpine
     container_name: domodb
     restart: always
-    ports:
-      - ${DOMO_DB_PORT}:5432
+    expose:
+      - "${DOMO_DB_PORT}" 
     volumes:
       - "${DATA_DIR}/domodb:/var/lib/postgresql/data"
     environment: 
       POSTGRES_DB: ${DOMO_DB_NAME}
       POSTGRES_USER: ${DOMO_DB_USER}
       POSTGRES_PASSWORD: ${DOMO_DB_PASSWORD}
+    command: ["-p", "${DOMO_DB_PORT}"]
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${DOMO_DB_USER}"]
       interval: 3s
