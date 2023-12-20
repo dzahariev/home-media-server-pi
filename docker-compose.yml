@@ -294,7 +294,7 @@ services:
       interval: 5s
       timeout: 2s
       retries: 20
-      start_period: 120s
+      start_period: 180s
     depends_on:
       keycloakdb:
           condition: service_healthy
@@ -388,6 +388,8 @@ services:
   domo-frontend:
     image: dzahariev/domo-frontend:1.0
     hostname: domo-frontend
+    container_name: domo-frontend
+    restart: always
     depends_on:
       - domo-backend
 
