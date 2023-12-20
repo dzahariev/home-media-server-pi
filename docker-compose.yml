@@ -400,7 +400,7 @@ services:
     hostname: 
       domo-frontend
     expose:
-      - "8801" 
+      - "8802" 
     depends_on:
       - domo-backend
 
