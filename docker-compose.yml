@@ -271,8 +271,6 @@ services:
     image: keycloak/keycloak:23.0.3@sha256:4f72a5b0c076755e806457d96404dd28dc1394013933d7170c154c26db9b6a16
     container_name: keycloak
     restart: always
-    hostname: 
-      auth.${ROOT_HOST}
     links:
       - keycloakdb:keycloakdb
     command:
@@ -374,8 +372,6 @@ services:
     restart: always
     hostname: 
       domo-backend
-    dns:
-      - 8.8.8.8
     expose:
       - "8801" 
     environment:
