@@ -363,7 +363,7 @@ services:
     depends_on:
       domodb:
         condition: service_healthy
-    command: ["-database", "postgres://${DOMO_DB_USER}:${DOMO_DB_PASSWORD}@db:${DOMO_DB_PORT}/${DOMO_DB_NAME}?sslmode=${DOMO_DB_SSL}", "-path", "/db/migrations", "up"]
+    command: ["-database", "postgres://${DOMO_DB_USER}:${DOMO_DB_PASSWORD}@domodb:${DOMO_DB_PORT}/${DOMO_DB_NAME}?sslmode=${DOMO_DB_SSL}", "-path", "/db/migrations", "up"]
 
   # Backend for Domo
   domo-backend:
