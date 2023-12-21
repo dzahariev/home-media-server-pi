@@ -350,7 +350,7 @@ services:
 
   # DB migrations for Domo
   domo-migrations:
-    image: dzahariev/domo-migrations:1.0.1
+    image: dzahariev/domo-migrations:1.0.1@sha256:e7f40d83809ced2c2e714f732c3ef31fcbd3adbd9aa45d1b4b15f2e0640c2c1c
     container_name: domo-migrations
     restart: on-failure
     environment:
@@ -367,7 +367,7 @@ services:
 
   # Backend for Domo
   domo-backend:
-    image: dzahariev/domo-backend:1.0.1
+    image: dzahariev/domo-backend:1.0.1@sha256:69aa72cace3e7f23e321abfc867877ab6b510ab65f57c110794465cb1820c189
     container_name: domo-backend
     restart: always
     hostname: 
@@ -392,7 +392,7 @@ services:
 
   # Frontend for Domo
   domo-frontend:
-    image: dzahariev/domo-frontend:1.0.1
+    image: dzahariev/domo-frontend:1.0.1@sha256:725ea8eea1671fbcd638d69212f6b639ba74274c71b50f6452d7b51b8cfa03aa
     container_name: domo-frontend
     restart: always
     hostname: 
