@@ -350,7 +350,7 @@ services:
 
   # DB migrations for Domo
   domo-migrations:
-    image: dzahariev/domo-migrations:1.0.1@sha256:e7f40d83809ced2c2e714f732c3ef31fcbd3adbd9aa45d1b4b15f2e0640c2c1c
+    image: dzahariev/domo-migrations:1.0.3
     container_name: domo-migrations
     restart: on-failure
     environment:
@@ -367,7 +367,7 @@ services:
 
   # Backend for Domo
   domo-backend:
-    image: dzahariev/domo-backend:1.0.1@sha256:69aa72cace3e7f23e321abfc867877ab6b510ab65f57c110794465cb1820c189
+    image: dzahariev/domo-backend:1.0.3
     container_name: domo-backend
     restart: always
     hostname: 
@@ -385,6 +385,8 @@ services:
       - POSTGRES_USER=${DOMO_DB_USER}
       - POSTGRES_PASSWORD=${DOMO_DB_PASSWORD}
       - POSTGRES_SSL=${DOMO_DB_SSL}
+      - API_PORT=8801
+      - API_PATH=/
     depends_on:
       - domodb
       - domo-migrations
@@ -392,13 +394,15 @@ services:
 
   # Frontend for Domo
   domo-frontend:
-    image: dzahariev/domo-frontend:1.0.2@sha256:b6b9335fce554a815b1e46ab5acdb6cfd778beb113ffbd190fff69511ca5bb7f
+    image: dzahariev/domo-frontend:1.0.3
     container_name: domo-frontend
     restart: always
     hostname: 
       domo-frontend
     expose:
       - "8802" 
+    volumes:
+      - ./domo/keycloak/keycloak.json:/usr/share/nginx/html/libs/keycloak-cfg/keycloak.json:ro
     depends_on:
       - domo-backend
 
@@ -410,7 +414,7 @@ services:
       domo.${ROOT_HOST}
     restart: always
     volumes:
-      - ./domo-gateway/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./domo/gateway/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     environment:
       VIRTUAL_HOST: domo.${ROOT_HOST}
       LETSENCRYPT_HOST: domo.${ROOT_HOST}

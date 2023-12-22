@@ -1,0 +1,8 @@
+{
+  "realm": "domo",
+  "auth-server-url": "https://auth.zahariev.com/",
+  "ssl-required": "external",
+  "resource": "domo-frontend-client",
+  "public-client": true,
+  "confidential-port": 0
+}
