@@ -350,7 +350,7 @@ services:
 
   # DB migrations for Domo
   domo-migrations:
-    image: dzahariev/domo-migrations:1.0.3
+    image: dzahariev/domo-migrations:1.0.3@sha256:20a81d8af949344c31d0598b6878cd5da7d1776a8391793057618a889712e3fc
     container_name: domo-migrations
     restart: on-failure
     environment:
