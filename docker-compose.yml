@@ -394,7 +394,7 @@ services:
 
   # Frontend for Domo
   domo-frontend:
-    image: dzahariev/domo-frontend:1.0.3@sha256:3461f471cd226fe9415685a693e1788a62c1f2e114a5ddfef286bf7b696b48e4
+    image: dzahariev/domo-frontend:1.0.4@sha256:5c14046fc8ccdc8d8d97e394c159ad76b3896a7011a364a0c7333344cecac18f
     container_name: domo-frontend
     restart: always
     hostname: 
