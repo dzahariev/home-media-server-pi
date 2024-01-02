@@ -367,7 +367,7 @@ services:
 
   # Backend for Domo
   domo-backend:
-    image: dzahariev/domo-backend:1.0.3@sha256:0977427d4a1a4f7689f2c8e13ae9d390a19f1a346cbdf176a14f8f651d137fa9
+    image: dzahariev/domo-backend:1.0.4@sha256:acfefd31c65bbdeed53bcefcf4f8dcc1d62d5d4db2081c6c81695dcba49495c4
     container_name: domo-backend
     restart: always
     hostname: 
