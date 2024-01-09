@@ -17,6 +17,7 @@ Include setup of:
 - Plex (on plex subdomain)
 - Calibre (on calibre subdomain)
 - MeTube (on metube subdomain)
+- FreshRSS (on freshrss subdomain)
 - PostgeSQL (not exposed, used through internal network)
 - Keycloak (on auth subdomain)
 ## Prepare
@@ -46,6 +47,7 @@ docker-compose --env-file .env.pi down
 - linuxserver/plex: [![GitHub release](https://img.shields.io/github/tag/linuxserver/docker-plex.svg)](https://hub.docker.com/r/linuxserver/plex)
 - linuxserver/calibre: [![GitHub release](https://img.shields.io/github/tag/linuxserver/docker-calibre.svg)](https://hub.docker.com/r/linuxserver/calibre)
 - alexta69/metube: [![GitHub release](https://img.shields.io/github/tag/alexta69/metube.svg)](https://hub.docker.com/r/alexta69/metube)
+- linuxserver/freshrss: [![GitHub release](https://img.shields.io/github/tag/linuxserver/freshrss.svg)](https://hub.docker.com/r/linuxserver/freshrss)
 - postgres: [![GitHub release](https://img.shields.io/github/tag/postgres/postgres.svg)](https://hub.docker.com/_/postgres)
 - keycloak/keycloak: [![GitHub release](https://img.shields.io/github/tag/keycloak/keycloak.svg)](https://hub.docker.com/r/keycloak/keycloak)
 
