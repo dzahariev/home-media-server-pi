@@ -79,7 +79,7 @@ services:
 
   # Prometheus container
   prometheus:
-    image: prom/prometheus:v2.48.1@sha256:a67e5e402ff5410b86ec48b39eab1a3c4df2a7e78a71bf025ec5e32e09090ad4
+    image: prom/prometheus:v2.49.1@sha256:beb5e30ffba08d9ae8a7961b9a2145fc8af6296ff2a4f463df7cd722fcbfc789
     container_name: prometheus
     restart: unless-stopped
     hostname: 
