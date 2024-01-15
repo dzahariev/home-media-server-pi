@@ -17,7 +17,7 @@ services:
       - ./nginx.conf:/etc/nginx/proxy.conf
 
   acme-companion:
-    image: nginxproxy/acme-companion:2.2@sha256:f859e316df787d6e0e3d37edd42d5caf9e3a3cd2dea3e3f665e2cf98d9b3a122
+    image: nginxproxy/acme-companion:2.2@sha256:3f4f7339fa4606aa5ff1f9122bb5f6c8b673c738c60d3721a7526f25671bc873
     container_name: acme-companion
     restart: always
     volumes:
