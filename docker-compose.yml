@@ -68,15 +68,13 @@ services:
     command:
       - --path.procfs=/host/proc
       - --path.sysfs=/host/sys
-      - --path.media=/host/media
       - --path.rootfs=/host
       - --collector.filesystem.ignored-mount-points
-      - ^/(sys|proc|dev|host|etc|media|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)
+      - ^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
       - /:/rootfs:ro
-      - /media/ubuntu/HDD/Media:/host/media:ro
       - /:/host:ro,rslave
 
   # BlackBox exporter container
