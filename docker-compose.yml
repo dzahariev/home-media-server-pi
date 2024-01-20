@@ -46,9 +46,8 @@ services:
       - /dev/kmsg
     ipc: shareable
     privileged: true
-    command:
-      - '-housekeeping_interval=20s'
-      - '-disable_metrics=percpu,sched,accelerator,hugetlb,referenced_memory,cpu_topology,resctrl'
+#    command:
+#      - '-housekeeping_interval=20s'
     security_opt:
       - label=disable
     volumes:
