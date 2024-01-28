@@ -113,7 +113,7 @@ services:
 
 # Root container
   nginx:
-    image: nginx:alpine-slim@sha256:d50b0d87b5d34da5649e3acfc969011b2012ab9be62b70f8fb97c4d6467a317a
+    image: nginx:alpine-slim@sha256:214ed28d16910edb5e4a5188d256209fd14fd4aca9d5356ba92e52d7bcf296ce
     container_name: nginx
     restart: always
     volumes:
@@ -439,7 +439,7 @@ services:
 
   # Gateway for Domo
   domo-gateway:
-    image: nginx:alpine-slim@sha256:d50b0d87b5d34da5649e3acfc969011b2012ab9be62b70f8fb97c4d6467a317a
+    image: nginx:alpine-slim@sha256:214ed28d16910edb5e4a5188d256209fd14fd4aca9d5356ba92e52d7bcf296ce
     container_name: domo-gateway
     hostname: 
       domo.${ROOT_HOST}
