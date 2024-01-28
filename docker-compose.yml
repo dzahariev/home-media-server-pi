@@ -48,6 +48,7 @@ services:
     privileged: true
     command:
       - '-housekeeping_interval=20s'
+      - '-docker_only=true'
     security_opt:
       - label=disable
     volumes:
