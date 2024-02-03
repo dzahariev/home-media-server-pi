@@ -300,7 +300,7 @@ services:
 
   # Keycloak container
   keycloak:
-    image: keycloak/keycloak:23.0.5@sha256:8772ab5e763f3374b7bb70bce4a96ad384b39c548c40007113538e103ee8a8f2
+    image: keycloak/keycloak:23.0.6@sha256:14e21c6f73e61adb75d268e85028485b3f92beae7c1278213ba12868f3e54599
     container_name: keycloak
     restart: always
     links:
