@@ -6,13 +6,5 @@
     "docker:enableMajor",
     "docker:pinDigests",
     ":dependencyDashboard"
-  ],
-  "packageRules": [
-    {
-      "automerge": true,
-      "matchUpdateTypes": [
-        "digest"
-      ]
-    }
   ]
 }
