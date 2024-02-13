@@ -7,8 +7,6 @@
     "docker:pinDigests",
     ":dependencyDashboard"
   ],
-  "automergeType": "pr",
-  "prCreation": "immediate",
   "packageRules": [
     {
       "automerge": true,
