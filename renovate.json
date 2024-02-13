@@ -6,5 +6,16 @@
     "docker:enableMajor",
     "docker:pinDigests",
     ":dependencyDashboard"
+  ],
+  "assignees": ["dzahariev"],
+  "automergeType": "pr",
+  "prCreation": "immediate",
+  "packageRules": [
+    {
+      "automerge": true,
+      "matchUpdateTypes": [
+        "digest"
+      ]
+    }
   ]
 }
