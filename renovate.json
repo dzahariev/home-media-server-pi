@@ -5,14 +5,7 @@
     "schedule:daily",
     "docker:enableMajor",
     "docker:pinDigests",
+    "default:automergeDigest",
     ":dependencyDashboard"
-  ],
-  "packageRules": [
-    {
-      "automerge": true,
-      "matchUpdateTypes": [
-        "digest"
-      ]
-    }
   ]
 }
