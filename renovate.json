@@ -10,5 +10,6 @@
   ],
   "automergeType": "pr",
   "prCreation": "immediate",
+  "prHourlyLimit": 0,
   "ignoreTests": true
 }
