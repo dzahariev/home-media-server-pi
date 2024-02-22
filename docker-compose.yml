@@ -217,7 +217,7 @@ services:
 
   # Calibre container
   calibre:
-    image: linuxserver/calibre:7.5.1@sha256:96966f0dfdf5cc38ff80b0a145a3d1629f93bf0a52370ed10b0f248a1df7eed7
+    image: linuxserver/calibre:7.5.1@sha256:7c98c0a2c7ba1aba16d2f3f4aa9fd2a67798567d42db24a27f255df22356ea2b
     container_name: calibre
     restart: always
     hostname:
