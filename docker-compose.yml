@@ -325,7 +325,7 @@ services:
       VIRTUAL_HOST: auth.${ROOT_HOST}
       VIRTUAL_PORT: 8080
     healthcheck:
-      test: cat /proc/net/tcp | grep '00000000:1F90 00000000:0000' || exit 1
+      test: cat /proc/net/tcp6 | grep '00000000000000000000000000000000:1F90 00000000000000000000000000000000:0000' || exit 1
       interval: 5s
       timeout: 2s
       retries: 20
