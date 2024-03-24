@@ -329,7 +329,7 @@ services:
       interval: 5s
       timeout: 2s
       retries: 20
-      start_period: 180s
+      start_period: 300s
     depends_on:
       keycloakdb:
           condition: service_healthy
