@@ -239,7 +239,7 @@ services:
 
   # Metube container
   metube:
-    image: alexta69/metube:2024-03-11
+    image: alexta69/metube:2024-03-11@sha256:7482342eefcaca41e018e67cc232202dd56ca9143f7990947ffca6942b80148f
     container_name: metube
     restart: always
     hostname:
