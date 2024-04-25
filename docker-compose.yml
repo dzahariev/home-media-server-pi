@@ -192,6 +192,16 @@ services:
     depends_on:
       - acme-companion
 
+  # Handbrake container
+  handbrake:
+    image: dzahariev/handbrake:1.0
+    container_name: handbrake
+    restart: always
+    volumes:
+      - "${PLEX_MEDIA_DIR}/handbrake/watch:/watch"
+      - "${PLEX_MEDIA_DIR}/handbrake/process:/process"
+      - "${PLEX_MEDIA_DIR}/handbrake/output:/output"
+
   # Plex container
   plex:
     image: linuxserver/plex:1.40.0@sha256:b3ae4c0c18e9bc358191665f9f1a97089b05177241062b37e9b336708dde7b4c
