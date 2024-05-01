@@ -147,7 +147,7 @@ services:
 
   # Transmission container
   transmission:
-    image: linuxserver/transmission:4.0.5@sha256:7bb29d9480a36e5260338eeb221ad0dace3b3d148b334c51189d96c9ff144382
+    image: linuxserver/transmission:4.0.5@sha256:0eab4b54c1cfd9ba4501d69020b7b4596ee1462b92fe743bbacadec1ef688a3b
     container_name: transmission
     restart: always
     hostname:
