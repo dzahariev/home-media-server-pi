@@ -270,7 +270,7 @@ services:
 
   # FreshRSS container
   freshrss:
-    image: linuxserver/freshrss:1.23.1@sha256:5be640f755938d7887922baf7a11263ce64a7563c536f315a2208b04c40ef5a6
+    image: linuxserver/freshrss:1.23.1@sha256:bf0e8c7755c2d92325a407c57c568eebb7dfb0731074539bc4b1594aecfbeda9
     container_name: freshrss
     restart: always
     hostname:
