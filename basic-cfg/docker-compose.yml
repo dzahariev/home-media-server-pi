@@ -33,7 +33,7 @@ services:
       - nginx-proxy
 
   grafana:
-    image: nginxdemos/hello@sha256:f7b5dd5cb1a960574172c1d4c2d8d1aad2c6a3936f7ea8f74c94db491640138f
+    image: nginxdemos/hello@sha256:fbe8f6b98ea32332086837ff65dc91898484b63edcdfcadd34bc42f16fb8b246
     container_name: grafana
     restart: always
     environment: 
