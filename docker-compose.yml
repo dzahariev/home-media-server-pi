@@ -289,7 +289,7 @@ services:
 
   # Postgres DB container for Keycloak
   keycloakdb:
-    image: postgres:15-alpine@sha256:6c2118c2e7c6ad2f627f626bd18fc9b5b7b417f680a7a77a81ded84b6aeff154
+    image: postgres:15-alpine@sha256:e1edb696a27ee0c449c29504456c9a8c57b0ed0c9b38ecd3f33342e8f1ca60be
     container_name: keycloakdb
     restart: always
     expose:
@@ -369,7 +369,7 @@ services:
 
   # Postgres DB container for Domo
   domodb:
-    image: postgres:15-alpine@sha256:6c2118c2e7c6ad2f627f626bd18fc9b5b7b417f680a7a77a81ded84b6aeff154
+    image: postgres:15-alpine@sha256:e1edb696a27ee0c449c29504456c9a8c57b0ed0c9b38ecd3f33342e8f1ca60be
     container_name: domodb
     restart: always
     expose:
