@@ -1,0 +1,8 @@
+{
+  "realm": "taskboard",
+  "auth-server-url": "https://auth.zahariev.com/",
+  "ssl-required": "external",
+  "resource": "taskboard-frontend-client",
+  "public-client": true,
+  "confidential-port": 0
+}
