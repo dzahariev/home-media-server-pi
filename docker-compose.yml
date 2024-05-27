@@ -407,64 +407,6 @@ services:
         condition: service_healthy
     command: ["-database", "postgres://${DOMO_DB_USER}:${DOMO_DB_PASSWORD}@domodb:${DOMO_DB_PORT}/${DOMO_DB_NAME}?sslmode=${DOMO_DB_SSL}", "-path", "/db/migrations", "up"]
 
-  # Backend for Domo
-  domo-backend:
-    image: dzahariev/domo-backend:1.0.4@sha256:acfefd31c65bbdeed53bcefcf4f8dcc1d62d5d4db2081c6c81695dcba49495c4
-    container_name: domo-backend
-    restart: always
-    hostname: 
-      domo-backend
-    expose:
-      - "8801" 
-    environment:
-      AUTH_URL: https://auth.${ROOT_HOST}
-      AUTH_REALM: ${DOMO_REALM}
-      AUTH_CLIENT_ID: ${DOMO_CLIENT_ID}
-      AUTH_CLIENT_SECRET: ${DOMO_CLIENT_SECRET}
-      POSTGRES_HOST: domodb
-      POSTGRES_PORT: ${DOMO_DB_PORT}
-      POSTGRES_DB: ${DOMO_DB_NAME}
-      POSTGRES_USER: ${DOMO_DB_USER}
-      POSTGRES_PASSWORD: ${DOMO_DB_PASSWORD}
-      POSTGRES_SSL: ${DOMO_DB_SSL}
-      API_PORT: 8801
-      API_PATH: /
-    depends_on:
-      - domodb
-      - domo-migrations
-    command: ["/app/main"]
-
-  # Frontend for Domo
-  domo-frontend:
-    image: dzahariev/domo-frontend:1.0.4@sha256:5c14046fc8ccdc8d8d97e394c159ad76b3896a7011a364a0c7333344cecac18f
-    container_name: domo-frontend
-    restart: always
-    hostname: 
-      domo-frontend
-    expose:
-      - "8802" 
-    volumes:
-      - ./domo/keycloak/keycloak.json:/usr/share/nginx/html/libs/keycloak-cfg/keycloak.json:ro
-    depends_on:
-      - domo-backend
-
-  # Gateway for Domo
-  domo-gateway:
-    image: nginx:alpine-slim@sha256:22414422d1ba07234d9b784f6453b4f150c0fa573ad0b62e163da12b68488ae1
-    container_name: domo-gateway
-    hostname: 
-      domo.${ROOT_HOST}
-    restart: always
-    volumes:
-      - ./domo/gateway/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-    environment:
-      VIRTUAL_HOST: domo.${ROOT_HOST}
-      LETSENCRYPT_HOST: domo.${ROOT_HOST}
-      VIRTUAL_PORT: 8800
-    depends_on: 
-      - domo-backend
-      - domo-frontend
-
   # TaskBoard Browser container
   taskboard:
     image: dzahariev/taskboard:1.1
@@ -472,6 +414,8 @@ services:
     restart: always
     hostname:
       taskboard.${ROOT_HOST}
+    expose:
+      - "8800" 
     volumes:
       - "${PLEX_MEDIA_DIR}/tasks:/tasks"
       - ./taskboard/keycloak/keycloak.json:/public/libs/keycloak-cfg/keycloak.json:ro
