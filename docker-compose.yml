@@ -1,4 +1,3 @@
-version: '3'
 services:
   # Main proxy container
   nginx-proxy:
@@ -392,7 +391,7 @@ services:
 
   # DB migrations for Domo
   domo-migrations:
-    image: dzahariev/domo-migrations:1.0.4@sha256:8225e8ec7c762f6c1d904d3482f1316107cb3f711cc404296658f1495316f4e2
+    image: dzahariev/domo-migrations:1.2.0
     container_name: domo-migrations
     restart: on-failure
     environment:
@@ -407,9 +406,36 @@ services:
         condition: service_healthy
     command: ["-database", "postgres://${DOMO_DB_USER}:${DOMO_DB_PASSWORD}@domodb:${DOMO_DB_PORT}/${DOMO_DB_NAME}?sslmode=${DOMO_DB_SSL}", "-path", "/db/migrations", "up"]
 
-  # TaskBoard Browser container
+  # Domo container
+  domo:
+    image: dzahariev/domo:1.2.0
+    container_name: domo
+    restart: always
+    hostname:
+      domo.${ROOT_HOST}
+    volumes:
+      - ./domo/keycloak/keycloak.json:/public/libs/keycloak-cfg/keycloak.json:ro
+    environment:
+      AUTH_URL: https://auth.${ROOT_HOST}
+      AUTH_REALM: ${DOMO_REALM}
+      AUTH_CLIENT_ID: ${DOMO_CLIENT_ID}
+      AUTH_CLIENT_SECRET: ${DOMO_CLIENT_SECRET}
+      POSTGRES_HOST: domodb
+      POSTGRES_PORT: ${DOMO_DB_PORT}
+      POSTGRES_DB: ${DOMO_DB_NAME}
+      POSTGRES_USER: ${DOMO_DB_USER}
+      POSTGRES_PASSWORD: ${DOMO_DB_PASSWORD}
+      POSTGRES_SSL: ${DOMO_DB_SSL}
+      API_PATH: /api/
+      VIRTUAL_HOST: domo.${ROOT_HOST}
+      LETSENCRYPT_HOST: domo.${ROOT_HOST}
+      VIRTUAL_PORT: 8800
+    depends_on:
+      - domo-migrations
+
+  # TaskBoard container
   taskboard:
-    image: dzahariev/taskboard:1.4
+    image: dzahariev/taskboard:1.5
     container_name: taskboard
     restart: always
     hostname:
