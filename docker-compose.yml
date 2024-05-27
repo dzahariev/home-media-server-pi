@@ -409,7 +409,7 @@ services:
 
   # TaskBoard Browser container
   taskboard:
-    image: dzahariev/taskboard:1.1
+    image: dzahariev/taskboard:1.2
     container_name: taskboard
     restart: always
     hostname:
