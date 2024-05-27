@@ -409,7 +409,7 @@ services:
 
   # TaskBoard Browser container
   taskboard:
-    image: dzahariev/taskboard:1.3
+    image: dzahariev/taskboard:1.4
     container_name: taskboard
     restart: always
     hostname:
@@ -422,7 +422,6 @@ services:
       AUTH_REALM: ${TASKBOARD_REALM}
       AUTH_CLIENT_ID: ${TASKBOARD_CLIENT_ID}
       AUTH_CLIENT_SECRET: ${TASKBOARD_CLIENT_SECRET}
-      API_PORT: 8800
       API_PATH: /api/
       VIRTUAL_HOST: taskboard.${ROOT_HOST}
       LETSENCRYPT_HOST: taskboard.${ROOT_HOST}
