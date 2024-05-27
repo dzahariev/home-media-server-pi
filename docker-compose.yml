@@ -391,7 +391,7 @@ services:
 
   # DB migrations for Domo
   domo-migrations:
-    image: dzahariev/domo-migrations:1.2.0
+    image: dzahariev/domo-migrations:1.2.0@sha256:b6de9ee657946d36fbb06049f61de87a656a9d76ae1fbf2c36e02f9946a9f72c
     container_name: domo-migrations
     restart: on-failure
     environment:
@@ -408,7 +408,7 @@ services:
 
   # Domo container
   domo:
-    image: dzahariev/domo:1.2.0
+    image: dzahariev/domo:1.2.0@sha256:6e3b4875405e1647913472f2c5eeae1be811c9d1d1f2f757d260f1882e0c6379
     container_name: domo
     restart: always
     hostname:
@@ -435,7 +435,7 @@ services:
 
   # TaskBoard container
   taskboard:
-    image: dzahariev/taskboard:1.5
+    image: dzahariev/taskboard:1.5@sha256:657a2bc6927cbb36c55ad376eaf3bd2ccf8c36be16e0aa6c9d182ea2be73e78e
     container_name: taskboard
     restart: always
     hostname:
