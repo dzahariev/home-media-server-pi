@@ -396,12 +396,12 @@ services:
     container_name: domo-migrations
     restart: on-failure
     environment:
-      POSTGRES_HOST: domodb
-      POSTGRES_PORT: ${DOMO_DB_PORT}
-      POSTGRES_DB: ${DOMO_DB_NAME}
-      POSTGRES_USER: ${DOMO_DB_USER}
-      POSTGRES_PASSWORD: ${DOMO_DB_PASSWORD}
-      POSTGRES_SSL: ${DOMO_DB_SSL}
+      - POSTGRES_HOST=domodb
+      - POSTGRES_PORT=${DOMO_DB_PORT}
+      - POSTGRES_DB=${DOMO_DB_NAME}
+      - POSTGRES_USER=${DOMO_DB_USER}
+      - POSTGRES_PASSWORD=${DOMO_DB_PASSWORD}
+      - POSTGRES_SSL=${DOMO_DB_SSL}
     depends_on:
       domodb:
         condition: service_healthy
@@ -414,22 +414,20 @@ services:
     restart: always
     hostname:
       taskboard.${ROOT_HOST}
-    expose:
-      - "8800" 
     volumes:
       - "${PLEX_MEDIA_DIR}/tasks:/tasks"
       - ./taskboard/keycloak/keycloak.json:/public/libs/keycloak-cfg/keycloak.json:ro
     command: ["/main"]
     environment:
-      AUTH_URL: https://auth.${ROOT_HOST}
-      AUTH_REALM: ${TASKBOARD_REALM}
-      AUTH_CLIENT_ID: ${TASKBOARD_CLIENT_ID}
-      AUTH_CLIENT_SECRET: ${TASKBOARD_CLIENT_SECRET}      
-      API_PORT: 8800
-      API_PATH: /api/
-      VIRTUAL_HOST: taskboard.${ROOT_HOST}
-      LETSENCRYPT_HOST: taskboard.${ROOT_HOST}
-      VIRTUAL_PORT: 8800
+      - AUTH_URL=https://auth.${ROOT_HOST}
+      - AUTH_REALM=${TASKBOARD_REALM}
+      - AUTH_CLIENT_ID=${TASKBOARD_CLIENT_ID}
+      - AUTH_CLIENT_SECRET=${TASKBOARD_CLIENT_SECRET}
+      - API_PORT=8800
+      - API_PATH=/api/
+      - VIRTUAL_HOST=taskboard.${ROOT_HOST}
+      - LETSENCRYPT_HOST=taskboard.${ROOT_HOST}
+      - VIRTUAL_PORT=8800
     depends_on:
       keycloak:
         condition: service_healthy
