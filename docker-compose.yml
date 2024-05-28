@@ -435,7 +435,7 @@ services:
 
   # TaskBoard container
   taskboard:
-    image: dzahariev/taskboard:1.5@sha256:657a2bc6927cbb36c55ad376eaf3bd2ccf8c36be16e0aa6c9d182ea2be73e78e
+    image: dzahariev/taskboard:1.6
     container_name: taskboard
     restart: always
     hostname:
