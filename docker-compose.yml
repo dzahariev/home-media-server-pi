@@ -391,7 +391,7 @@ services:
 
   # DB migrations for Domo
   domo-migrations:
-    image: dzahariev/domo-migrations:1.2.0@sha256:b6de9ee657946d36fbb06049f61de87a656a9d76ae1fbf2c36e02f9946a9f72c
+    image: dzahariev/domo-migrations:1.4.0
     container_name: domo-migrations
     restart: on-failure
     environment:
@@ -408,7 +408,7 @@ services:
 
   # Domo container
   domo:
-    image: dzahariev/domo:1.2.0@sha256:6e3b4875405e1647913472f2c5eeae1be811c9d1d1f2f757d260f1882e0c6379
+    image: dzahariev/domo:1.4.0
     container_name: domo
     restart: always
     hostname:
@@ -426,7 +426,6 @@ services:
       POSTGRES_USER: ${DOMO_DB_USER}
       POSTGRES_PASSWORD: ${DOMO_DB_PASSWORD}
       POSTGRES_SSL: ${DOMO_DB_SSL}
-      API_PATH: /api/
       VIRTUAL_HOST: domo.${ROOT_HOST}
       LETSENCRYPT_HOST: domo.${ROOT_HOST}
       VIRTUAL_PORT: 8800
@@ -435,7 +434,7 @@ services:
 
   # TaskBoard container
   taskboard:
-    image: dzahariev/taskboard:1.6
+    image: dzahariev/taskboard:1.7
     container_name: taskboard
     restart: always
     hostname:
@@ -448,7 +447,6 @@ services:
       AUTH_REALM: ${TASKBOARD_REALM}
       AUTH_CLIENT_ID: ${TASKBOARD_CLIENT_ID}
       AUTH_CLIENT_SECRET: ${TASKBOARD_CLIENT_SECRET}
-      API_PATH: /api/
       VIRTUAL_HOST: taskboard.${ROOT_HOST}
       LETSENCRYPT_HOST: taskboard.${ROOT_HOST}
       VIRTUAL_PORT: 8800
