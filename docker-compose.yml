@@ -453,3 +453,5 @@ services:
       - "${PLEX_MEDIA_DIR}/tasks:/tasks"
       - "${PLEX_MEDIA_DIR}/handbrake/input:/input"
       - "${PLEX_MEDIA_DIR}/handbrake/output:/output"
+    depends_on:
+      - taskboard
