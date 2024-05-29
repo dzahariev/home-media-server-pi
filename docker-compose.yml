@@ -446,7 +446,7 @@ services:
 
   # Handbrake container
   handbrake:
-    image: dzahariev/handbrake:1.7
+    image: dzahariev/handbrake:1.7@sha256:4ccfd18e6015c1b4420229b9b21289c034913b9e5925a11783808c97b8f68ddb
     container_name: handbrake
     restart: always
     volumes:
