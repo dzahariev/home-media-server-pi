@@ -14,6 +14,8 @@ Add the following line:
 
 The script will be executed [At 04:00 on Saturday](https://crontab.guru/#0_4_*_*_6). Logs from result are stored in file `/home/ubuntu/logs/maintenance.log`.
 
+Or other proposition is `0 4 15-22 * */2` - At 04:00 on Tuesday - in the middle of month between 15th and 22nd.
+
 To cleanup old log file content configure the logrotate by creating the file `/etc/logrotate.d/pi.maintenance` with content:
 ```
 /home/ubuntu/logs/maintenance.log {
