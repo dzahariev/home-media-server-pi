@@ -4,8 +4,6 @@
     "config:base",
     "schedule:daily",
     "docker:enableMajor",
-    "docker:pinDigests",
-    "default:automergeDigest",
     ":dependencyDashboard"
   ],
   "automergeType": "pr",

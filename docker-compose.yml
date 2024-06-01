@@ -1,7 +1,7 @@
 services:
   # Main proxy container
   nginx-proxy:
-    image: nginxproxy/nginx-proxy:1.5.2-alpine@sha256:7c9816c38dd17527337075e918b5e09b3a2ca977b0127a40bdc647ec66e7a476
+    image: nginxproxy/nginx-proxy:1.5.2-alpine
     container_name: nginx-proxy
     restart: always
     labels:
@@ -19,7 +19,7 @@ services:
 
   # Letsencrypt companion container
   acme-companion:
-    image: nginxproxy/acme-companion:2.3.0@sha256:04b98015574addfba886023892f5e0ed28c012e1e72b8b43079e006f7e2c54d0
+    image: nginxproxy/acme-companion:2.3.0
     container_name: acme-companion
     restart: always
     volumes:
@@ -36,7 +36,7 @@ services:
 
   # CAdvisor container
   cadvisor:
-    image: gcr.io/cadvisor/cadvisor:v0.49.1@sha256:3cde6faf0791ebf7b41d6f8ae7145466fed712ea6f252c935294d2608b1af388
+    image: gcr.io/cadvisor/cadvisor:v0.49.1
     container_name: cadvisor
     restart: unless-stopped
     hostname: 
@@ -60,7 +60,7 @@ services:
 
   # Node-Exporter container
   node-exporter:
-    image: prom/node-exporter:v1.8.1@sha256:fa7fa12a57eff607176d5c363d8bb08dfbf636b36ac3cb5613a202f3c61a6631
+    image: prom/node-exporter:v1.8.1
     container_name: node-exporter
     restart: unless-stopped
     hostname: 
@@ -79,7 +79,7 @@ services:
 
   # BlackBox exporter container
   blackbox-exporter:
-    image: prom/blackbox-exporter:v0.25.0@sha256:b04a9fef4fa086a02fc7fcd8dcdbc4b7b35cc30cdee860fdc6a19dd8b208d63e
+    image: prom/blackbox-exporter:v0.25.0
     container_name: blackbox-exporter
     restart: unless-stopped
     hostname: 
@@ -91,7 +91,7 @@ services:
 
   # Prometheus container
   prometheus:
-    image: prom/prometheus:v2.52.0@sha256:5c435642ca4d8427ca26f4901c11114023004709037880cd7860d5b7176aa731
+    image: prom/prometheus:v2.52.0
     container_name: prometheus
     restart: unless-stopped
     hostname: 
@@ -113,7 +113,7 @@ services:
 
 # Root container
   nginx:
-    image: nginx:alpine-slim@sha256:3e9fb1e3981db06e79f214d685748b74df38f9b50ca439438a095c1316231707
+    image: nginx:alpine-slim
     container_name: nginx
     restart: always
     volumes:
@@ -126,7 +126,7 @@ services:
 
   # Grafana container
   grafana:
-    image: grafana/grafana:11.0.0@sha256:99ed02202d5166b6d25b821fa34ed184fab9ed0c18996ab0b6ce0fd35a3b67fd
+    image: grafana/grafana:11.0.0
     container_name: grafana
     restart: always
     volumes:
@@ -146,7 +146,7 @@ services:
 
   # Transmission container
   transmission:
-    image: linuxserver/transmission:4.0.5@sha256:71aafce32d2334b820a89193813225e64fe5a3f8b2a222947c4b23d5b7f1cbb3
+    image: linuxserver/transmission:4.0.5
     container_name: transmission
     restart: always
     hostname:
@@ -170,7 +170,7 @@ services:
 
   # Files Browser container
   files:
-    image: filebrowser/filebrowser:v2.30.0@sha256:862a8f4f4829cb2747ced869aea8593204bbc718c92f0f11c97e7b669a54b53d
+    image: filebrowser/filebrowser:v2.30.0
     container_name: files
     restart: always
     hostname:
@@ -193,7 +193,7 @@ services:
 
   # Plex container
   plex:
-    image: linuxserver/plex:1.40.2@sha256:addec5e26fb63af661992e0c50e0bd6f7a271433cd2a058f130e0ec1bae415e4
+    image: linuxserver/plex:1.40.2
     container_name: plex
     restart: always
     hostname:
@@ -216,7 +216,7 @@ services:
 
   # Calibre container
   calibre:
-    image: linuxserver/calibre:7.12.0@sha256:b1a9e0b02c2cea42a67e9fabc7ee69fe4c6d0a662c2cdfb3f97428b84af65f43
+    image: linuxserver/calibre:7.12.0
     container_name: calibre
     restart: always
     hostname:
@@ -238,7 +238,7 @@ services:
 
   # Metube container
   metube:
-    image: alexta69/metube:2024-03-11@sha256:7482342eefcaca41e018e67cc232202dd56ca9143f7990947ffca6942b80148f
+    image: alexta69/metube:2024-05-28
     container_name: metube
     restart: always
     hostname:
@@ -259,7 +259,7 @@ services:
 
   # FreshRSS container
   freshrss:
-    image: linuxserver/freshrss:1.24.0@sha256:a7a165bf603bc5b57845b13f0af85020bf9d29521fa66f5071546002ccf4eebd
+    image: linuxserver/freshrss:1.24.0
     container_name: freshrss
     restart: always
     hostname:
@@ -278,7 +278,7 @@ services:
 
   # Postgres DB container for Keycloak
   keycloakdb:
-    image: postgres:15-alpine@sha256:0cec11eaf51a9af24c27a09cae9840a9234336e5bf9edc5fdf67b3174ba05210
+    image: postgres:15.7-alpine3.20
     container_name: keycloakdb
     restart: always
     expose:
@@ -299,7 +299,7 @@ services:
 
   # Keycloak container
   keycloak:
-    image: keycloak/keycloak:24.0.4@sha256:ff02c932f0249c58f32b8ff1b188a48cc90809779a3a05931ab67f5672400ad0
+    image: keycloak/keycloak:24.0.4
     container_name: keycloak
     restart: always
     links:
@@ -335,7 +335,7 @@ services:
 
   # InvVal container
   invval:
-    image: dzahariev/invval:2.7@sha256:0b43f08344170af691f5a63fe1af21b052a78087ce1f9dd8cda54c5e35def49e
+    image: dzahariev/invval:2.7
     container_name: invval
     restart: always
     hostname:
@@ -358,7 +358,7 @@ services:
 
   # Postgres DB container for Domo
   domodb:
-    image: postgres:15-alpine@sha256:0cec11eaf51a9af24c27a09cae9840a9234336e5bf9edc5fdf67b3174ba05210
+    image: postgres:15.7-alpine3.20
     container_name: domodb
     restart: always
     expose:
@@ -381,7 +381,7 @@ services:
 
   # DB migrations for Domo
   domo-migrations:
-    image: dzahariev/domo-migrations:1.5.0@sha256:3b81f5ee6a03e7259e5bdeed2895d23bdffc0561bde5bc0d5732a6abb5072f87
+    image: dzahariev/domo-migrations:1.5.0
     container_name: domo-migrations
     restart: on-failure
     environment:
@@ -398,7 +398,7 @@ services:
 
   # Domo container
   domo:
-    image: dzahariev/domo:1.5.0@sha256:ea1b94d8c735a4850301f196de541e27e425356bb5782a2a485ecf6b7ddf0ad4
+    image: dzahariev/domo:1.5.0
     container_name: domo
     restart: always
     hostname:
@@ -424,7 +424,7 @@ services:
 
   # TaskBoard container
   taskboard:
-    image: dzahariev/taskboard:1.7@sha256:61bb9e9a9b324e2f0daa75bb10baab98139279a2f9b9911e349486c469a35d20
+    image: dzahariev/taskboard:1.7
     container_name: taskboard
     restart: always
     hostname:
@@ -446,7 +446,7 @@ services:
 
   # Handbrake container
   handbrake:
-    image: dzahariev/handbrake:1.7@sha256:4ccfd18e6015c1b4420229b9b21289c034913b9e5925a11783808c97b8f68ddb
+    image: dzahariev/handbrake:1.7
     container_name: handbrake
     restart: always
     volumes:
