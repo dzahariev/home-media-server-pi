@@ -1,7 +1,7 @@
 version: '3'
 services:
   nginx-proxy:
-    image: nginxproxy/nginx-proxy:alpine@sha256:55d97706c5ddb08c4549e2062c460bfb92d5a524102a8a560dc06622f604dd10
+    image: nginxproxy/nginx-proxy:alpine
     container_name: nginx-proxy
     restart: always
     labels:
@@ -17,7 +17,7 @@ services:
       - ./nginx.conf:/etc/nginx/proxy.conf
 
   acme-companion:
-    image: nginxproxy/acme-companion:2.3@sha256:04b98015574addfba886023892f5e0ed28c012e1e72b8b43079e006f7e2c54d0
+    image: nginxproxy/acme-companion:2.3
     container_name: acme-companion
     restart: always
     volumes:
@@ -33,7 +33,7 @@ services:
       - nginx-proxy
 
   grafana:
-    image: nginxdemos/hello@sha256:0b86bbcbbb9899f96cce269666dc85ee37839d678972c6c96fc137fd44ca2b1d
+    image: nginxdemos/hello
     container_name: grafana
     restart: always
     environment: 
@@ -43,7 +43,7 @@ services:
       - acme-companion
 
   nextcloud:
-    image: infrastructureascode/hello-world@sha256:1e584ae020df572d8f78ea7317cebfbc70cfa39d5fec0f254bb4666829c16759
+    image: infrastructureascode/hello-world
     container_name: nextcloud
     restart: always
     environment: 
