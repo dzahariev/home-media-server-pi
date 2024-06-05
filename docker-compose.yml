@@ -449,7 +449,7 @@ services:
     image: dzahariev/handbrake:1.7
     container_name: handbrake
     restart: always
-    cpu_shares: 100
+    cpu_shares: 10
     volumes:
       - "${PLEX_MEDIA_DIR}/tasks:/tasks"
       - "${PLEX_MEDIA_DIR}/handbrake/input:/input"
