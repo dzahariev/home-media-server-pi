@@ -381,7 +381,7 @@ services:
 
   # DB migrations for Domo
   domo-migrations:
-    image: dzahariev/domo-migrations:1.5.0
+    image: dzahariev/domo-migrations:1.6.0
     container_name: domo-migrations
     restart: on-failure
     environment:
@@ -398,7 +398,7 @@ services:
 
   # Domo container
   domo:
-    image: dzahariev/domo:1.5.0
+    image: dzahariev/domo:1.6.0
     container_name: domo
     restart: always
     hostname:
@@ -424,7 +424,7 @@ services:
 
   # TaskBoard container
   taskboard:
-    image: dzahariev/taskboard:1.7
+    image: dzahariev/taskboard:1.8
     container_name: taskboard
     restart: always
     hostname:
@@ -446,9 +446,10 @@ services:
 
   # Handbrake container
   handbrake:
-    image: dzahariev/handbrake:1.7
+    image: dzahariev/handbrake:1.8
     container_name: handbrake
     restart: always
+    cpu_shares: 1
     volumes:
       - "${PLEX_MEDIA_DIR}/tasks:/tasks"
       - "${PLEX_MEDIA_DIR}/handbrake/input:/input"
