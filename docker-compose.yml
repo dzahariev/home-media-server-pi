@@ -446,7 +446,7 @@ services:
 
   # Handbrake container
   handbrake:
-    image: dzahariev/handbrake:1.8
+    image: dzahariev/handbrake:1.7
     container_name: handbrake
     restart: always
     cpu_shares: 1
