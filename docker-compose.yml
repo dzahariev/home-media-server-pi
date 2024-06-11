@@ -424,7 +424,7 @@ services:
 
   # TaskBoard container
   taskboard:
-    image: dzahariev/taskboard:1.8
+    image: dzahariev/taskboard:1.9
     container_name: taskboard
     restart: always
     hostname:
@@ -432,6 +432,7 @@ services:
     volumes:
       - "${PLEX_MEDIA_DIR}/tasks:/tasks"
       - ./taskboard/keycloak/keycloak.json:/public/libs/keycloak-cfg/keycloak.json:ro
+      - ./taskboard/configuration.json:/tasks/configuration.json:ro
     environment:
       AUTH_URL: https://auth.${ROOT_HOST}
       AUTH_REALM: ${TASKBOARD_REALM}
