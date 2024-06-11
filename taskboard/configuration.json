@@ -1,0 +1,58 @@
+{
+    "kinds": [
+        {
+            "name": "handbrake",
+            "presets": [
+                {
+                    "name": "480P",
+                    "key": "Custom480P"
+                },
+                {
+                    "name": "576P",
+                    "key": "Custom576P"
+                },
+                {
+                    "name": "720P",
+                    "key": "Custom720P"
+                },
+                {
+                    "name": "*480P",
+                    "key": "Custom265X480P"
+                },
+                {
+                    "name": "*576P",
+                    "key": "Custom265X576P"
+                },
+                {
+                    "name": "*720P",
+                    "key": "Custom265X720P"
+                }
+            ]
+        },
+        {
+            "name": "download",
+            "presets": [
+                {
+                    "name": "128",
+                    "key": "MP3128"
+                },
+                {
+                    "name": "192",
+                    "key": "MP3192"
+                },
+                {
+                    "name": "320",
+                    "key": "MP3320"
+                },
+                {
+                    "name": "480P",
+                    "key": "MP4480P"
+                },
+                {
+                    "name": "720P",
+                    "key": "MP4720P"
+                }
+            ]
+        }
+    ]
+}
