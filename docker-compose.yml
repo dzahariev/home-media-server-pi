@@ -236,27 +236,6 @@ services:
     depends_on:
       - acme-companion
 
-  # Metube container
-  metube:
-    image: alexta69/metube:2024-05-28
-    container_name: metube
-    restart: always
-    hostname:
-      metube.${ROOT_HOST}
-    volumes:
-      - "${PLEX_MEDIA_DIR}/downloads:/downloads"
-      - "${DATA_DIR}/metube/cookies:/cookies"
-    environment:
-      UID: 1000
-      GID: 1000
-      TZ: Europe/Sofia
-      VIRTUAL_HOST: metube.${ROOT_HOST}
-      LETSENCRYPT_HOST: metube.${ROOT_HOST}
-      VIRTUAL_PORT: 8081
-      YTDL_OPTIONS: '{"cookiefile":"/cookies/cookies.txt"}'
-    depends_on:
-      - acme-companion
-
   # FreshRSS container
   freshrss:
     image: linuxserver/freshrss:1.24.1
@@ -445,10 +424,10 @@ services:
       keycloak:
         condition: service_healthy
 
-  # Handbrake container
-  handbrake:
-    image: dzahariev/handbrake:1.8
-    container_name: handbrake
+  # Handbrake worker container
+  handbrake-worker:
+    image: dzahariev/handbrake-worker:2.0
+    container_name: handbrake-worker
     restart: always
     cpu_shares: 10
     volumes:
@@ -456,3 +435,12 @@ services:
       - "${PLEX_MEDIA_DIR}/handbrake/input:/input"
       - "${PLEX_MEDIA_DIR}/handbrake/output:/output"
 
+  # DLP worker container
+  dlp-worker:
+    image: dzahariev/dlp-worker:1.0
+    container_name: dlp-worker
+    restart: always
+    cpu_shares: 10
+    volumes:
+      - "${PLEX_MEDIA_DIR}/tasks:/tasks"
+      - "${PLEX_MEDIA_DIR}/downloads:/output"
