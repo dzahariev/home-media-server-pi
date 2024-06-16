@@ -437,7 +437,7 @@ services:
 
   # DLP worker container
   dlp-worker:
-    image: dzahariev/dlp-worker:1.0
+    image: dzahariev/dlp-worker:1.5
     container_name: dlp-worker
     restart: always
     cpu_shares: 10
