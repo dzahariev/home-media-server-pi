@@ -146,7 +146,7 @@ services:
 
   # Transmission container
   transmission:
-    image: linuxserver/transmission:4.0.5
+    image: linuxserver/transmission:4.0.6
     container_name: transmission
     restart: always
     hostname:
