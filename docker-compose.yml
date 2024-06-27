@@ -314,7 +314,7 @@ services:
 
   # InvVal container
   invval:
-    image: dzahariev/invval:2.7
+    image: dzahariev/invval:2.8
     container_name: invval
     restart: always
     hostname:
@@ -360,7 +360,7 @@ services:
 
   # DB migrations for Domo
   domo-migrations:
-    image: dzahariev/domo-migrations:1.6.0
+    image: dzahariev/domo-migrations:1.6.1
     container_name: domo-migrations
     restart: on-failure
     environment:
@@ -377,7 +377,7 @@ services:
 
   # Domo container
   domo:
-    image: dzahariev/domo:1.6.0
+    image: dzahariev/domo:1.6.1
     container_name: domo
     restart: always
     hostname:
@@ -403,7 +403,7 @@ services:
 
   # TaskBoard container
   taskboard:
-    image: dzahariev/taskboard:1.9
+    image: dzahariev/taskboard:1.10
     container_name: taskboard
     restart: always
     hostname:
@@ -426,7 +426,7 @@ services:
 
   # Handbrake worker container
   handbrake-worker:
-    image: dzahariev/handbrake-worker:2.0
+    image: dzahariev/handbrake-worker:2.1
     container_name: handbrake-worker
     restart: always
     cpu_shares: 10
@@ -437,7 +437,7 @@ services:
 
   # DLP worker container
   dlp-worker:
-    image: dzahariev/dlp-worker:1.5
+    image: dzahariev/dlp-worker:1.6
     container_name: dlp-worker
     restart: always
     cpu_shares: 10
