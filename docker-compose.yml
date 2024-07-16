@@ -264,13 +264,14 @@ services:
       vpn.${ROOT_HOST}
     volumes:
       - "${DATA_DIR}/wireguard:/etc/wireguard"
-      - "51821:51821/tcp"
     ports:
+      - "51821:51821/tcp"
       - "51820:51820/udp"
     environment:
       LANG: en
-      WG_HOST: ${ROOT_HOST}
+      WG_HOST: vpn.${ROOT_HOST}
       PASSWORD_HASH: ${WIREGUARD_PASSWORD}
+      UI_CHART_TYPE: 1 
       PORT: 51821
       VIRTUAL_HOST: vpn.${ROOT_HOST}
       LETSENCRYPT_HOST: vpn.${ROOT_HOST}
