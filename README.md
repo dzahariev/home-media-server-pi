@@ -17,6 +17,7 @@ Include setup of:
 - Plex (on plex subdomain)
 - Calibre (on calibre subdomain)
 - FreshRSS (on freshrss subdomain)
+- WireGuard (on vpn subdomain)
 - PostgeSQL (not exposed, used through internal network)
 - Keycloak (on auth subdomain)
 ## Prepare
@@ -30,24 +31,6 @@ docker-compose --env-file .env.pi up -d
 ```
 docker-compose --env-file .env.pi down
 ```
-
-## Links
-
-- nginxproxy/nginx-proxy: [![GitHub release](https://img.shields.io/github/tag/nginx-proxy/nginx-proxy.svg)](https://hub.docker.com/r/nginxproxy/nginx-proxy) 
-- nginxproxy/acme-companion: [![GitHub release](https://img.shields.io/github/tag/nginx-proxy/acme-companion.svg)](https://hub.docker.com/r/nginxproxy/acme-companion)
-- gcr.io/cadvisor/cadvisor: [![GitHub release](https://img.shields.io/github/release/google/cadvisor.svg)](https://console.cloud.google.com/gcr/images/cadvisor/GLOBAL/cadvisor)
-- prom/node-exporter: [![GitHub release](https://img.shields.io/github/tag/prometheus/node_exporter.svg)](https://hub.docker.com/r/prom/node-exporter)
-- prom/blackbox-exporter: [![GitHub release](https://img.shields.io/github/v/tag/prometheus/blackbox_exporter.svg)](https://hub.docker.com/r/prom/blackbox-exporter)
-- prom/prometheus: [![GitHub release](https://img.shields.io/github/tag/prometheus/prometheus.svg)](https://hub.docker.com/r/prom/prometheus)
-- nginx: [![GitHub release](https://img.shields.io/github/tag/nginxinc/docker-nginx.svg)](https://hub.docker.com/_/nginx)
-- grafana/grafana: [![GitHub release](https://img.shields.io/github/tag/grafana/grafana.svg)](https://hub.docker.com/r/grafana/grafana)
-- linuxserver/transmission: [![GitHub release](https://img.shields.io/github/tag/linuxserver/docker-transmission.svg)](https://hub.docker.com/r/linuxserver/transmission)
-- filebrowser/filebrowser: [![GitHub release](https://img.shields.io/github/tag/filebrowser/filebrowser.svg)](https://hub.docker.com/r/filebrowser/filebrowser)
-- linuxserver/plex: [![GitHub release](https://img.shields.io/github/tag/linuxserver/docker-plex.svg)](https://hub.docker.com/r/linuxserver/plex)
-- linuxserver/calibre: [![GitHub release](https://img.shields.io/github/tag/linuxserver/docker-calibre.svg)](https://hub.docker.com/r/linuxserver/calibre)
-- linuxserver/freshrss: [![GitHub release](https://img.shields.io/github/tag/linuxserver/docker-freshrss.svg)](https://hub.docker.com/r/linuxserver/freshrss)
-- postgres: [![GitHub release](https://img.shields.io/github/tag/postgres/postgres.svg)](https://hub.docker.com/_/postgres)
-- keycloak/keycloak: [![GitHub release](https://img.shields.io/github/tag/keycloak/keycloak.svg)](https://hub.docker.com/r/keycloak/keycloak)
 
 ## RPi preparation and maintenance
 
