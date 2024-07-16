@@ -102,7 +102,7 @@ services:
       - '--storage.tsdb.retention.time=30d'
     volumes:
       - "./prometheus:/etc/prometheus"
-      - "${DATA_DIR}/prometheus/data:/prometheus"
+      - "${MONITORING_DATA_DIR}/prometheus/data:/prometheus"
     links:
       - cadvisor:cadvisor
       - node-exporter:node-exporter
@@ -130,8 +130,8 @@ services:
     container_name: grafana
     restart: always
     volumes:
-      - "${DATA_DIR}/grafana/storage:/var/lib/grafana"
-      - "${DATA_DIR}/grafana/provisioning:/etc/grafana/provisioning"
+      - "${MONITORING_DATA_DIR}/grafana/storage:/var/lib/grafana"
+      - "${MONITORING_DATA_DIR}/grafana/provisioning:/etc/grafana/provisioning"
     links:
       - prometheus:prometheus
     environment:
@@ -254,6 +254,33 @@ services:
       VIRTUAL_PORT: 80
     depends_on:
       - acme-companion
+
+  # VPN wireguard container
+  wireguard:
+    image: ghcr.io/wg-easy/wg-easy:13
+    container_name: wireguard
+    restart: always
+    hostname:
+      vpn.${ROOT_HOST}
+    volumes:
+      - "${DATA_DIR}/wireguard:/etc/wireguard"
+      - "51821:51821/tcp"
+    ports:
+      - "51820:51820/udp"
+    environment:
+      LANG: en
+      WG_HOST: ${ROOT_HOST}
+      PASSWORD_HASH: ${WIREGUARD_PASSWORD}
+      PORT: 51821
+      VIRTUAL_HOST: vpn.${ROOT_HOST}
+      LETSENCRYPT_HOST: vpn.${ROOT_HOST}
+      VIRTUAL_PORT: 51821
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      - net.ipv4.ip_forward=1
+      - net.ipv4.conf.all.src_valid_mark=1
 
   # Postgres DB container for Keycloak
   keycloakdb:
