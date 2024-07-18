@@ -17,6 +17,7 @@ Include setup of:
 - Plex (on plex subdomain)
 - Calibre (on calibre subdomain)
 - FreshRSS (on freshrss subdomain)
+- PiHole (on pihole subdomain)
 - WireGuard (on vpn subdomain)
 - PostgeSQL (not exposed, used through internal network)
 - Keycloak (on auth subdomain)
