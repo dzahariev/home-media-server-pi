@@ -255,6 +255,28 @@ services:
     depends_on:
       - acme-companion
 
+  # PiHole container
+  pihole:
+    image: pihole/pihole:2024.07.0
+    container_name: pihole
+    restart: always
+    hostname:
+      pihole.${ROOT_HOST}
+    volumes:
+      - "${DATA_DIR}/pihole/etc_pihole:/etc/pihole"
+      - "${DATA_DIR}/pihole/etc_dnsmasq.d:/etc/dnsmasq.d"
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+    environment:
+      TZ: Europe/Sofia
+      WEBPASSWORD: ${PIHOLE_PASSWORD}
+      VIRTUAL_HOST: pihole.${ROOT_HOST}
+      LETSENCRYPT_HOST: pihole.${ROOT_HOST}
+      VIRTUAL_PORT: 80
+    depends_on:
+      - acme-companion
+
   # VPN wireguard container
   wireguard:
     image: ghcr.io/wg-easy/wg-easy:13
