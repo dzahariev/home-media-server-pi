@@ -266,8 +266,8 @@ services:
       - "${DATA_DIR}/pihole/etc_pihole:/etc/pihole"
       - "${DATA_DIR}/pihole/etc_dnsmasq.d:/etc/dnsmasq.d"
     ports:
-      - "53:53/tcp"
-      - "53:53/udp"
+      - "${ROOT_IP}:53:53/tcp"
+      - "${ROOT_IP}:53:53/udp"
     environment:
       TZ: Europe/Sofia
       WEBPASSWORD: ${PIHOLE_PASSWORD}
