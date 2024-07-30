@@ -263,8 +263,8 @@ services:
     hostname:
       pihole.${ROOT_HOST}
     volumes:
-      - "${DATA_DIR}/pihole/etc_pihole:/etc/pihole"
-      - "${DATA_DIR}/pihole/etc_dnsmasq.d:/etc/dnsmasq.d"
+      - "${MONITORING_DATA_DIR}/pihole/etc_pihole:/etc/pihole"
+      - "${MONITORING_DATA_DIR}/pihole/etc_dnsmasq.d:/etc/dnsmasq.d"
     ports:
       - "${ROOT_IP}:53:53/tcp"
       - "${ROOT_IP}:53:53/udp"
