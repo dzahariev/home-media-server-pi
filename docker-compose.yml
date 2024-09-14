@@ -293,7 +293,6 @@ services:
       LANG: en
       WG_HOST: vpn.${ROOT_HOST}
       PASSWORD_HASH: ${WIREGUARD_PASSWORD_HASH}
-      PASSWORD: ${WIREGUARD_PASSWORD}
       UI_TRAFFIC_STATS: true
       UI_CHART_TYPE: 1 
       PORT: 51821
