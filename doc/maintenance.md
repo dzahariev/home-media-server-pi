@@ -28,3 +28,32 @@ To cleanup old log file content configure the logrotate by creating the file `/e
         notifempty
 }
 ```
+# Upgrade Postgre versions
+Major versions of PostgreSQL require data storage to be upgraded, or data to be exported/imported in new DB storage file. 
+Here are the sequence of commands how to export/import all data from each one of the databases that are present. 
+
+## Upgrade keycloakdb
+```
+docker-compose --env-file .env.pi up -d keycloakdb
+docker-compose --env-file .env.pi exec keycloakdb pg_dumpall -U postgre > dump.sql
+docker-compose --env-file .env.pi down
+// Manually delete old data folder
+// Manually increase version in docker-compose
+docker-compose --env-file .env.pi up -d keycloakdb
+cat dump.sql | docker exec -i keycloakdb psql -U postgre
+docker-compose --env-file .env.pi down
+docker-compose --env-file .env.pi up -d
+```
+
+## Upgrade domodb
+```
+docker-compose --env-file .env.pi up -d domodb
+docker-compose --env-file .env.pi exec domodb pg_dumpall -p 5532 -U domodb > dump.sql
+docker-compose --env-file .env.pi down
+// Manually delete old data folder
+// Manually increase version in docker-compose
+docker-compose --env-file .env.pi up -d domodb
+cat dump.sql | docker exec -i domodb psql -p 5532 -U domodb
+docker-compose --env-file .env.pi down
+docker-compose --env-file .env.pi up -d
+```
