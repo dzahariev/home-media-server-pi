@@ -47,6 +47,7 @@ services:
     privileged: true
     command:
       - '-housekeeping_interval=20s'
+      - '-store_container_labels=false'
       - '-docker_only=true'
     security_opt:
       - label=disable
@@ -99,7 +100,7 @@ services:
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
-      - '--storage.tsdb.retention.time=30d'
+      - '--storage.tsdb.retention.time=1y'
     volumes:
       - "./prometheus:/etc/prometheus"
       - "${MONITORING_DATA_DIR}/prometheus/data:/prometheus"
