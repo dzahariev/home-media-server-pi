@@ -332,7 +332,7 @@ services:
 
   # Keycloak container
   keycloak:
-    image: keycloak/keycloak:25.0.6
+    image: keycloak/keycloak:26.0.0
     container_name: keycloak
     restart: always
     links:
@@ -346,13 +346,11 @@ services:
       KC_DB_PASSWORD: ${KEYCLOAK_DB_PASSWORD}
       KC_DB_SCHEMA: public
       KC_HOSTNAME: auth.${ROOT_HOST}
-      KC_HOSTNAME_STRICT: false
-      KC_HOSTNAME_STRICT_HTTPS: false
       KC_HTTP_ENABLED: true
-      KC_PROXY: edge
+      KC_PROXY_HEADERS: xforwarded
       PROXY_ADDRESS_FORWARDING: true
-      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
-      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+      KC_BOOTSTRAP_ADMIN_USERNAME: ${KEYCLOAK_ADMIN}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
       LETSENCRYPT_HOST: auth.${ROOT_HOST}
       VIRTUAL_HOST: auth.${ROOT_HOST}
       VIRTUAL_PORT: 8080
