@@ -429,7 +429,7 @@ services:
 
   # Domo container
   domo:
-    image: dzahariev/domo:1.6.3
+    image: dzahariev/domo:1.6.4
     container_name: domo
     restart: always
     hostname:
@@ -455,7 +455,7 @@ services:
 
   # TaskBoard container
   taskboard:
-    image: dzahariev/taskboard:1.12
+    image: dzahariev/taskboard:1.14
     container_name: taskboard
     restart: always
     hostname:
