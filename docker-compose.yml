@@ -332,7 +332,7 @@ services:
 
   # Keycloak container
   keycloak:
-    image: keycloak/keycloak:26.0.1
+    image: keycloak/keycloak:25.0.6
     container_name: keycloak
     restart: always
     links:
@@ -412,7 +412,7 @@ services:
 
   # DB migrations for Domo
   domo-migrations:
-    image: dzahariev/domo-migrations:1.6.4
+    image: dzahariev/domo-migrations:1.6.5
     container_name: domo-migrations
     restart: on-failure
     environment:
@@ -429,7 +429,7 @@ services:
 
   # Domo container
   domo:
-    image: dzahariev/domo:1.6.4
+    image: dzahariev/domo:1.6.5
     container_name: domo
     restart: always
     hostname:
@@ -455,7 +455,7 @@ services:
 
   # TaskBoard container
   taskboard:
-    image: dzahariev/taskboard:1.14
+    image: dzahariev/taskboard:1.15
     container_name: taskboard
     restart: always
     hostname:
