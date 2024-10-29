@@ -496,3 +496,35 @@ services:
     volumes:
       - "${PLEX_MEDIA_DIR}/tasks:/tasks"
       - "${PLEX_MEDIA_DIR}/downloads:/output"
+
+  # MariaDB container
+  mariadb:
+    image: mariadb:11.5.2
+    container_name: mariadb
+    restart: always
+    volumes:
+      - "${DATA_DIR}/mariadb:/var/lib/mysql"
+    environment: 
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+
+  # Wordpress container
+  wordpress:
+    image: wordpress:6.6.2
+    container_name: wordpress
+    restart: always
+    volumes:
+      - "${DATA_DIR}/wordpress:/var/www/html/"
+    environment:
+      WORDPRESS_DB_HOST: mariadb
+      WORDPRESS_DB_USER: ${MARIADB_USER}
+      WORDPRESS_DB_PASSWORD: ${MARIADB_PASSWORD}
+      WORDPRESS_DB_NAME: ${MARIADB_DATABASE}
+      WORDPRESS_TABLE_PREFIX: "wp_"
+      VIRTUAL_HOST: georgi.${ROOT_HOST}
+      LETSENCRYPT_HOST: georgi.${ROOT_HOST}
+    depends_on:
+      - acme-companion
+      - mariadb
