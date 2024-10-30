@@ -499,7 +499,7 @@ services:
 
   # MariaDB container
   mariadb:
-    image: mariadb:10.6.19
+    image: mariadb:10.11.9
     container_name: mariadb
     restart: always
     volumes:
