@@ -35,12 +35,12 @@ Here are the sequence of commands how to export/import all data from each one of
 ## Upgrade keycloakdb
 ```
 docker-compose --env-file .env.pi up -d keycloakdb
-docker-compose --env-file .env.pi exec keycloakdb pg_dumpall -U postgre > dump.sql
+docker-compose --env-file .env.pi exec keycloakdb pg_dumpall -U postgre > dumpk.sql
 docker-compose --env-file .env.pi down
 // Manually delete old data folder
 // Manually increase version in docker-compose
 docker-compose --env-file .env.pi up -d keycloakdb
-cat dump.sql | docker exec -i keycloakdb psql -U postgre
+cat dumpk.sql | docker exec -i keycloakdb psql -U postgre
 docker-compose --env-file .env.pi down
 docker-compose --env-file .env.pi up -d
 ```
@@ -48,12 +48,12 @@ docker-compose --env-file .env.pi up -d
 ## Upgrade domodb
 ```
 docker-compose --env-file .env.pi up -d domodb
-docker-compose --env-file .env.pi exec domodb pg_dumpall -p 5532 -U domodb > dump.sql
+docker-compose --env-file .env.pi exec domodb pg_dumpall -p 5532 -U domodb > dumpd.sql
 docker-compose --env-file .env.pi down
 // Manually delete old data folder
 // Manually increase version in docker-compose
 docker-compose --env-file .env.pi up -d domodb
-cat dump.sql | docker exec -i domodb psql -p 5532 -U domodb
+cat dumpd.sql | docker exec -i domodb psql -p 5532 -U domodb
 docker-compose --env-file .env.pi down
 docker-compose --env-file .env.pi up -d
 ```
