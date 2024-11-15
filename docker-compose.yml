@@ -311,7 +311,7 @@ services:
 
   # Postgres DB container for Keycloak
   keycloakdb:
-    image: postgres:17.0-alpine3.20
+    image: postgres:17.1-alpine3.20
     container_name: keycloakdb
     restart: always
     expose:
@@ -389,7 +389,7 @@ services:
 
   # Postgres DB container for Domo
   domodb:
-    image: postgres:17.0-alpine3.20
+    image: postgres:17.1-alpine3.20
     container_name: domodb
     restart: always
     expose:
