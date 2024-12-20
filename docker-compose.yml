@@ -153,8 +153,8 @@ services:
     hostname:
       qbittorrent.${ROOT_HOST}
     ports:
-      - 36818:36818
-      - 36818:36818/udp
+      - 6881:6881
+      - 6881:6881/udp
     volumes:
       - "${DATA_DIR}/qbittorrent/data:/config"
       - "${PLEX_MEDIA_DIR}/downloads:/downloads"
@@ -163,7 +163,7 @@ services:
       PGID: 1000
       TZ: Europe/Sofia
       WEBUI_PORT: 8080
-      TORRENTING_PORT: 36818
+      TORRENTING_PORT: 6881
       VIRTUAL_HOST: qbittorrent.${ROOT_HOST}
       LETSENCRYPT_HOST: qbittorrent.${ROOT_HOST}
       VIRTUAL_PORT: 8080
