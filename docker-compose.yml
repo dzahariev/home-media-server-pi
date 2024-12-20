@@ -145,27 +145,25 @@ services:
       - prometheus 
       - acme-companion
 
-  # Transmission container
-  transmission:
-    image: linuxserver/transmission:4.0.6
-    container_name: transmission
+  # QBittorrent container
+  qbittorrent:
+    image: linuxserver/qbittorrent:5.0.3
+    container_name: qbittorrent
     restart: always
     hostname:
-      transmission.${ROOT_HOST}
+      qbittorrent.${ROOT_HOST}
     volumes:
-      - "${DATA_DIR}/transmission/data:/config"
+      - "${DATA_DIR}/qbittorrent/data:/config"
       - "${PLEX_MEDIA_DIR}/downloads:/downloads"
-      - "${PLEX_MEDIA_DIR}/watch:/watch"
     environment:
       PUID: 1000
       PGID: 1000
       TZ: Europe/Sofia
-      TRANSMISSION_WEB_HOME: /config/combustion-release/
-      USER: ${TRANSMISSION_USER}
-      PASS: ${TRANSMISSION_PASSWORD}
-      VIRTUAL_HOST: transmission.${ROOT_HOST}
-      LETSENCRYPT_HOST: transmission.${ROOT_HOST}
-      VIRTUAL_PORT: 9091
+      WEBUI_PORT: 8080
+      TORRENTING_PORT: 6881
+      VIRTUAL_HOST: qbittorrent.${ROOT_HOST}
+      LETSENCRYPT_HOST: qbittorrent.${ROOT_HOST}
+      VIRTUAL_PORT: 8080
     depends_on:
       - acme-companion
 

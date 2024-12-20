@@ -12,7 +12,7 @@ Include setup of:
 - CAdvisor (not exposed, used from Prometheus through internal network)
 - Node-exporter (not exposed, used from Prometheus through internal network)
 - Blackbox-exporteer (not exposed, used from Prometheus through internal network)
-- Transmission (on transmission subdomain)
+- QBitTorrent (on qbittorrent subdomain)
 - File Browser (on files subdomain)
 - Plex (on plex subdomain)
 - Calibre (on calibre subdomain)
