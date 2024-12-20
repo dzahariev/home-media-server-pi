@@ -93,58 +93,13 @@
 
 <body>
   <script>
-    function grafana() {
-      newaddress = "https://grafana." + window.location.hostname;
-      window.location.replace(newaddress)
-    };
-    function qbittorrent() {
-      newaddress = "https://qbittorrent." + window.location.hostname;
-      window.location.replace(newaddress)
-    };
-    function files() {
-      newaddress = "https://files." + window.location.hostname;
-      window.location.replace(newaddress)
-    };
-    function plex() {
-      newaddress = "https://plex." + window.location.hostname;
-      window.location.replace(newaddress)
-    };
-    function calibre() {
-      newaddress = "https://calibre." + window.location.hostname;
-      window.location.replace(newaddress)
-    };
-    function freshrss() {
-      newaddress = "https://freshrss." + window.location.hostname;
-      window.location.replace(newaddress)
-    };
-    function pihole() {
-      newaddress = "https://pihole." + window.location.hostname;
-      window.location.replace(newaddress)
-    };
-    function wireguard() {
-      newaddress = "https://vpn." + window.location.hostname;
-      window.location.replace(newaddress)
-    };
-    function invval() {
-      newaddress = "https://invval." + window.location.hostname;
-      window.location.replace(newaddress)
-    };
-    function domo() {
-      newaddress = "https://domo." + window.location.hostname;
-      window.location.replace(newaddress)
-    };
-    function taskboard() {
-      newaddress = "https://taskboard." + window.location.hostname;
-      window.location.replace(newaddress)
-    };
-    function auth() {
-      newaddress = "https://auth." + window.location.hostname;
-      window.location.replace(newaddress)
-    };
-    function georgi() {
-      newaddress = "https://georgi." + window.location.hostname;
-      window.location.replace(newaddress)
-    };
+    function open(subdomain) {
+      var a = document.createElement('a');                                
+      a.href = "https://" + subdomain + "." + window.location.hostname;         
+      a.rel = 'noreferrer';                                               
+      a.target = '_self';                                                 
+      a.click();                                                          
+    };                                                                    
   </script>
 
   <div class="wrap">
@@ -159,7 +114,7 @@
       </a>
     </div>
     <div class="box">
-      <a href="javascript:grafana();">
+      <a href="javascript:open('grafana');">
         <div class="boxInner">
           <img src="images/grafana.png" alt="Grafana"/>
           <div class="titleBox">Grafana</div>
@@ -167,7 +122,7 @@
       </a>
     </div>
     <div class="box">
-      <a href="javascript:qbittorrent();">
+      <a href="javascript:open('qbittorrent');">
         <div class="boxInner">
           <img src="images/qbittorrent.png" alt="qBittorrent"/>
           <div class="titleBox">qBittorrent</div>
@@ -175,7 +130,7 @@
       </a>
     </div>
     <div class="box">
-      <a href="javascript:files();">
+      <a href="javascript:open('files');">
         <div class="boxInner">
           <img src="images/files.png" alt="File Browser"/>
           <div class="titleBox">File Browser</div>
@@ -183,7 +138,7 @@
       </a>
     </div>
     <div class="box">
-      <a href="javascript:plex();">
+      <a href="javascript:open('plex');">
         <div class="boxInner">
           <img src="images/plex.png" alt="Plex"/>
           <div class="titleBox">Plex</div>
@@ -191,7 +146,7 @@
       </a>
     </div>
     <div class="box">
-      <a href="javascript:calibre();">
+      <a href="javascript:open('calibre');">
         <div class="boxInner">
           <img src="images/calibre.png" alt="Calibre"/>
           <div class="titleBox">Calibre</div>
@@ -199,7 +154,7 @@
       </a>
     </div>
     <div class="box">
-      <a href="javascript:freshrss();">
+      <a href="javascript:open('freshrss');">
         <div class="boxInner">
           <img src="images/freshrss.png" alt="FreshRSS"/>
           <div class="titleBox">FreshRSS</div>
@@ -207,7 +162,7 @@
       </a>
     </div>
     <div class="box">
-      <a href="javascript:pihole();">
+      <a href="javascript:open('pihole');">
         <div class="boxInner">
           <img src="images/pihole.png" alt="Pi Hole"/>
           <div class="titleBox">Pi Hole</div>
@@ -215,7 +170,7 @@
       </a>
     </div>
     <div class="box">
-      <a href="javascript:wireguard();">
+      <a href="javascript:open('vpn');">
         <div class="boxInner">
           <img src="images/wireguard.png" alt="WireGuard VPN"/>
           <div class="titleBox">WireGuard VPN</div>
@@ -223,7 +178,7 @@
       </a>
     </div>
     <div class="box">
-      <a href="javascript:invval();">
+      <a href="javascript:open('invval');">
         <div class="boxInner">
           <img src="images/invval.png" alt="InvVal"/>
           <div class="titleBox">InvVal</div>
@@ -231,7 +186,7 @@
       </a>
     </div>
     <div class="box">
-      <a href="javascript:domo();">
+      <a href="javascript:open('domo');">
         <div class="boxInner">
           <img src="images/domo.png" alt="Domo"/>
           <div class="titleBox">Domo</div>
@@ -239,7 +194,7 @@
       </a>
     </div>
     <div class="box">
-      <a href="javascript:taskboard();">
+      <a href="javascript:open('taskboard');">
         <div class="boxInner">
           <img src="images/taskboard.png" alt="TaskBoard"/>
           <div class="titleBox">TaskBoard</div>
@@ -247,7 +202,7 @@
       </a>
     </div>
     <div class="box">
-      <a href="javascript:auth();">
+      <a href="javascript:open('auth');">
         <div class="boxInner">
           <img src="images/keycloak.png" alt="Keycloak"/>
           <div class="titleBox">Auth</div>
@@ -255,7 +210,7 @@
       </a>
     </div>
     <div class="box">
-      <a href="javascript:georgi();">
+      <a href="javascript:open('georgi');">
         <div class="boxInner">
           <img src="images/georgi.png" alt="Georgi Zahariev"/>
           <div class="titleBox">Georgi Zahariev</div>
