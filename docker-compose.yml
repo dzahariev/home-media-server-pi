@@ -92,7 +92,7 @@ services:
 
   # Prometheus container
   prometheus:
-    image: prom/prometheus:v3.0.1
+    image: prom/prometheus:v3.1.0
     container_name: prometheus
     restart: unless-stopped
     hostname: 
