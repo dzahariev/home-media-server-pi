@@ -500,7 +500,7 @@ services:
 
   # MariaDB container
   mariadb:
-    image: mariadb:10.11.10
+    image: mariadb:10.11.11
     container_name: mariadb
     restart: always
     volumes:
