@@ -26,11 +26,11 @@ Adjust the .env file content by setting the base folder, domain, and secrets, or
 
 ## Start the bundle
 ```
-docker-compose --env-file .env.server up -d
+docker compose --env-file .env.server up -d
 ```
 ## Stop the bundle
 ```
-docker-compose --env-file .env.server down
+docker compose --env-file .env.server down
 ```
 
 ## RPi preparation and maintenance
