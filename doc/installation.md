@@ -7,7 +7,7 @@ This gude describe full installation process on Raspberry Pi 4B. Starting from s
 - Prepare the router and sub domains
 - Starting conternised media services package
 
-## OS installation and boot from HDD (USB drive or SSD)
+## Raspberry Pi specifics - OS installation and boot from HDD (USB drive or SSD)
 Install OS to SD card and HDD (as RPi boots by default from SD Card, we need to boot from SD card once to configure it to boot from HDD).
 
 Download the latest Raspberry Pi Imager for your OS from [here](https://downloads.raspberrypi.org/imager/). 
@@ -61,18 +61,19 @@ When RPi is down remove the SD card, as it is not needed anymore. The board now 
 
 ## Install Docker
 
-Login to RPi and execute:
+Login to Server and execute:
 
 ```
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 sudo usermod -aG docker $USER && newgrp docker
+sudo apt-get install docker-compose-plugin
 ```
 
 ## Prepare the router and sub domains
 The follwoing steps need to be done before start the stack:
 - Ensure you have a static IP address assigned by your network provider, otherwise you may not be able to configure the DNS records.
-- Adjust in Router ports 80 and 443 to be forwarded to the RPis IP address:
+- Adjust in Router ports 80 and 443 to be forwarded to the server IP address:
 ![Router02](router-fwd.png)
 - Add to your domain configuration CNAME records for subdomains you want to expose from the stack - grafana, transmission, files, plex and calibre
 

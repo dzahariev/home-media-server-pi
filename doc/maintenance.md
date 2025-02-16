@@ -1,6 +1,6 @@
 # Maintenance script
 
-The script `maintenance.sh` can be used to regularly update the PRi, services stack and finally to reboot the host if it is needed.
+The script `maintenance.sh` can be used to regularly update the Server, services stack and finally to reboot the host if it is needed.
 
 The  script can be executed manually or to be scheduled for automated execution with cron:
 
@@ -16,7 +16,7 @@ The script will be executed [At 04:00 on Saturday](https://crontab.guru/#0_4_*_*
 
 Or other proposition is `0 4 15-22 * */2` - At 04:00 on Tuesday - in the middle of month between 15th and 22nd.
 
-To cleanup old log file content configure the logrotate by creating the file `/etc/logrotate.d/pi.maintenance` with content:
+To cleanup old log file content configure the logrotate by creating the file `/etc/logrotate.d/server.maintenance` with content:
 ```
 /home/ubuntu/logs/maintenance.log {
         monthly

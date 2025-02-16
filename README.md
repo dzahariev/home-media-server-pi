@@ -33,7 +33,7 @@ docker compose --env-file .env.server up -d
 docker compose --env-file .env.server down
 ```
 
-## RPi preparation and maintenance
+## Server preparation and maintenance
 
 Details on [preparation](doc/installation.md) and [maintenance](doc/maintenance.md).
 
