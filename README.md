@@ -22,15 +22,15 @@ Include setup of:
 - PostgeSQL (not exposed, used through internal network)
 - Keycloak (on auth subdomain)
 ## Prepare
-Adjust the .env file content by setting the base folder, domain, and secrets, or create a new file named .env.pi and use it instead.
+Adjust the .env file content by setting the base folder, domain, and secrets, or create a new file named .env.server and use it instead.
 
 ## Start the bundle
 ```
-docker-compose --env-file .env.pi up -d
+docker-compose --env-file .env.server up -d
 ```
 ## Stop the bundle
 ```
-docker-compose --env-file .env.pi down
+docker-compose --env-file .env.server down
 ```
 
 ## RPi preparation and maintenance
