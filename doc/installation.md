@@ -27,7 +27,7 @@ Using the router configuration identify the IP address, and reserve it for the R
 
 ![Router01](router.png)
 
-Login to RPi:
+Login to Server:
 
 ```
 ssh <username>@<IP address>
@@ -78,10 +78,10 @@ The follwoing steps need to be done before start the stack:
 
 ## Starting conternised media services package
 
-Login to RPi and execute:
+Login to Server and execute:
 
 ```
-git clone https://github.com/dzahariev/home-media-server-pi.git
+git clone https://github.com/dzahariev/home-server.git
 ```
 
 Using text editor adjust the configuration by:
