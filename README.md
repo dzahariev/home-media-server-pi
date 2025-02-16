@@ -1,7 +1,7 @@
-# home-media-server-pi
+# home-server
 
 ## What is this about?
-Make use of [RaspberyPi](https://www.raspberrypi.com) for home server.
+Make use of old PC for home server.
 
 Include setup of:
 - Nginx-Proxy (proxy)
