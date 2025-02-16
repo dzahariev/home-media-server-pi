@@ -95,7 +95,7 @@ Using text editor adjust the configuration by:
 Start the stack:
 
 ```
-docker-compose --env-file .env up -d
+docker compose --env-file .env up -d
 ```
 
 

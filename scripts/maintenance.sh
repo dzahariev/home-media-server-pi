@@ -18,7 +18,7 @@ if ! dockerHubIsUp ; then
 else
 	echo "Stops the containers ..."
  	cd /home/ubuntu/home-server
- 	docker-compose --env-file .env.server down --remove-orphans
+ 	docker compose --env-file .env.server down --remove-orphans
  	echo "Containers are stopped!"
 	
 	echo "Gets update from GitHub ..."
@@ -28,7 +28,7 @@ else
 
 	echo "Starts the containers ..."
 	cd /home/ubuntu/home-server
-	docker-compose --env-file .env.server up -d
+	docker compose --env-file .env.server up -d
 	echo "Containers are started!"
 
 	echo "Cleanup images ..."
