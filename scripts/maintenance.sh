@@ -17,22 +17,22 @@ if ! dockerHubIsUp ; then
 	echo "DockerHub canot be reached, will not update images."
 else
 	echo "Stops the containers ..."
- 	cd /home/ubuntu/home-media-server-pi
- 	docker-compose --env-file .env.pi down --remove-orphans
+ 	cd /home/ubuntu/home-server
+ 	docker-compose --env-file .env.server down --remove-orphans
  	echo "Containers are stopped!"
 	
 	echo "Gets update from GitHub ..."
-	cd /home/ubuntu/home-media-server-pi
+	cd /home/ubuntu/home-server
 	git pull
 	echo "Updates arefetched from GitHub!"
 
 	echo "Starts the containers ..."
-	cd /home/ubuntu/home-media-server-pi
-	docker-compose --env-file .env.pi up -d
+	cd /home/ubuntu/home-server
+	docker-compose --env-file .env.server up -d
 	echo "Containers are started!"
 
 	echo "Cleanup images ..."
-	cd /home/ubuntu/home-media-server-pi
+	cd /home/ubuntu/home-server
 	docker system prune -af
 	echo "Images are cleared!"
 fi
